@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+
+    Created by the Middlegen Hibernate plugin 2.1
+
+
+
+    http://boss.bekk.no/boss/middlegen/
+
+    http://www.hibernate.org/
+
+-->
+	<class name="gcom.cadastro.ImovelAptoSorteioMensal" table="cadastro.imov_apto_sorteio_mensal">
+		<id name="id" type="java.lang.Integer" column="iasm_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_imov_apto_sorteio_mensal</param>
+			</generator>
+		</id>
+		
+		<property name="numeroGerado" type="java.lang.Integer" column="iasm_nnnumerogerado" not-null="true" length="6"/>
+		<property name="indicadorSorteio" type="java.lang.Short" column="iasm_icsorteio" not-null="true" length="2"/>
+		<property name="dataSorteio" type="java.sql.Date" column="iasm_dtsorteio" not-null="false" length="8"/>
+		<property name="numeroOrdemSorteio" type="java.lang.Integer" column="iasm_nnordemsorteio" not-null="false" length="6"/>
+		<property name="anoMesSorteio" type="java.lang.Integer" column="iasm_amsorteio" not-null="true" length="6"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="iasm_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to Imovel -->
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="true">
+			<column name="imov_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to Imovel -->
+		<many-to-one name="premioSorteio" class="gcom.cadastro.PremioSorteio" not-null="false">
+			<column name="prso_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

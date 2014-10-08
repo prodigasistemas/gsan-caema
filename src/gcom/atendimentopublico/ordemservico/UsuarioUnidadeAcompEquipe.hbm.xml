@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.ordemservico.UsuarioUnidadeAcompEquipe" table="atendimentopublico.usuario_unid_acomp_equip">
+		<id name="id" type="java.lang.Integer" column="UUAE_ID">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.SEQ_USUARIO_UNID_ACOMP_EQUIP</param>
+			</generator>
+		</id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="UUAE_TMULTIMAALTERACAO" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to UnidadeOrganizacional -->
+		<many-to-one name="unidadeOrganizacional" class="gcom.cadastro.unidade.UnidadeOrganizacional" not-null="true">
+			<column name="unid_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Usuario -->
+		<many-to-one name="usuario" class="gcom.seguranca.acesso.usuario.Usuario" not-null="false">
+			<column name="usur_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

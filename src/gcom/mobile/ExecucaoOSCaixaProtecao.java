@@ -1,0 +1,219 @@
+/*
+* Copyright (C) 2007-2007 the GSAN - Sistema Integrado de Gestão de Serviços de Saneamento
+*
+* This file is part of GSAN, an integrated service management system for Sanitation
+*
+* GSAN is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License.
+*
+* GSAN is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+*/
+
+/*
+* GSAN - Sistema Integrado de Gestão de Serviços de Saneamento
+* Copyright (C) <2007> 
+* Adriano Britto Siqueira
+* Alexandre Santos Cabral
+* Ana Carolina Alves Breda
+* Ana Maria Andrade Cavalcante
+* Aryed Lins de Araújo
+* Bruno Leonardo Rodrigues Barros
+* Carlos Elmano Rodrigues Ferreira
+* Cláudio de Andrade Lira
+* Denys Guimarães Guenes Tavares
+* Eduardo Breckenfeld da Rosa Borges
+* Fabíola Gomes de Araújo
+* Flávio Leonardo Cavalcanti Cordeiro
+* Francisco do Nascimento Júnior
+* Homero Sampaio Cavalcanti
+* Ivan Sérgio da Silva Júnior
+* José Edmar de Siqueira
+* José Thiago Tenório Lopes
+* Kássia Regina Silvestre de Albuquerque
+* Leonardo Luiz Vieira da Silva
+* Márcio Roberto Batista da Silva
+* Maria de Fátima Sampaio Leite
+* Micaela Maria Coelho de Araújo
+* Nelson Mendonça de Carvalho
+* Newton Morais e Silva
+* Pedro Alexandre Santos da Silva Filho
+* Rafael Corrêa Lima e Silva
+* Rafael Francisco Pinto
+* Rafael Koury Monteiro
+* Rafael Palermo de Araújo
+* Raphael Veras Rossiter
+* Roberto Sobreira Barbalho
+* Rodrigo Avellar Silveira
+* Rosana Carvalho Barbosa
+* Sávio Luiz de Andrade Cavalcante
+* Tai Mu Shih
+* Thiago Augusto Souza do Nascimento
+* Tiago Moreno Rodrigues
+* Vivianne Barbosa Sousa
+*
+* Este programa é software livre; você pode redistribuí-lo e/ou
+* modificá-lo sob os termos de Licença Pública Geral GNU, conforme
+* publicada pela Free Software Foundation; versão 2 da
+* Licença.
+* Este programa é distribuído na expectativa de ser útil, mas SEM
+* QUALQUER GARANTIA; sem mesmo a garantia implícita de
+* COMERCIALIZAÇÃO ou de ADEQUAÇÃO A QUALQUER PROPÓSITO EM
+* PARTICULAR. Consulte a Licença Pública Geral GNU para obter mais
+* detalhes.
+* Você deve ter recebido uma cópia da Licença Pública Geral GNU
+* junto com este programa; se não, escreva para Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+* 02111-1307, USA.
+*/  
+package gcom.mobile;
+
+import gcom.atendimentopublico.ordemservico.OrdemServico;
+import gcom.interceptor.ObjetoTransacao;
+import gcom.micromedicao.hidrometro.HidrometroLocalInstalacao;
+import gcom.micromedicao.hidrometro.HidrometroProtecao;
+import gcom.util.filtro.Filtro;
+
+import java.util.Date;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+
+/**
+ * @author Mariana Victor
+ * @since 12/11/2013
+ */
+public class ExecucaoOSCaixaProtecao extends ObjetoTransacao {
+
+	private static final long serialVersionUID = 1L;
+
+	private ExecucaoOSPK comp_id;
+
+    private Short indicadorTrocaProtecao;
+    
+    private Short indicadorTrocaRegistro;
+
+    private Date ultimaAlteracao;
+    
+    private HidrometroLocalInstalacao hidrometroLocalInstalacao;
+
+    private HidrometroProtecao hidrometroProtecao;
+    
+    public ExecucaoOSCaixaProtecao(ExecucaoOSPK comp_id, Integer numeroLeitura, Short indicadorTrocaProtecao,  
+    		Short indicadorTrocaRegistro, Short indicadorCavalete, Date ultimaAlteracao,
+    		HidrometroLocalInstalacao hidrometroLocalInstalacao, HidrometroProtecao hidrometroProtecao) {
+        this.comp_id = comp_id;
+    	this.indicadorTrocaProtecao = indicadorTrocaProtecao;
+    	this.indicadorTrocaRegistro = indicadorTrocaRegistro;
+        this.ultimaAlteracao = ultimaAlteracao;
+        this.hidrometroLocalInstalacao = hidrometroLocalInstalacao;
+        this.hidrometroProtecao = hidrometroProtecao;
+    }
+    
+    public ExecucaoOSCaixaProtecao(Integer idArquivoTexto, String linha){
+
+    	String[] colunas = linha.split("\\|");
+    	
+    	Integer idOs = Integer.parseInt(colunas[1]);
+    	
+        ExecucaoOSPK pk = new ExecucaoOSPK();
+        
+        ArquivoTextoOSCobranca arquivoTextoOSCobranca = new ArquivoTextoOSCobranca();
+        arquivoTextoOSCobranca.setId(idArquivoTexto);
+        pk.setArquivoTextoOSCobranca(arquivoTextoOSCobranca);
+        
+        OrdemServico ordemServico = new OrdemServico();
+        ordemServico.setId(idOs);
+        pk.setOrdemServico(ordemServico);
+        
+        this.setComp_id(pk);
+
+        HidrometroLocalInstalacao hidrometroLocalInstalacao = new HidrometroLocalInstalacao();
+        hidrometroLocalInstalacao.setId(new Integer(colunas[2]));
+        this.setHidrometroLocalInstalacao(hidrometroLocalInstalacao);
+        
+        HidrometroProtecao hidrometroProtecao = new HidrometroProtecao();
+        hidrometroProtecao.setId(new Integer(colunas[3]));
+        this.setHidrometroProtecao(hidrometroProtecao);
+
+    	this.setIndicadorTrocaProtecao(new Short(colunas[4]));
+    	this.setIndicadorTrocaRegistro(new Short(colunas[5]));
+        
+        this.setUltimaAlteracao(new Date());
+    }
+
+    public ExecucaoOSCaixaProtecao() {
+    	
+    }
+    
+    public ExecucaoOSPK getComp_id() {
+		return comp_id;
+	}
+
+	public void setComp_id(ExecucaoOSPK comp_id) {
+		this.comp_id = comp_id;
+	}
+
+	public Short getIndicadorTrocaProtecao() {
+		return indicadorTrocaProtecao;
+	}
+
+	public void setIndicadorTrocaProtecao(Short indicadorTrocaProtecao) {
+		this.indicadorTrocaProtecao = indicadorTrocaProtecao;
+	}
+
+	public Short getIndicadorTrocaRegistro() {
+		return indicadorTrocaRegistro;
+	}
+
+	public void setIndicadorTrocaRegistro(Short indicadorTrocaRegistro) {
+		this.indicadorTrocaRegistro = indicadorTrocaRegistro;
+	}
+
+	public Date getUltimaAlteracao() {
+		return ultimaAlteracao;
+	}
+
+	public void setUltimaAlteracao(Date ultimaAlteracao) {
+		this.ultimaAlteracao = ultimaAlteracao;
+	}
+
+	public HidrometroLocalInstalacao getHidrometroLocalInstalacao() {
+		return hidrometroLocalInstalacao;
+	}
+
+	public void setHidrometroLocalInstalacao(HidrometroLocalInstalacao hidrometroLocalInstalacao) {
+		this.hidrometroLocalInstalacao = hidrometroLocalInstalacao;
+	}
+
+	public HidrometroProtecao getHidrometroProtecao() {
+		return hidrometroProtecao;
+	}
+
+	public void setHidrometroProtecao(HidrometroProtecao hidrometroProtecao) {
+		this.hidrometroProtecao = hidrometroProtecao;
+	}
+
+	public String toString() {
+		return new ToStringBuilder(this).append("comp_id", getComp_id())
+				.toString();
+	}
+    
+	public String[] retornaCamposChavePrimaria(){
+		String[] retorno = {"comp_id"};
+		return retorno;
+	}
+	
+	public Filtro retornaFiltro(){
+		
+		return null;
+	}
+
+}

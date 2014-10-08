@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.mobile.ParametrosArquivoTextoOSServicoTipo" table="mobile.par_arq_txt_os_serv_tipo">
+		<composite-id name="comp_id" class="gcom.mobile.ParametrosArquivoTextoOSServicoTipoPK">
+			<!-- bi-directional many-to-one association to ParametrosArquivoTextoOSCobranca -->
+			<key-many-to-one name="parametrosArquivoTextoOSCobranca" class="gcom.mobile.ParametrosArquivoTextoOSCobranca">
+				<column name="POSC_ID"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to ServicoTipo -->
+			<key-many-to-one name="servicoTipo" class="gcom.atendimentopublico.ordemservico.ServicoTipo">
+				<column name="SVTP_ID"/>
+			</key-many-to-one>
+		</composite-id>
+	</class>
+</hibernate-mapping>

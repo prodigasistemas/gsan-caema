@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+    
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cobranca.parcelamento.ParcelaEntradaDesconto" table="cobranca.parcelas_entrada_desc">
+		<id name="id" type="java.lang.Integer" column="pede_id">
+			<generator class="sequence">
+				<param name="sequence">cobranca.seq_parcelas_entrada_desc</param>
+			</generator>
+		</id>
+		
+		<property name="percentualEntrada" type="java.math.BigDecimal" column="pede_pcentrada" not-null="true"/>
+		<property name="percentualDesconto" type="java.math.BigDecimal" column="pede_pcdesconto" not-null="true"/>
+		<property name="quantidadeParcelas" type="java.lang.Integer" column="pede_qtparcelas" not-null="true"/>
+		<property name="valorMinimoParcela" type="java.math.BigDecimal" column="pede_vlminimoparcela" not-null="true"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pede_tmultimaalteracao" length="8"/>
+		<property name="quantidadeMeses" type="java.lang.Integer" column="pede_qtmeses" not-null="true"/>
+		
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to ParcelamentoQuantidadeReparcelamento -->
+		<many-to-one name="parcelamentoQuantidadeReparcelamento" class="gcom.cobranca.parcelamento.ParcelamentoQuantidadeReparcelamento" not-null="true">
+			<column name="pqtr_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

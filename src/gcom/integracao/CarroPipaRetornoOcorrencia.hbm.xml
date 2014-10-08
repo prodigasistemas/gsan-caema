@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+	-->
+ <class name="gcom.integracao.CarroPipaRetornoOcorrencia" table="integracao.carro_pipa_rt_ocorrencia">
+  <id column="cpro_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">integracao.seq_carro_pipa_rt_ocorrencia</param>
+   </generator>
+  </id>
+
+  <property column="cpro_dtocorrencia" name="dataOcorrencia" not-null="true" type="java.sql.Date"/>
+  <property column="cpro_nnprotocoloconsulta" name="numeroProtocoloConsulta" type="java.lang.String"/>
+  <property column="cpro_cdrequisicao" name="codigoRequisicao" type="java.lang.Short"/>
+  <property column="cpro_tmultimaalteracao" name="ultimaAlteracao" not-null="true" type="java.sql.Timestamp"/>
+  
+  <!-- bi-directional many-to-one association to CarroPipaRetornoOcorrencia -->
+  <many-to-one class="gcom.integracao.CarroPipaRetornoTipo" name="carroPipaRetornoTipo" not-null="true">
+   <column name="cprt_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.imovel.Imovel" name="imovel">
+   <column name="imov_id"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

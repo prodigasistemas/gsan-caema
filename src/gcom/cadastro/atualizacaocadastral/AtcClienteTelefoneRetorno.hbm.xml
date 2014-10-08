@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcClienteTelefoneRetorno" 
+    table="atc_cliente_telefone_retorno"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.AtcClienteTelefoneRetornoPK">
+        <key-property 
+            name="atcImoRetornoId" 
+            column="atc_imo_retorno_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+        <key-property 
+            name="atcCtlId" 
+            column="atc_ctl_id" 
+            type="java.lang.Long"
+        />
+    </composite-id>    
+
+    <property
+        name="atcCtlDdd"
+        type="java.lang.String"
+        column="atc_ctl_ddd"
+        not-null="true"
+        length="5"
+    />
+    <property
+        name="atcCtlNumero"
+        type="java.lang.String"
+        column="atc_ctl_numero"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="atcCtlRamal"
+        type="java.lang.String"
+        column="atc_ctl_ramal"
+        length="20"
+    />
+    <property
+        name="atcCliId"
+        type="long"
+        column="atc_cli_id"
+        not-null="true"
+    />
+    <property
+        name="atcCtlNomeContato"
+        type="java.lang.String"
+        column="atc_ctl_nome_contato"
+        length="20"
+    />
+    <property
+        name="atcTtpId"
+        type="java.lang.Integer"
+        column="atc_ttp_id"
+        length="4"
+    />
+    <property
+        name="atcCliFonePadrao"
+        type="java.lang.Boolean"
+        column="atc_cli_fone_padrao"
+        length="1"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

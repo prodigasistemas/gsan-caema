@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="InserirAgrupamentoBairroPorUnidadeRepavimentadoraActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.InserirAgrupamentoBairroPorUnidadeRepavimentadoraActionForm" />
+
+
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="InserirAgrupamentoBairroPorUnidadeRepavimentadoraActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirInserirAgrupamentoBairroPorUnidadeRepavimentadoraAction"
+			validate="false" scope="session"
+			path="/exibirInserirAgrupamentoBairroPorUnidadeRepavimentadoraAction">
+			<forward name="agrupamentoBairroPorUnidadeRepavimentadoraInserir"
+				path="/jsp/atendimentopublico/ordemservico/agrupamento_bairro_por_unidade_repavimentadora_inserir.jsp" />
+		</action>
+
+		<action name="InserirAgrupamentoBairroPorUnidadeRepavimentadoraActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.InserirAgrupamentoBairroPorUnidadeRepavimentadoraAction"
+			validate="false" scope="session" path="/inserirAgrupamentoBairroPorUnidadeRepavimentadoraAction">
+		</action>
+
+
+
+
+	</action-mappings>
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

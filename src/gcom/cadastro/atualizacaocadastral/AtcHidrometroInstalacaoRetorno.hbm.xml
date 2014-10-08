@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcHidrometroInstalacaoRetorno" 
+    table="atc_hidrometro_instalacao_retorno"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.AtcHidrometroInstalacaoRetornoPK">
+        <key-property 
+            name="atcImoRetornoId" 
+            column="atc_imo_retorno_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+        <key-property 
+            name="atcInsId" 
+            column="atc_ins_id" 
+            type="java.lang.Long"
+        />
+    </composite-id>    
+
+    <property
+        name="atcInsDataInstalacao"
+        type="java.lang.String"
+        column="atc_ins_data_instalacao"
+        length="50"
+    />
+    <property
+        name="atcImoId"
+        type="java.lang.Integer"
+        column="atc_imo_id"
+        length="4"
+    />
+    <property
+        name="atcHliId"
+        type="java.lang.Integer"
+        column="atc_hli_id"
+        length="4"
+    />
+    <property
+        name="atcHprId"
+        type="java.lang.Integer"
+        column="atc_hpr_id"
+        length="4"
+    />
+    <property
+        name="atcMtpId"
+        type="java.lang.Integer"
+        column="atc_mtp_id"
+        length="4"
+    />
+    <property
+        name="atcInsLeitura"
+        type="java.lang.Integer"
+        column="atc_ins_leitura"
+        length="4"
+    />
+    <property
+        name="acaInsNumeroHidrometro"
+        type="java.lang.String"
+        column="aca_ins_numero_hidrometro"
+        length="50"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

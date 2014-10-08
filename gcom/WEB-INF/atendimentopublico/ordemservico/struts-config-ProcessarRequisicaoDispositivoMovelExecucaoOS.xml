@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	
+	<!--******************* PAGINAS GLOBAIS *******************-->
+	<global-forwards />
+
+	<action-mappings>
+
+		<!--******************* PÁGINA PRINCIPAL *******************-->
+		<!-- [UC0811]Processar Requisição do Dispositivo Movel Execucao OSAuthor: Bruno Barros Data:18/06/2013-->
+
+		<action 
+			type="gcom.gui.mobile.ProcessarRequisicaoDispositivoMovelExecucaoOSAction"
+			validate="false" scope="session" path="/processarRequisicaoDispositivoMovelExecucaoOSAction" />
+		
+	</action-mappings>
+
+</struts-config>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+	<class name="gcom.atendimentopublico.SubstituicaoHidrometroAcompanhamentoServico" table="atendimentopublico.subs_hidr_acomp_servico">
+		<composite-id name="comp_id" class="gcom.atendimentopublico.SubstituicaoHidrometroAcompanhamentoServicoPK">
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>			
+		</composite-id>		
+		
+	    <property name="matriculaImovel"  type="java.lang.Integer" column="imov_idinformado" not-null="true" />
+	    <property name="numeroLeituraAtual"  type="java.lang.Integer" column="suhi_nnleituraatual" not-null="true" />
+	    <property name="descricaoNumeroHidrometro"  type="java.lang.String" column="suhi_dsnumerohidrometro" not-null="true"  />
+	    <property name="indicadorTipoMedicao"  type="java.lang.Short" column="suhi_ictipomedicao" not-null="true" length="2" />
+	    <property name="numeroLeituraInstalacao"  type="java.lang.Integer" column="suhi_nnleiturainstalacao" not-null="true" />
+	    <property name="numeroSelo"  type="java.lang.Integer" column="suhi_nnselo" not-null="true" />
+	    <property name="indicadorCavalete"  type="java.lang.Short" column="suhi_iccavalete" not-null="true" length="2"  />
+	    <property name="indicadorSubstituicaoRealizada"  type="java.lang.Short" column="suhi_icsubstituicaorealizada" not-null="true" length="2"  />
+	    <property name="descricaoErro"  type="java.lang.String" column="suhi_dserror" not-null="false"  />
+	    <property name="ultimaAlteracao"  type="java.sql.Timestamp" column="suhi_tmultimaalteracao" not-null="true" length="8"  />   
+	
+	    <!-- Associations -->
+	   
+	    <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="hidrometroLocalInstalacao" class="gcom.micromedicao.hidrometro.HidrometroLocalInstalacao" not-null="true">
+	        <column name="hili_id" />
+	    </many-to-one>
+	     <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="hidrometroProtecao" class="gcom.micromedicao.hidrometro.HidrometroProtecao" not-null="true">
+	        <column name="hipr_id" />
+	    </many-to-one>
+	
+	</class>
+</hibernate-mapping>

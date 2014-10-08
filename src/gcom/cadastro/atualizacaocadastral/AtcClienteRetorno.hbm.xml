@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcClienteRetorno" 
+    table="atc_cliente_retorno"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.AtcClienteRetornoPK">
+        <key-property 
+            name="atcImoRetornoId" 
+            column="atc_imo_retorno_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+        <key-property 
+            name="atcCliId" 
+            column="atc_cli_id" 
+            type="java.lang.Long"
+        />
+    </composite-id>    
+
+    <property
+        name="atcCliCnpj"
+        type="java.lang.String"
+        column="atc_cli_cnpj"
+        length="25"
+    />
+    <property
+        name="atcCliEmail"
+        type="java.lang.String"
+        column="atc_cli_email"
+        length="50"
+    />
+    <property
+        name="atcCliNomeFantasia"
+        type="java.lang.String"
+        column="atc_cli_nome_fantasia"
+        length="50"
+    />
+    <property
+        name="atcCliNomeReceita"
+        type="java.lang.String"
+        column="atc_cli_nome_receita"
+        length="50"
+    />
+    <property
+        name="atcCliCpf"
+        type="java.lang.String"
+        column="atc_cli_cpf"
+        length="20"
+    />
+    <property
+        name="atcCliRg"
+        type="java.lang.String"
+        column="atc_cli_rg"
+        length="25"
+    />
+    <property
+        name="atcCliDataExpedicao"
+        type="java.lang.String"
+        column="atc_cli_data_expedicao"
+        length="50"
+    />
+    <property
+        name="atcCliDataNascimento"
+        type="java.lang.String"
+        column="atc_cli_data_nascimento"
+        length="50"
+    />
+    <property
+        name="atcOrgId"
+        type="java.lang.Integer"
+        column="atc_org_id"
+        length="4"
+    />
+    <property
+        name="atcUnfId"
+        type="java.lang.Integer"
+        column="atc_unf_id"
+        length="4"
+    />
+    <property
+        name="atcProId"
+        type="java.lang.Integer"
+        column="atc_pro_id"
+        length="4"
+    />
+    <property
+        name="atcRamId"
+        type="java.lang.Integer"
+        column="atc_ram_id"
+        length="4"
+    />
+    <property
+        name="atcCltId"
+        type="java.lang.Integer"
+        column="atc_clt_id"
+        length="4"
+    />
+    <property
+        name="atcCliTipoPessoa"
+        type="int"
+        column="atc_cli_tipo_pessoa"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcCliSexo"
+        type="java.lang.Integer"
+        column="atc_cli_sexo"
+        length="4"
+    />
+    <property
+        name="atcCliNomeMae"
+        type="java.lang.String"
+        column="atc_cli_nome_mae"
+        length="50"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

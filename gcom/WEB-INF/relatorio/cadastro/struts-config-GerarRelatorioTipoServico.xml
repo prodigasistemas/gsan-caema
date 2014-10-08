@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="GerarRelatorioTipoServicoActionForm"
+			type="gcom.gui.relatorio.cadastro.GerarRelatorioTipoServicoActionForm" />
+
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL *******************-->
+		<action name="GerarRelatorioTipoServicoActionForm"
+			type="gcom.gui.relatorio.cadastro.ExibirGerarRelatorioTipoServicoAction"
+			input="/exibirGerarRelatorioTipoServicoAction"
+			path="/exibirGerarRelatorioTipoServicoAction"
+			validate="true" scope="session">
+			<forward name="exibirGerarRelatorioTipoServico"
+				path="/jsp/relatorio/cadastro/relatorio_tipo_servico.jsp" />
+		</action>
+		<action name="GerarRelatorioTipoServicoActionForm"
+			type="gcom.gui.relatorio.cadastro.GerarRelatorioTipoServicoAction"
+			input="/exibirGerarRelatorioTipoServicoAction"
+			path="/gerarRelatorioTipoServicoAction" 
+			validate="true" scope="session"/>
+
+	</action-mappings>
+
+</struts-config>

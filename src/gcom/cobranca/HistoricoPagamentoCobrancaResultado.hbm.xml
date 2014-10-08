@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="gcom.cobranca.HistoricoPagamentoCobrancaResultado" table="cobranca.hist_pag_cobresultado">
+		<id name="id" type="java.lang.Integer" column="hpcr_id">
+			<generator class="sequence">
+				<param name="sequence">
+					cobranca.seq_hist_pag_cobresultado
+				</param>
+			</generator>
+		</id>
+		
+		<property name="numeroParcela" type="java.lang.Integer" column="hpcr_nnparcela" length="6"/>
+		<property name="valorPago" type="java.math.BigDecimal" column="hpcr_vlpago" length="16"/>
+		<property name="dataPagamento" type="java.sql.Date" column="hpcr_dtpagamento" length="12"/>
+		<property name="indicadorEnviado" type="java.lang.Short" column="hpcr_icenviado" length="2"/>
+		<property name="dataEnviado" type="java.sql.Date" column="hpcr_dtenviado" length="12"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="hpcr_tmultimaalteracao" length="8"/>
+		<property name="faixaAtrasoDebito" type="java.lang.String" column="hpcr_dsfaixa" length="20"/>
+		
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="false">
+			<column name="imov_id"/>
+		</many-to-one>
+		<many-to-one name="conta" class="gcom.faturamento.conta.ContaGeral" not-null="false">
+			<column name="cnta_id"/>
+		</many-to-one>
+		<many-to-one name="guia" class="gcom.arrecadacao.pagamento.GuiaPagamento" not-null="false">
+			<column name="gpag_id"/>
+		</many-to-one>
+		<many-to-one name="debitoACobrar" class="gcom.faturamento.debito.DebitoACobrarGeral" not-null="false">
+			<column name="dbac_id"/>
+		</many-to-one>
+		<many-to-one name="comando" class="gcom.cobranca.ComandoEmpresaCobrancaConta" not-null="true">
+			<column name="cecc_id"/>
+		</many-to-one>
+		<many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico" not-null="false">
+			<column name="orse_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

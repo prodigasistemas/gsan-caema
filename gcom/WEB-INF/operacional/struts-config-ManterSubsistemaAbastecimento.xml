@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="AtualizarSubsistemaAbastecimentoActionForm"
+			type="gcom.gui.operacional.AtualizarSubsistemaAbastecimentoActionForm" />
+		<form-bean name="FiltrarSubsistemaAbastecimentoActionForm"
+			type="gcom.gui.operacional.FiltrarSubsistemaAbastecimentoActionForm" />
+
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.operacional.ExibirManterSubsistemaAbastecimentoAction"
+			validate="false" scope="session"
+			path="/exibirManterSubsistemaAbastecimentoAction">
+
+			<forward name="exibirManterSubsistemaAbastecimento"
+				path="/jsp/operacional/subsistema_abastecimento_manter.jsp" />
+
+			<forward name="exibirAtualizarSubsistemaAbastecimento"
+				path="/exibirAtualizarSubsistemaAbastecimentoAction.do" />
+		</action>
+
+		<action name="AtualizarSubsistemaAbastecimentoActionForm"
+			type="gcom.gui.operacional.ExibirAtualizarSubsistemaAbastecimentoAction"
+			validate="false" scope="request" parameter="action"
+			path="/exibirAtualizarSubsistemaAbastecimentoAction">
+
+			<forward name="subsistemaAbastecimentoAtualizar"
+				path="/jsp/operacional/subsistema_abastecimento_atualizar.jsp" />
+		</action>
+
+		<action name="AtualizarSubsistemaAbastecimentoActionForm"
+			type="gcom.gui.operacional.AtualizarSubsistemaAbastecimentoAction"
+			validate="true" scope="request"
+			path="/atualizarSubsistemaAbastecimentoAction">
+
+		</action>
+
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.operacional.RemoverSubsistemaAbastecimentoAction"
+			 scope="request" path="/removerSubsistemaAbastecimentoAction">
+
+		</action>
+		
+		<action name="FiltrarSubsistemaAbastecimentoActionForm"
+			type="gcom.gui.relatorio.operacional.GerarRelatorioSubsistemaAbastecimentoManterAction"
+			validate="true" scope="session"
+			path="/gerarRelatorioSubsistemaAbastecimentoManterAction" />
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

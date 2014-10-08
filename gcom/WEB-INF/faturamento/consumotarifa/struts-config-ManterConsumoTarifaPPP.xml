@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="FiltrarConsumoTarifaPPPActionForm"
+			type="gcom.gui.faturamento.consumotarifa.FiltrarConsumoTarifaPPPActionForm" />
+		<form-bean name="InserirReajusteConsumoTarifaPPPActionForm"
+			type="gcom.gui.faturamento.consumotarifa.InserirReajusteConsumoTarifaPPPActionForm" />
+		<form-bean name="AtualizarConsumoTarifaPPPActionForm"
+			type="gcom.gui.faturamento.consumotarifa.AtualizarConsumoTarifaPPPActionForm" />	
+		<form-bean name="AtualizarCategoriaConsumoTarifaPPPActionForm"
+			type="gcom.gui.faturamento.consumotarifa.AtualizarCategoriaConsumoTarifaPPPActionForm" />
+		<form-bean name="AtualizarCategoriaFaixaConsumoTarifaPPPActionForm"
+			type="gcom.gui.faturamento.consumotarifa.AtualizarCategoriaFaixaConsumoTarifaPPPActionForm" />	
+		<form-bean name="ManutencaoRegistroActionForm"
+			type="gcom.gui.ManutencaoRegistroActionForm" />
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+	
+		<!--===================== FILTRAR CONSUMO TARIFA PPP ============================================-->
+			<action name="FiltrarConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirFiltrarConsumoTarifaPPPAction"
+				validate="false" path="/exibirFiltrarConsumoTarifaPPPAction">
+				<forward name="filtrarConsumoTarifaPPP"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_PPP_filtrar.jsp" />
+			</action>
+			<action name="FiltrarConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.FiltrarConsumoTarifaPPPAction"
+				validate="true" scope="session" path="/filtrarConsumoTarifaPPPAction">
+				<forward name="exibirManterConsumoTarifaPPP"
+					path="/exibirManterConsumoTarifaPPPAction.do" />
+				<forward name="removerConsumoTarifaPPP"
+					path="/removerConsumoTarifaPPPAction.do" />	
+			</action>
+		<!--=============================================================================================-->
+		
+		
+		<!--===================== MANTER CONSUMO TARIFA PPP =============================================-->
+			<action name="FiltrarConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirManterConsumoTarifaPPPAction"
+				validate="false" path="/exibirManterConsumoTarifaPPPAction">
+				<forward name="manterConsumoTarifaPPP"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_PPP_manter.jsp" />
+				<forward name="atualizarConsumoTarifaVigencia"
+					path="/exibirAtualizarConsumoTarifaPPPAction.do" />
+			</action>
+		<!--==============================================================================================-->
+		
+		
+		<!--===================== REMOVER CONSUMO TARIFA PPP ==============================================-->
+			<action name="ManutencaoRegistroActionForm"
+				type="gcom.gui.faturamento.consumotarifa.RemoverConsumoTarifaPPPAction"
+				validate="false" path="/removerConsumoTarifaPPPAction">	
+			</action>
+		<!--===============================================================================================-->
+		
+		<!--===================== REMOVER CATEGORIA CONSUMO TARIFA PPP ==============================================-->
+			<action name="ManutencaoRegistroActionForm"
+				type="gcom.gui.faturamento.consumotarifa.RemoverCategoriaConsumoTarifaPPPAction"
+				validate="false" path="/removerCategoriaConsumoTarifaPPPAction">
+				
+				<forward name="inserirConsumoTarifa"
+						 path="/jsp/faturamento/consumotarifa/consumo_tarifa_inserir.jsp" />
+				<forward name="manterConsumoTarifaPPP"
+						 path="/jsp/faturamento/consumotarifa/consumo_tarifa_PPP_atualizar.jsp" />	
+			</action>
+		<!--===============================================================================================-->
+		
+		<!--===================== INSERIR REAJUSTE CONSUMO TARIFA PPP =====================================-->
+			<action name="ManutencaoRegistroActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirInserirReajusteConsumoTarifaPPPAction"
+				validate="false" path="/exibirInserirReajusteConsumoTarifaPPPAction">
+				<forward name="inserirReajusteConsumoTarifaPPP"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_PPP_reajustar.jsp" />
+			</action>
+			<action name="InserirReajusteConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.InserirReajusteConsumoTarifaPPPAction"
+				validate="true" input="/exibirInserirReajusteConsumoTarifaPPPAction.do"
+				scope="session" path="/inserirReajusteConsumoTarifaPPPAction" />
+		<!--===============================================================================================-->
+
+		<!--===================== ATUALIZAR CONSUMO TARIFA PPP ============================================-->
+	   		<action name="AtualizarConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirAtualizarConsumoTarifaPPPAction"
+				validate="false" scope="session" path="/exibirAtualizarConsumoTarifaPPPAction">
+				<forward name="atualizarConsumoTarifaPPPAction"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_PPP_atualizar.jsp" />
+			</action>
+			<action name="AtualizarConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.AtualizarConsumoTarifaPPPAction"
+				validate="true" input="/exibirAtualizarConsumoTarifaPPPAction.do"
+				scope="session" path="/atualizarConsumoTarifaPPPAction" />
+		<!--================================================================================================-->
+		
+		<!--===================== ATUALIZAR CATEGORIA CONSUMO TARIFA PPP ===================================-->
+			<action name="AtualizarCategoriaConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirAtualizarCategoriaConsumoTarifaPPPAction"
+				validate="false" path="/exibirAtualizarCategoriaConsumoTarifaPPPAction">
+				<forward name="atualizarCategoriaConsumoTarifaPPP"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_categoria_PPP_atualizar.jsp" />
+			</action>
+			<action name="AtualizarCategoriaConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.AtualizarCategoriaConsumoTarifaPPPAction"
+				validate="true" scope="session"
+				path="/atualizarCategoriaConsumoTarifaPPPAction">
+				<forward name="exibirAtualizarCategoriaConsumoTarifaPPP"
+					path="/exibirAtualizarCategoriaConsumoTarifaPPPAction.do" />
+			</action>
+		<!--================================================================================================-->
+		
+		<!--===================== ATUALIZAR CATEGORIA FAIXA CONSUMO TARIFA PPP =============================-->
+			<action name="AtualizarCategoriaFaixaConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.ExibirAtualizarCategoriaFaixaConsumoTarifaPPPAction"
+				validate="false"
+				path="/exibirAtualizarCategoriaFaixaConsumoTarifaPPPAction">
+				<forward name="atualizarCategoriaFaixaConsumoTarifaPPP"
+					path="/jsp/faturamento/consumotarifa/consumo_tarifa_categoria_faixa_PPP_atualizar.jsp" />
+			</action>	
+			<action name="AtualizarCategoriaFaixaConsumoTarifaPPPActionForm"
+				type="gcom.gui.faturamento.consumotarifa.AtualizarCategoriaFaixaConsumoTarifaPPPAction"
+				validate="true" scope="session"
+				path="/atualizarCategoriaFaixaConsumoTarifaPPPAction">
+				<forward name="exibirAtualizarCategoriaConsumoTarifaPPP"
+					path="/exibirAtualizarCategoriaConsumoTarifaPPPAction.do" />
+				<forward name="exibirAtualizarCategoriaFaixaConsumoTarifaPPP"
+					path="/exibirAtualizarCategoriaFaixaConsumoTarifaPPPAction.do?limpaForm=sim" />
+			</action>
+		<!--================================================================================================-->
+
+	</action-mappings>
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

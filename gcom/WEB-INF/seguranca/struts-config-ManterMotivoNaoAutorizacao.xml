@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="ManterMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.seguranca.ManterMotivoNaoAutorizacaoActionForm" />
+			
+		<form-bean name="AtualizarMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.seguranca.AtualizarMotivoNaoAutorizacaoActionForm" />
+			
+		<form-bean name="FiltrarMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.seguranca.FiltrarMotivoNaoAutorizacaoActionForm" />
+	
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.seguranca.ExibirManterMotivoNaoAutorizacaoAction"
+			validate="false" 
+			scope="session"
+			path="/exibirManterMotivoNaoAutorizacaoAction">
+
+			<forward name="manterMotivoNaoAutorizacao"
+				path="/jsp/seguranca/motivo_nao_autorizacao_manter.jsp" />
+
+			<forward name="exibirAtualizarMotivoNaoAutorizacao"
+				path="/exibirAtualizarMotivoNaoAutorizacaoAction.do" />
+		</action>
+
+		<action name="AtualizarMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.seguranca.ExibirAtualizarMotivoNaoAutorizacaoAction"
+			validate="false" 
+			scope="session"
+			path="/exibirAtualizarMotivoNaoAutorizacaoAction">
+
+			<forward name="atualizarMotivoNaoAutorizacao"
+				path="/jsp/seguranca/motivo_nao_autorizacao_atualizar.jsp" />
+		</action>
+
+		<action name="AtualizarMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.seguranca.AtualizarMotivoNaoAutorizacaoAction"
+			validate="true" 
+			scope="session"
+			path="/atualizarMotivoNaoAutorizacaoAction">
+		</action>
+		
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.seguranca.ExcluirMotivoNaoAutorizacaoAction"
+			validate="false" 
+			scope="session" 
+			path="/excluirMotivoNaoAutorizacaoAction">
+		<forward name="excluirMotivoNaoAutorizacao"
+				path="/jsp/seguranca/motivo_nao_autorizacao_manter.jsp" />
+
+		</action>	
+		
+		<action name="FiltrarMotivoNaoAutorizacaoActionForm"
+			type="gcom.gui.relatorio.seguranca.GerarRelatorioMotivoNaoAutorizacaoManterAction"
+			validate="true" 
+			scope="session"
+			path="/gerarRelatorioMotivoNaoAutorizacaoManterAction" />
+			
+			
+				
+		
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

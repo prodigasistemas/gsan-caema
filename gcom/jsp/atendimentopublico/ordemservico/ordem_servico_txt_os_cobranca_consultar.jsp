@@ -1,0 +1,979 @@
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/gsanLib.tld" prefix="gsan"%>
+<%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/fmt.tld" prefix="fmt"%>
+<%@ page import="gcom.util.ConstantesSistema" %>
+
+<%@ page import="gcom.micromedicao.SituacaoTransmissaoLeitura"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page isELIgnored="false"%>
+<html:html>
+
+<head>
+
+<%@ include file="/jsp/util/titulo.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet"
+	href="<bean:message key="caminho.css"/>EstilosCompesa.css"
+	type="text/css">
+
+<script language="JavaScript"
+	src="<bean:message key="caminho.js"/>validacao/regras_validator.js"></script>
+<html:javascript staticJavascript="false"
+	formName="ConsultarArquivoTextoOSCobrancaSmartphoneActionForm"
+	dynamicJavascript="true" />
+<script language="JavaScript"
+	src="<bean:message key="caminho.js"/>util.js"></script>
+<script language="JavaScript"
+	src="<bean:message key="caminho.js"/>Calendario.js"></script>
+
+<script type="text/javascript">
+
+
+	function recuperarDadosPopup(codigoRegistro, descricaoRegistro,
+			tipoConsulta) {
+		var form = document.forms[0];
+
+		if (tipoConsulta == 'localidade') {
+			form.idLocalidade.value = codigoRegistro;
+			form.descricaoLocalidade.value = descricaoRegistro;
+			form.descricaoLocalidade.style.color = "#000000";
+		} else if (tipoConsulta == 'setorComercial') {
+			if (origemDestino == 'origem') {
+				form.idSetorComercialInicial.value = codigoRegistro;
+				form.descricaoSetorComercialInicial.value = descricaoRegistro;
+				form.descricaoSetorComercialInicial.style.color = "#000000";
+				form.idSetorComercialFinal.value = codigoRegistro;
+				form.descricaoSetorComercialFinal.value = descricaoRegistro;
+				form.descricaoSetorComercialFinal.style.color = "#000000";
+				validarPreencherQuadra();
+			} else {
+				form.idSetorComercialFinal.value = codigoRegistro;
+				form.descricaoSetorComercialFinal.value = descricaoRegistro;
+				form.descricaoSetorComercialFinal.style.color = "#000000";
+				validarPreencherQuadra();
+			}
+
+		} else {
+			form.action = 'validarArquivoTextoOSCobrancaSmartphoneAction.do?liberar=4&idNovoLeiturista='
+					+ codigoRegistro;
+			form.submit();
+		}
+	}
+
+	function limparConjunto(id) {
+		var form = document.forms[0];
+		if (id == 1) {
+			form.action = 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?limpar=ok&indice=1';
+			form.submit();
+		} else if (id == 2) {
+			form.action = 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?limpar=ok&indice=2';
+			form.submit();
+		} else if (id == 3) {
+			form.action = 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?limpar=ok&indice=3';
+			form.submit();
+		}
+
+	}
+
+	function facilitador(objeto) {
+		if (objeto.id == "0" || objeto.id == undefined) {
+			objeto.id = "1";
+			marcarTodos();
+		} else {
+			objeto.id = "0";
+			desmarcarTodos();
+		}
+	}
+
+	function validaForm() {
+		form = document.forms[0];
+		
+		if ( verificarAtributosInicialFinal(form) == false || 
+			 verificarCampoObrigatorios(form) == false || 
+			 validaData( form.periodoGeracaoInicial ) == false || 
+			 validaData( form.periodoGeracaoFinal ) == false )
+			return false;
+
+		form.action = 'consultarArquivoTextoOSCobrancaSmartphoneAction.do';
+		form.submit();
+	}
+
+	function limparForm() {
+		var form = document.forms[0];
+		form.action = 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?menu=sim';
+		form.submit();
+	}
+
+	function naoLiberar(form) {
+		if (CheckboxNaoVazio()) {
+			form.action = 'validarArquivoTextoOSCobrancaSmartphoneAction.do?liberar=0';
+			form.submit();
+		}
+
+	}
+
+	function liberar(form) {
+		if (CheckboxNaoVazio()) {
+			form.action = 'validarArquivoTextoOSCobrancaSmartphoneAction.do?liberar=1';
+			form.submit();
+		}
+
+	}
+
+	function emCampo(form) {
+		if (CheckboxNaoVazio()) {
+			form.action = 'validarArquivoTextoOSCobrancaSmartphoneAction.do?liberar=2';
+			form.submit();
+		}
+
+	}
+
+	function finalizar(form) {
+		if (CheckboxNaoVazio()) {
+			form.action = 'validarArquivoTextoOSCobrancaSmartphoneAction.do?liberar=3';
+			form.submit();
+		}
+
+	}
+
+	function excluir(form) {
+		if (CheckboxNaoVazio()) {
+			form.action = 'excluirArquivoTextoOSCobrancaSmartphoneAction.do';
+			form.submit();
+		}
+
+	}
+	
+
+	function leiturista(form) {
+		if (CheckboxNaoVazio()) {
+			abrirPopup(
+					'exibirAtualizarLeituristaOSCobrancaSmartphoneAction.do',
+					'210', '580');
+		}
+	}
+
+	function gerarArquivo(imei,mac) {
+		var form = document.forms[0];
+		form.action = 'transmitirAquivoTxtOSCobrancaSmartphoneAction.do?imei='
+				+ imei + "&mac="+mac;
+		form.submit();
+	}
+
+	function verificarCampoObrigatorios(form) {
+
+		
+		if (form.empresa.value == "" 
+			|| form.empresa.value == "-1"){
+			alert("Informe a Empresa");
+			return false;
+		}
+
+		return true;
+	}
+
+	function verificarAtributosInicialFinal(form) {
+
+		if (form.idSetorComercialInicial.value == ""
+				&& form.idSetorComercialFinal.value != "") {
+			alert("Informe Setor Comercial Inicial");
+			return false;
+		} else if (form.idSetorComercialInicial.value != ""
+				&& form.idSetorComercialFinal.value == "") {
+			alert("Informe Setor Comercial Final");
+			return false;
+		} else if (form.idQuadraInicial.value == ""
+				&& form.idQuadraFinal.value != "") {
+			alert("Informe Quadra Inicial");
+			return false;
+		} else if (form.periodoGeracaoInicial.value == ""
+				&& form.periodoGeracaoFinal.value != "") {
+			alert("Informe a Data de Geração Inicial");
+			periodoGeracaoInicial.focus();
+			return false;
+		} else if (form.idQuadraInicial.value != ""
+				&& form.idQuadraFinal.value == "") {
+			alert("Informe Quadra Final");
+			return false;
+		} else if (form.periodoGeracaoInicial.value != ""
+				&& form.periodoGeracaoFinal.value == "") {
+			alert("Informe a Data de Geração Final");
+			periodoGeracaoFinal.focus();
+			return false;
+		} else if ( comparaData( form.periodoGeracaoInicial.value, '>', form.periodoGeracaoFinal.value ) ){
+			alert("Data Final do Período da Geração é anterior à Data Inicial do Período da Geração");
+			return false;
+		} else if (form.idSetorComercialInicial.value > form.idSetorComercialFinal.value) {
+			alert("Setor Comercial Final é menor que o Setor Comercial Inicial");
+			return false;
+		}
+
+		else if (form.idQuadraInicial.value > form.idQuadraFinal.value) {
+			alert("Quadra Final é menor que a Quadra Inicial");
+			return false;
+		}
+
+		return true;
+
+	}
+
+	function CheckboxNaoVazio() {
+		form = document.forms[0];
+		retorno = false;
+
+		for (indice = 0; indice < form.elements.length; indice++) {
+			if (form.elements[indice].type == "checkbox"
+					&& form.elements[indice].checked == true) {
+				retorno = true;
+				break;
+			}
+		}
+
+		if (!retorno) {
+			alert('Informe o(s) arquivo(s) desejado(s).');
+		}
+
+		return retorno;
+	}
+
+	function extendeTabela(display) {
+		var form = document.forms[0];
+
+		if (display) {
+			eval('layerHideDadosArquivos').style.display = 'none';
+			eval('layerShowDadosArquivos').style.display = 'block';
+		} else {
+			eval('layerHideDadosArquivos').style.display = 'block';
+			eval('layerShowDadosArquivos').style.display = 'none';
+		}
+	}
+
+	function verificaTabela(achou) {
+		if (achou == '2') {
+			eval('layerHideDadosArquivos').style.display = 'block';
+			eval('layerShowDadosArquivos').style.display = 'none';
+		} else if (achou == '1') {
+			eval('layerHideDadosArquivos').style.display = 'none';
+			eval('layerShowDadosArquivos').style.display = 'block';
+		}
+	}
+
+	function chamarPopup(url, tipo, objeto, codigoObjeto, altura, largura, msg,
+			campo) {
+		if (!campo.disabled) {
+			if (objeto == null || codigoObjeto == null) {
+				if (tipo == "") {
+					abrirPopup(url, altura, largura);
+				} else {
+					abrirPopup(url + "?" + "tipo=" + tipo, altura, largura);
+				}
+			} else {
+				if (codigoObjeto.length < 1 || isNaN(codigoObjeto)) {
+					alert(msg);
+				} else {
+					abrirPopup(url + "?" + "tipo=" + tipo + "&" + objeto + "="
+							+ codigoObjeto, altura, largura);
+				}
+			}
+		}
+	}
+
+	function pesquisarSetorComercial(arg1) {
+		origemDestino = arg1;
+		abrirPopupDependencia(
+				'exibirPesquisarSetorComercialAction.do?idLocalidade='
+						+ document.forms[0].idLocalidade.value,
+				document.forms[0].idLocalidade.value, 'Localidade', 400, 800);
+	}
+
+	function pesquisarQuadra(arg1, arg2) {
+		origemDestino = arg1;
+		if (arg1 == 'origem')
+			abrirPopupDependencia('exibirPesquisarQuadraAction.do',
+					document.forms[0].idSetorComercialInicial.value,
+					'Setor Comercial Inicial', 275, 480);
+		else
+			abrirPopupDependencia('exibirPesquisarQuadraAction.do',
+					document.forms[0].idSetorComercialFinal.value,
+					'Setor Comercial Final', 275, 480);
+	}
+
+	function limparCampoDeleteBackspace(origem, destino, event) {
+		if (origem.value == '' && (event.keyCode == 8 || event.keyCode == 46))
+			destino.value = '';
+
+	}
+
+	function replicar(origem, destino) {
+		if (origem.value == destino.value
+				.substring(0, destino.value.length - 1)
+				|| origem.value.substring(0, origem.value.length - 1) == destino.value
+				|| destino.value == '')
+			destino.value = origem.value;
+	}
+
+	function validarPreencherQuadra() {
+		form = document.forms[0];
+		if (form.idSetorComercialInicial.value != form.idSetorComercialFinal.value) {
+			form.idQuadraInicial.value = '';
+			form.idQuadraFinal.value = '';
+			form.idQuadraInicial.disabled = true;
+			form.idQuadraFinal.disabled = true;
+		} else {
+			form.idQuadraInicial.disabled = false;
+			form.idQuadraFinal.disabled = false;
+		}
+	}
+
+	function campoNumerico(campo) {
+		var value = campo.value;
+		var bool = isNaN(+value);
+		bool = bool || (value.indexOf('.') != -1);
+		bool = bool || (value.indexOf(",") != -1);
+		if (bool)
+			campo.value = '';
+	}
+
+	function pesquisarUnidadeNegocio() {
+		var form = document.forms[0];
+
+		form.action = 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?tipoPesquisa=gerenciaRegional';
+		submeterFormPadrao(form);
+	}
+
+	function verificarArquivoGerado(baixarArquivo) {
+		var form = document.forms[0];
+		if (baixarArquivo == true) {
+			form.action = "telaSucessoBaixarArquivoTxtAction.do";
+			form.submit();
+		}
+	}
+
+	function replicaDataGeracao() {
+		var form = document.forms[0];
+		form.periodoGeracaoFinal.value = form.periodoGeracaoInicial.value;
+	}
+	
+</script>
+
+
+</head>
+
+<body leftmargin="5" topmargin="5" onload="verificarArquivoGerado(${requestScope.baixarArquivo});verificaTabela('<%=session.getAttribute("achou")%>');">
+<html:form action="/consultarArquivoTextoOSCobrancaSmartphoneAction"
+	name="ConsultarArquivoTextoOSCobrancaSmartphoneActionForm"
+	type="gcom.gui.mobile.ConsultarArquivoTextoOSCobrancaSmartphoneActionForm"
+	method="post">
+
+	<%@ include file="/jsp/util/cabecalho.jsp"%>
+	<%@ include file="/jsp/util/menu.jsp"%>
+	
+	<table width="780" border="0" cellspacing="5" cellpadding="0">
+		<tr>
+			<td width="130" valign="top" class="leftcoltext">
+			<div align="center">
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<%@ include file="/jsp/util/informacoes_usuario.jsp"%>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<%@ include file="/jsp/util/mensagens.jsp"%>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			<p align="left">&nbsp;</p>
+			</div>
+			</td>
+			<td width="620" valign="top" class="centercoltext">
+			<table height="100%">
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+
+
+			<!--Início Tabela Reference a Páginação da Tela de Processo-->
+			<table>
+				<tr>
+					<td></td>
+
+				</tr>
+			</table>
+			<table width="100%" border="0" align="center" cellpadding="0"
+				cellspacing="0">
+				<tr>
+					<td width="11"><img border="0" src="imagens/parahead_left.gif" /></td>
+					<td class="parabg">Consultar Arquivo Texto das Ordens de Serviço</td>
+					<td width="11" valign="top"><img border="0"
+						src="imagens/parahead_right.gif" /></td>
+				</tr>
+
+			</table>
+			<!--Fim Tabela Reference a Páginação da Tela de Processo-->
+			<p>&nbsp;</p>
+			<table width="100%" border="0">
+				<tr>
+					<td colspan="6">Para consultar os arquivos textos 
+						das ordens de serviço de visita, informe os dados abaixo:</td>
+					<td align="right"></td>
+				</tr>
+				
+				<tr>
+
+					<td width="25%">
+						<strong>Empresa:<font color="#FF0000">*</font></strong>
+					</td>
+					<td>
+						
+						<logic:present name="colecaoEmpresa"> 
+							<html:select property="empresa"  style="width: 200px;font-size:11px;" tabindex="9">
+								<html:option value="-1">&nbsp;</html:option>
+								<html:options collection="colecaoEmpresa" labelProperty="descricao" property="id"/>
+							</html:select>
+						</logic:present>
+						
+						<logic:notPresent name="colecaoEmpresa"> 
+							
+							<html:hidden property="empresa"/>
+							<html:text property="descricaoEmpresa" size="28"
+								maxlength="30" readonly="true" style="background-color:#EFEFEF; border:0; color: #000000" />
+						
+						</logic:notPresent>
+			
+					</td>
+
+				</tr>
+				
+				<tr>
+
+					<td width="25%">
+						<strong>Tipo da Ordem de Serviço:<font color="#FF0000">*</font></strong>
+					</td>
+					<td>
+						
+						<html:hidden property="idTipoOS"/>
+						<html:text property="descricaoTipoOS" size="28"
+								maxlength="30" readonly="true" style="background-color:#EFEFEF; border:0; color: #000000" />
+								
+					</td>
+
+				</tr>
+				
+				<tr bgcolor="#99CCFF" >					
+					<td height="18" colspan="2">
+						<div align="left">
+							<strong>
+								<span class="style2"> Filtro pra Geração do Arquivo TXT </span>
+							</strong>
+						</div>
+					</td>
+				</tr>
+				
+	              	<tr>
+	                <td>
+	                	<strong>Per&iacute;odo de Geração:</strong>
+	                </td>
+                
+	                <td colspan="6">
+	                	<span class="style2">
+	                	
+	                	<strong> 
+							
+							<html:text property="periodoGeracaoInicial" 
+								size="11" 
+								maxlength="10" 
+								tabindex="3" 
+								onkeyup="mascaraData(this, event);replicaDataGeracao();"
+								onkeypress="return isCampoNumerico(event);"/>
+							
+							<a href="javascript:abrirCalendarioReplicando('ConsultarArquivoTextoOSCobrancaSmartphoneActionForm', 'periodoGeracaoInicial','periodoGeracaoFinal');">
+								<img border="0" 
+									src="<bean:message key='caminho.imagens'/>calendario.gif" 
+									width="16" 
+									height="15" 
+									border="0" alt="Exibir Calendário" 
+									tabindex="4"/></a>
+							a 
+							
+							<html:text property="periodoGeracaoFinal" 
+								size="11" 
+								maxlength="10" 
+								tabindex="3" 
+								onkeyup="mascaraData(this, event)"
+								onkeypress="return isCampoNumerico(event);"/>
+								
+							<a href="javascript:abrirCalendario('ConsultarArquivoTextoOSCobrancaSmartphoneActionForm', 'periodoGeracaoFinal');">
+								<img border="0" 
+									src="<bean:message key='caminho.imagens'/>calendario.gif" 
+									width="16" 
+									height="15" 
+									border="0" 
+									alt="Exibir Calendário" 
+									tabindex="4"/></a>
+							
+							</strong>(dd/mm/aaaa)<strong> 
+	                  	</strong>
+	                  	</span>
+	              	</td>
+              	</tr>				
+				
+				<tr>
+	                <td style="width: 100px;"><strong>Localidade:</strong></td>
+	                <td colspan="2"><strong>
+	                  <html:text maxlength="3"
+	                  			 size="3"
+	                  			 tabindex="1"
+	                  			 property="idLocalidade"
+	                  			 onkeypress="javascript:validaEnterComMensagem(event, 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?pesquisarLocalidade=OK', 'idLocalidade','Localidade');return isCampoNumerico(event);" 
+	                  			 onchange="campoNumerico(this)"/>
+	                <a href="javascript:chamarPopup('exibirPesquisarLocalidadeAction.do', null, null, null, 400, 800, '',document.forms[0].idLocalidade);">
+						<img width="23" height="21" border="0" src="<bean:message key="caminho.imagens"/>pesquisa.gif"
+						     title="Pesquisar Localidade" /></a>
+					<logic:notPresent name="localidadeException" scope="request">	     
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoLocalidade"
+   		     					   style="background-color:#EFEFEF; border:0; color: #000000"/>
+	     			</logic:notPresent>
+	     			<logic:present name="localidadeException" scope="request">
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoLocalidade"
+		     					   style="background-color:#EFEFEF; border:0; color: #ff0000"/>	
+	     			</logic:present>	     
+	     			</strong>
+	     			<a href="javascript:limparConjunto(1);">
+						<img border="0" title="Apagar" src="/gsan/imagens/limparcampo.gif">
+					</a>
+	     		</td>
+              </tr>
+
+			<tr>
+	                <td><strong>Setor Comercial Inicial:</strong></td>
+	                <td colspan="2"><strong>
+	                  <html:text maxlength="3"
+	                  			 size="3"
+	                  			 tabindex="1"
+	                  			 property="idSetorComercialInicial"
+ 	                  			 onkeypress="javascript:validaEnterDependencia(event, 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?pesquisarSetorComercialInicial=OK', this, document.forms[0].idLocalidade.value, 'Localidade');return isCampoNumerico(event);"
+ 	                  			 onkeyup="javascript:limparCampoDeleteBackspace(this,document.forms[0].idSetorComercialFinal,event);replicar(this,document.forms[0].idSetorComercialFinal);"
+ 	                  			 onblur="javascript:validarPreencherQuadra();"
+ 	                  			 onchange="campoNumerico(this)"/>
+	                    <a href="javascript:pesquisarSetorComercial('origem')">
+						<img width="23" height="21" border="0" src="<bean:message key="caminho.imagens"/>pesquisa.gif"
+						     title="Pesquisar Setor Comercial" /></a>
+					<logic:notPresent name="setorComercialInicialException" scope="session">	     
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoSetorComercialInicial"
+   		     					   style="background-color:#EFEFEF; border:0; color: #000000"/>
+	     			</logic:notPresent>
+	     			<logic:present name="setorComercialInicialException" scope="session">
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoSetorComercialInicial"
+		     					   style="background-color:#EFEFEF; border:0; color: #ff0000"/>	
+	     			</logic:present>	   
+	     			</strong>
+	     			<a href="javascript:limparConjunto(2);">
+						<img border="0" title="Apagar" src="/gsan/imagens/limparcampo.gif">
+					</a>  	     
+	     		</td>
+              </tr>
+              
+               <tr>
+	                <td><strong>Quadra Inicial: </strong></td>
+	                <td colspan="2">
+	                  <html:text maxlength="3"
+	                  			 size="3"
+	                  			 tabindex="1"
+	                  			 property="idQuadraInicial"
+	                  			 onkeypress="javascript:validaEnterDependencia(event, 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?pesquisarQuadraInicial=OK',this,document.forms[0].idSetorComercialInicial.value, 'Setor Comercial Inicial');return isCampoNumerico(event);"
+								 onkeyup="javascript:limparCampoDeleteBackspace(this,document.forms[0].idQuadraFinal,event);replicar(this,document.forms[0].idQuadraFinal)" 
+								 onchange="campoNumerico(this)"/>
+					<logic:notPresent name="quadraInicial" scope="request">
+						<span style="color:#ff0000" id="msgQuadraInicial">
+							<bean:write name="ConsultarArquivoTextoOSCobrancaSmartphoneActionForm" property="descricaoQuadraInicial" />
+						</span>
+					</logic:notPresent> 
+					<logic:present name="quadraInicial" scope="request" />
+	     		
+	     		</td>
+              </tr>
+              
+              <tr>
+	                <td><strong>Setor Comercial Final:</strong></td>
+	                <td colspan="2"><strong>
+	                  <html:text maxlength="3"
+	                  			 size="3"
+	                  			 tabindex="1"
+	                  			 property="idSetorComercialFinal"
+	                  			 onkeypress="javascript:validaEnterDependencia(event, 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?pesquisarSetorComercialFinal=OK', this, document.forms[0].idLocalidade.value, 'Localidade');return isCampoNumerico(event);"
+	                  			 onblur="javascript:validarPreencherQuadra();"
+	                  			 onchange="campoNumerico(this)"/>
+   	                    <a href="javascript:pesquisarSetorComercial('destino')">
+						<img width="23" height="21" border="0" src="<bean:message key="caminho.imagens"/>pesquisa.gif"
+						     title="Pesquisar Setor Comercial" /></a>
+					<logic:notPresent name="setorComercialFinalException" scope="session">	     
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoSetorComercialFinal"
+   		     					   style="background-color:#EFEFEF; border:0; color: #000000"/>
+	     			</logic:notPresent>
+	     			<logic:present name="setorComercialFinalException" scope="session">
+		     			<html:text
+		     					   maxlength="30"
+		     					   size="28"
+		     					   readonly="true"
+		     					   property="descricaoSetorComercialFinal"
+		     					   style="background-color:#EFEFEF; border:0; color: #ff0000"/>	
+	     			</logic:present>	     	     	    
+	     			</strong>
+	     			<a href="javascript:limparConjunto(3);">
+						<img border="0" title="Apagar" src="/gsan/imagens/limparcampo.gif">
+					</a>  
+	     		</td>
+              </tr>
+              
+               <tr>
+	                <td><strong>Quadra Final:</strong></td>
+	                <td colspan="2">
+	                  <html:text maxlength="3"
+	                  			 size="3"
+	                  			 tabindex="1"
+	                  			 property="idQuadraFinal"
+	                  			 onkeypress="javascript:validaEnterDependenciaComMensagem(event, 'exibirConsultarDadosArquivoTextoOSCobrancaSmartphoneAction.do?pesquisarQuadraFinal=OK',this,document.forms[0].idSetorComercialFinal.value, 'Setor Comercial Final');return isCampoNumerico(event);"
+	                  			 onchange="campoNumerico(this)"/>
+	               <logic:notPresent name="quadraFinal" scope="request">
+						<span style="color:#ff0000" id="msgQuadraFinal">
+							<bean:write name="ConsultarArquivoTextoOSCobrancaSmartphoneActionForm" property="descricaoQuadraFinal" />
+						</span>
+					</logic:notPresent> 
+					<logic:present name="quadraFinal" scope="request" ></logic:present>       					   
+	     			
+	     		</td>
+              </tr>
+              
+              
+              
+              <tr>
+              
+				<td width="25%">
+					<strong>Tipo de Serviço:</strong>
+				</td>
+				<td>
+					
+					<html:select property="idsServicoTipo"  style="width: 300px;font-size:11px; height: 100px" tabindex="" multiple="true">
+						<html:option value="<%=""+ConstantesSistema.NUMERO_NAO_INFORMADO%>">&nbsp;</html:option>
+						<html:options collection="colecaoServicoTipo" labelProperty="descricao" property="id"/>
+					</html:select>
+		
+				</td>
+			</tr>
+				<tr>
+
+					<td><strong>Agente Comercial:</strong></td>
+					<td colspan="2" align="left"><html:select property="leituristaID"
+						tabindex="4">
+						<html:option value="-1">&nbsp;</html:option>
+							<logic:present name="colecaoLeiturista">					
+								<html:options collection="colecaoLeiturista"
+									labelProperty="nome" property="id" />
+							</logic:present>
+						</html:select>
+					</td>
+
+				</tr>
+				
+				<tr>
+
+					<td><strong>Situação Arquivo Texto:</strong></td>
+					<td colspan="2" align="left"><html:select property="situacaoArquivoTexto"
+						tabindex="4">
+						<html:option value="-1">&nbsp;</html:option>
+							<logic:present name="colecaoSituacaoArquivoTexto">
+								<html:options collection="colecaoSituacaoArquivoTexto"
+									labelProperty="descricaoSituacao" property="id" />
+							</logic:present>	
+						</html:select>
+					</td>
+				</tr>
+			
+				<tr>
+					<td colspan="3">
+						<table border="0" width="100%">
+							<tr>
+								<td><input name="Button" type="button" class="bottonRightCol"
+									value="Desfazer" align="left"
+									onclick="javascript:limparForm();" >
+								<input type="button" name="ButtonCancelar" class="bottonRightCol"
+									value="Cancelar"
+									onClick="javascript:window.location.href='/gsan/telaPrincipal.do'"></td>
+								<td align="right">
+									<gsan:controleAcessoBotao name="Botao" value="Selecionar" 
+										onclick="validaForm();"
+										url="consultararquivoTextoOSCobrancaSmartphoneAction.do" tabindex="13" />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<td colspan="6">
+					<font color="#000000" style="font-size:10px" face="Verdana, Arial, Helvetica, sans-serif"><strong>Arquivos Textos para Leitura:</strong></font></td>
+				<tr>
+					<td colspan="6" height="23"> 
+					 <gsan:controleAcessoBotao name="Botao1" value="Liberar" onclick="liberar(document.forms[0]);"
+						url="validarArquivoTextoOSCobrancaSmartphoneAction.do" tabindex="13" />
+				     <gsan:controleAcessoBotao name="Botao2" value="Não Liberar" onclick="naoLiberar(document.forms[0]);"
+						url="validarArquivoTextoOSCobrancaSmartphoneAction.do" tabindex="13" />
+					 <gsan:controleAcessoBotao name="Botao4" value="Finalizar" 
+					  	onclick="finalizar(document.forms[0]);"
+						url="validarArquivoTextoOSCobrancaSmartphoneAction.do" tabindex="13" />						
+					 <gsan:controleAcessoBotao name="Botao5" value="Informar Agente Comercial" 
+					  	onclick="leiturista(document.forms[0]);"
+						url="validarArquivoTextoOSCobrancaSmartphoneAction.do" tabindex="13" />	
+					<input name="Button" type="button" value="Excluir Arquivo" align="left"	onclick="excluir( document.forms[0] )" class="bottonRightCol">
+					</td>
+				</tr>
+
+				<tr>
+					<!--<td colspan="4" bgcolor="#3399FF"> -->
+					<td colspan="5" bgcolor="#000000" height="2" valign="baseline"></td>
+				</tr>
+				<tr>
+				 <td colspan="5" width="100%">
+				 	<div id="layerHideDadosArquivos" style="display:block">
+               				<table width="100%" border="0" bgcolor="#99CCFF">
+		    					<tr bgcolor="#99CCFF">
+                      				<td align="center">
+                     					<span class="style2">
+                     					<a href="javascript:extendeTabela(true);"/>
+                      						<b>Dados dos Arquivos</b>
+                      					</a>
+                     					</span>
+                      				</td>
+                     			</tr>
+                    		</table>
+           			</div>
+				 </td>
+				</tr>
+
+				<tr>
+					<td width="100%" colspan="5">
+				
+			   <div id="layerShowDadosArquivos" style="display:none">
+				<table width="100%" align="center" bgcolor="#90c7fc" border="0" cellpadding="0" cellspacing="0">
+					<tr bgcolor="#99CCFF">
+                   		<td align="center">
+           					<span class="style2">
+             					<a href="javascript:extendeTabela(false);">
+             						<b>Dados dos Arquivos</b>
+             					</a>
+           					</span>
+               			</td>
+              		</tr>
+					<tr bgcolor="#cbe5fe" >
+						<td width="100%" align="center">
+							 <table width="100%" bgcolor="#99CCFF" border="0">
+								<tr bordercolor="#000000" bgcolor="#90c7fc" class="styleFontePeqNegrito">
+									<!-- 1 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center" style="height:30px;"><strong><a
+										href="javascript:facilitador(this);">Todos</a></strong></div>
+									</td>
+									<!-- 2 -->
+									<td width="12%" bgcolor="#90c7fc">
+									<div align="center"><strong>Geração</strong></div>
+									</td>
+									<!-- 3 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center"><strong>Local.</strong></div>
+									</td>
+									<!-- 4 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center"><strong>Setor Inicial</strong></div>
+									</td>
+									<!-- 5 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center"><strong>Setor Final</strong></div>
+									</td>
+									<!-- 6 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center"><strong>Quadra Inicial</strong></div>
+									</td>
+									<!-- 7 -->
+									<td width="8%" bgcolor="#90c7fc">
+									<div align="center"><strong>Quadra Final</strong></div>
+									</td>
+									<!-- 8 -->
+									<td width="5%" bgcolor="#90c7fc">
+									<div align="center"><strong>Qtd</strong></div>
+									</td>
+									<!-- 9 -->
+									<td width="18%" bgcolor="#90c7fc">
+									<div align="center"><strong>Agente Comercial</strong></div>
+									</td>
+									<!-- 10 -->
+									<td width="16%" bgcolor="#90c7fc">
+									<div align="center"><strong>Situação</strong></div>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr bgcolor="#cbe5fe" >
+							<td width="100%" align="center">
+								<div style="height:500px;overflow:auto">
+								<table width="100%" bgcolor="#99CCFF" border="0">
+								<logic:present name="colecaoArquivoTextoOSCobrancaSmartphone">
+									<%int cont = 0;%>
+									<logic:iterate name="colecaoArquivoTextoOSCobrancaSmartphone"
+										id="arquivoTextoOSCobrancaSmartphone">
+								
+										<%
+											  cont = cont + 1;
+											  if (cont % 2 == 0) {
+										  %>
+										<tr bgcolor="#cbe5fe" class="styleFontePequena">
+										
+											<%} else {%>
+											
+										<tr bgcolor="#FFFFFF" class="styleFontePequena">
+										
+											<%}%>
+											
+											
+											<!-- 1 -->		
+											<td width="8%">
+												<div align="center">
+													<html:checkbox property="idsRegistros"
+													value="${arquivoTextoOSCobrancaSmartphone.idArquivo}" disabled="false" />
+												</div>
+											</td>
+											
+											<!-- 2 -->			
+											<td width="12%">
+												<div align="center">${arquivoTextoOSCobrancaSmartphone.dtGeracao}</div>
+											</td>											
+												
+											<!-- 3 -->	
+											<td width="8%" align="center">
+												<!-- VERIFICAR SITUAÇÃO LIBERADA -->
+											    <c:choose>
+											       
+													<c:when test='${arquivoTextoOSCobrancaSmartphone.idSituacao == 2}'>
+															<a href="javascript:gerarArquivo(${arquivoTextoOSCobrancaSmartphone.imei},'${arquivoTextoOSCobrancaSmartphone.mac}')" >${arquivoTextoOSCobrancaSmartphone.idLocalidade}</a> 
+													</c:when>
+													
+													<c:otherwise>
+															${arquivoTextoOSCobrancaSmartphone.idLocalidade}
+													</c:otherwise>
+												</c:choose>
+												
+											</td>
+												
+											<!-- 4 -->
+											<td width="8%" align="center">
+												${arquivoTextoOSCobrancaSmartphone.codigoSetorComercialInicial}
+											</td>
+											
+											<!-- 5 -->
+											<td width="8%" align="center">
+												${arquivoTextoOSCobrancaSmartphone.codigoSetorComercialFinal}
+											</td>
+												
+											<!-- 6 -->	
+											<td width="8%">
+												<div align="center">${arquivoTextoOSCobrancaSmartphone.numeroQuadraInicial}</div>
+											</td>
+											
+											<!-- 7 -->	
+											<td width="8%">
+												<div align="center">${arquivoTextoOSCobrancaSmartphone.numeroQuadraFinal}</div>
+											</td>
+											
+											<!-- 8 -->			
+											<td width="6%" align="center" title="Finalizados: ${arquivoTextoOSCobrancaSmartphone.qtdOSEncerradas}">
+													${arquivoTextoOSCobrancaSmartphone.qtdOrdemServico}
+											</td>
+	
+											<!-- 9 -->
+											<td width="18%">
+											    <div align="center">
+											    
+											    <c:choose>
+													<c:when test='${arquivoTextoOSCobrancaSmartphone.nomeFuncionario != null }'>
+															<a href="/gsan/exibirConsultarOrdemServicoCobrancaSmartphoneAction.do?arquivoTexto=${arquivoTextoOSCobrancaSmartphone.idArquivo}&idTipoOrdemServico=1">${arquivoTextoOSCobrancaSmartphone.nomeFuncionario}</a> 
+													</c:when>
+													
+													<c:otherwise>
+															<a href="/gsan/exibirConsultarOrdemServicoCobrancaSmartphoneAction.do?arquivoTexto=${arquivoTextoOSCobrancaSmartphone.idArquivo}&idTipoOrdemServico=1">${arquivoTextoOSCobrancaSmartphone.nomeCliente}</a>
+													</c:otherwise>
+												</c:choose>
+											     </div>
+											</td>
+											
+											<!-- 10 -->											
+											<td width="14%">
+												<div align="center">
+													${arquivoTextoOSCobrancaSmartphone.descricaoSituacao}
+												</div>
+											</td>
+										</tr>
+									</logic:iterate>
+								</logic:present>
+							</table>
+							</div>
+						</td>							
+					</tr>
+				</table>				
+			  </div></td></tr>
+			</table>
+			<p>&nbsp;</p>
+		</tr>
+		
+		
+	</table>
+	<p>&nbsp;</p>
+
+	<tr>
+
+	</tr>
+<logic:present name="colecaoarquivoTextoOSCobrancaSmartphone">
+	<script>javascript:extendeTabela(true);</script>
+</logic:present>
+
+<%@ include file="/jsp/util/rodape.jsp"%>
+</html:form>
+</body>
+</html:html>

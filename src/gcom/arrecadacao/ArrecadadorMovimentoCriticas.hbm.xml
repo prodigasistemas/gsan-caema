@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="gcom.arrecadacao.ArrecadadorMovimentoCriticas" table="arrecadacao.arrecadador_mov_criticas">
+		<id name="id" type="java.lang.Integer" column="armc_id">
+			<generator class="sequence">
+				<param name="sequence">
+					arrecadacao.seq_arrecadador_mov_criticas
+				</param>
+			</generator>
+		</id>	
+		<property name="codigoBanco" type="java.lang.Integer" column="armc_cdbanco" length="4" />
+		<property name="nsa" type="java.lang.Integer" column="armc_nnnsa" length="9"/>
+		<property name="identificacaoServico" type="java.lang.String" column="armc_dsidentificacaoservico" length="20" />		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="armc_tmultimaalteracao" length="8"/>
+		<property name="dataGeracao" type="java.sql.Date" column="armc_dtgeracao" length="12"/>	
+		<property name="dataProcessamento" type="java.sql.Date" column="armc_dtprocessamento" not-null="true" length="12"/>
+		
+		<many-to-one name="arrecadadorCritica" class="gcom.arrecadacao.ArrecadadorCritica" not-null="true" fetch="join" lazy="false">
+			<column name="arcr_id"/>
+		</many-to-one>   	
+	</class>
+</hibernate-mapping>

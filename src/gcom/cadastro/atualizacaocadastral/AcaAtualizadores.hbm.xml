@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AcaAtualizadores" 
+    table="aca_atualizadores"
+>
+
+	<id name="acaAtuId" type="java.lang.Integer" column="aca_atu_id">
+		<generator class="assigned"/>
+	</id>
+
+    <property
+        name="acaAtuLogin"
+        type="java.lang.String"
+        column="aca_atu_login"
+        length="20"
+    />
+    <property
+        name="acaAtuNome"
+        type="java.lang.String"
+        column="aca_atu_nome"
+        length="60"
+    />
+    <property
+        name="acaAtuSenha"
+        type="java.lang.String"
+        column="aca_atu_senha"
+        length="20"
+    />
+    <property
+        name="acaAtuDesativado"
+        type="java.lang.Boolean"
+        column="aca_atu_desativado"
+        length="1"
+    />
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcBairro" 
+    table="atc_bairro"
+>
+
+    <id name="atcBaiId" type="java.lang.Integer" column="atc_bai_id">
+        <generator class="assigned"/>
+    </id>
+    
+    <property
+        name="atcBaiNome"
+        type="java.lang.String"
+        column="atc_bai_nome"
+        not-null="true"
+        length="50"
+    />
+
+    <property
+        name="atcBaiAtualizado"
+        type="java.lang.String"
+        column="atc_bai_ind_cad"
+        not-null="false"
+        length="50"
+    />
+    
+     <property
+        name="atcBaiDataHoraImportacao"
+        type="java.sql.Timestamp"
+        column="atc_bai_data_atualizacao"
+        not-null="false"
+        length="8"
+    />
+
+	<property
+        name="atcMunId"
+        type="java.lang.Integer"
+        column="atc_mun_id"
+        length="4"
+    />
+    
+</class>
+</hibernate-mapping>

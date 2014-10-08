@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.mobile.ExecucaoOSSituacoesEncontradas" table="mobile.exe_os_st_encontradas">
+		<composite-id name="comp_id" class="gcom.mobile.ExecucaoOSSituacoesEncontradasPK">
+			<!-- bi-directional many-to-one association to ArquivoTextoOSCobranca -->
+			<key-many-to-one name="arquivoTextoOSCobranca" class="gcom.mobile.ArquivoTextoOSCobranca">
+				<column name="AOSC_ID"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="fiscalizacaoSituacao" class="gcom.atendimentopublico.ordemservico.FiscalizacaoSituacao">
+				<column name="fzst_id"/>
+			</key-many-to-one>
+		</composite-id>
+		<!-- <property name="ultimaAlteracao" type="java.sql.Timestamp" column="eose_tmultimaalteracao" length="8"/>  -->
+		
+		<!-- Associations -->
+
+	</class>
+</hibernate-mapping>

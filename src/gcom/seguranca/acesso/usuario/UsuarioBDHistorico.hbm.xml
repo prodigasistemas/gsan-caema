@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!--
+    Created by the Middlegen Hibernate plugin
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+ <class name="gcom.seguranca.acesso.usuario.UsuarioBDHistorico" table="seguranca.usuario_db_historico">
+  <id column="udbh_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">seguranca.seq_usuario_db_historico</param>
+   </generator>
+  </id>
+  
+  <property column="udbh_tmcriacao" generated="never"
+   lazy="false" length="8" name="criacaoUsuario" type="java.sql.Timestamp"/>
+        
+  <property column="udbh_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+     
+   <!-- Associations many-to-one --> 
+   <many-to-one name="usuarioCadastro" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+		<column name="usur_idcadastro"/>
+	</many-to-one> 
+   
+   <many-to-one name="usuarioCadastrado" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+		<column name="usur_idcadastrado"/>
+	</many-to-one>     
+	 
+ </class>
+</hibernate-mapping>

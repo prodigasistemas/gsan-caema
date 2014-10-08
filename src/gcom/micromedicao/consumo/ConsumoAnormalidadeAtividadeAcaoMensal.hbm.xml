@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.micromedicao.consumo.ConsumoAnormalidadeAtividadeAcaoMensal" table="micromedicao.cons_anorm_acao_mensal">
+		<id name="id" type="java.lang.Integer" column="caam_id">
+			<generator class="sequence">
+				<param name="sequence">micromedicao.SEQ_CONS_ANORM_ACAO_MENSAL</param>
+			</generator>
+		</id>
+		
+		<property name="codigoOrdemMes" type="java.lang.Integer" column="caam_cdordemmes" not-null="true"/>
+		<property name="numerofatorConsumo" type="java.math.BigDecimal" column="caam_nnfatorconsumo" length="5"/>
+		<property name="indicadorGeracaoCarta" type="java.lang.Short" column="caam_icgeracaocarta" length="2" not-null="true"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="caam_tmultimaalteracao" length="8" not-null="true"/>
+		<property name="descricaoContaMensagem" type="java.lang.String" column="CAAM_DSMENSAGEMCONTA" length="120" />
+				
+		<!-- associations -->
+		<many-to-one name="consumoAnormalidadeAtividadeAcao" class="gcom.micromedicao.consumo.ConsumoAnormalidadeAtividadeAcao" not-null="true">
+			<column name="caaa_id"/>
+		</many-to-one>
+		<many-to-one name="leituraAnormalidadeConsumo" class="gcom.micromedicao.leitura.LeituraAnormalidadeConsumo" >
+			<column name="lacs_id"/>
+		</many-to-one>
+		<many-to-one name="servicoTipo" class="gcom.atendimentopublico.ordemservico.ServicoTipo">
+			<column name="svtp_id"/>
+		</many-to-one>
+		<many-to-one name="solicitacaoTipoEspecificacao" class="gcom.atendimentopublico.registroatendimento.SolicitacaoTipoEspecificacao">
+			<column name="step_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

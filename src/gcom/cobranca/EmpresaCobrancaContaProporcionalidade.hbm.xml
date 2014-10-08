@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.cobranca.EmpresaCobrancaContaProporcionalidade" table="cobranca.emp_cob_cnta_prop">
+		<id name="id" type="java.lang.Integer" column="ecpr_id">
+			<generator class="sequence">
+				<param name="sequence">
+					cobranca.seq_emp_cob_cnta_prop</param>
+			</generator>
+		</id>
+		<many-to-one name="empresa" class="gcom.cadastro.empresa.Empresa" not-null="true">
+			<column name="empr_id"/>
+		</many-to-one>
+		<many-to-one name="contaGeral" class="gcom.faturamento.conta.ContaGeral" not-null="true">
+			<column name="cnta_id"/>
+		</many-to-one>
+		<many-to-one name="comandoEmpresaCobrancaConta" class="gcom.cobranca.ComandoEmpresaCobrancaConta" not-null="true">
+			<column name="cecc_id"/>
+		</many-to-one>
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="false">
+			<column name="imov_id"/>
+		</many-to-one>
+		<many-to-one name="motivoRetirada" class="gcom.cadastro.MotivoRetiradaCobranca" not-null="true">
+			<column name="mrcb_id"/>
+		</many-to-one>
+		
+		 <many-to-one name="setorComercial" class="gcom.cadastro.localidade.SetorComercial" not-null="true">
+			<column name="stcm_id"/>
+		</many-to-one> 
+		
+		<property name="valorOriginalConta" type="java.math.BigDecimal" column="ecpr_vloriginalconta" length="13"/>
+		<property name="percentualEmpresaConta" type="java.math.BigDecimal" column="ecpr_pcempresaconta" length="5"/>
+		<property name="indicadorPagamentoValido" type="java.lang.Short" column="ecpr_icpagamentovalido" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ecpr_tmultimaalteracao" length="8"/>
+		<property name="anoMesReferenciaConta" type="int" column="ecpr_amreferenciaconta" length="4"/>
+		<property name="dataEnvioConta" type="java.sql.Timestamp" column="ecpr_dtenvioconta" length="8"/>
+		<property name="dataRetiradaConta" type="java.sql.Date" column="ecpr_dtretiradaconta" length="12"/>	
+		<property name="quantidadeVezesAssociadoComandos" type="java.lang.Integer" column="ECPR_NNASSOCIADOCOMANDO" length="5"/>
+		
+		
+		</class>
+</hibernate-mapping>

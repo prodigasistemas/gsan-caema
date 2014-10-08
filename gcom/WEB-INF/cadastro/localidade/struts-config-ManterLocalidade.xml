@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="FiltrarLocalidadeActionForm"
+	   		type="gcom.gui.cadastro.localidade.FiltrarLocalidadeActionForm" />
+		<form-bean name="ManutencaoRegistroActionForm" type="gcom.gui.ManutencaoRegistroActionForm" />
+		<form-bean name="AtualizarLocalidadeActionForm"
+			type="gcom.gui.cadastro.localidade.AtualizarLocalidadeActionForm" />
+		<form-bean name="AtualizarTramitesGruposSolicitacoesActionForm"
+			type="gcom.gui.cadastro.localidade.AtualizarTramitesGruposSolicitacoesActionForm" />			
+	</form-beans>
+
+	<global-forwards/>
+
+	<action-mappings>
+	
+		<action name="FiltrarLocalidadeActionForm" 
+			type="gcom.gui.cadastro.localidade.ExibirManterLocalidadeAction" 
+			scope="session" validate="false"
+			path="/exibirManterLocalidadeAction">
+			<forward name="manterLocalidade" path="/jsp/cadastro/localidade/localidade_manter.jsp" />
+			<forward name="atualizarLocalidade" path="/exibirAtualizarLocalidadeAction.do" />
+		</action>
+
+		<action name="FiltrarLocalidadeActionForm"
+			type="gcom.gui.cadastro.localidade.RemoverLocalidadeAction"
+			scope="request" path="/removerLocalidadeAction" />			
+		
+		<action name="AtualizarLocalidadeActionForm"
+	      	type="gcom.gui.cadastro.localidade.ExibirAtualizarLocalidadeAction"
+	      	validate="false" scope="session" parameter="action"
+	      	path="/exibirAtualizarLocalidadeAction">
+			<forward name="atualizarLocalidade"
+		  		path="/jsp/cadastro/localidade/localidade_atualizar.jsp" />
+		</action>
+		
+		<action name="AtualizarLocalidadeActionForm" 
+			type="gcom.gui.cadastro.localidade.AtualizarLocalidadeAction"
+			validate="false" scope="session"
+			path="/atualizarLocalidadeAction">
+			<forward name="exibirAtualizarTramitesGrupos"
+					path="/exibirAtualizarTramitesGruposSolicitacoesAction.do?primeiroAcesso=sim" />
+		</action>	
+			
+		<!-- Atualizar Trâmites dos Grupos de Solicitações -->	
+		<action name="AtualizarTramitesGruposSolicitacoesActionForm"
+			type="gcom.gui.cadastro.localidade.ExibirAtualizarTramitesGruposSolicitacoesAction"
+			scope="session" path="/exibirAtualizarTramitesGruposSolicitacoesAction">
+			<forward name="exibirAtualizarTramitesGrupos"
+				path="/jsp/cadastro/localidade/tramites_grupos_solicitacoes_atualizar.jsp" />
+		</action>
+		<action name="InserirTramitesGruposSolicitacoesActionForm"
+			type="gcom.gui.cadastro.localidade.AtualizarTramitesGruposSolicitacoesAction"
+			path="/atualizarTramitesGruposSolicitacoesAction" />	
+		<!-- Fim Atualizar Trâmites dos Grupos de Solicitações -->
+		
+	</action-mappings>
+	<!--******************* ARQUIVO DE PROPRIEDADES *******************-->
+	<message-resources null="false" parameter="gcom.properties.application" />
+	
+</struts-config>

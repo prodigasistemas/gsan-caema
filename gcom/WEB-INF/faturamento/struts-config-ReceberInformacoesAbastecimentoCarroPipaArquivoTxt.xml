@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+	</form-beans>
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL *******************-->
+		<action name="ExibirReceberInformacoesAbastecimentoCarroPipaArquivoTxtAction"
+			type="gcom.gui.faturamento.ExibirReceberInformacoesAbastecimentoCarroPipaArquivoTxtAction"
+			validate="true" 
+			scope="session"
+			path="/exibirReceberInformacoesAbastecimentoCarroPipaArquivoTxtAction">
+			
+			<forward name="exibirReceberInformacoesAbastecimentoCarroPipaArquivoTxt"
+				path="/jsp/faturamento/receber_informacoes_abastecimento_carro_pipa_arquivo_txt.jsp" />
+		</action>
+		<action name="ReceberInformacoesAbastecimentoCarroPipaArquivoTxtAction"
+				type="gcom.gui.faturamento.ReceberInformacoesAbastecimentoCarroPipaArquivoTxtAction"
+				validate="true" scope="session"
+				path="/receberInformacoesAbastecimentoCarroPipaArquivoTxtAction">
+		</action>						
+	</action-mappings>
+</struts-config>

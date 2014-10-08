@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+		
+		Created by the Middlegen Hibernate plugin 2.1
+		
+		
+		
+		http://boss.bekk.no/boss/middlegen/
+		
+		http://www.hibernate.org/
+		
+	-->
+
+	<class name="gcom.mobile.ParametrosArquivoTextoOSCobranca"
+		table="mobile.par_arq_txt_os_cobranca">
+		<id name="id" type="java.lang.Integer" column="posc_id">
+			<generator class="sequence">
+				<param name="sequence">
+					mobile.seq_par_arq_txt_os_cobranca
+				</param>
+			</generator>
+		</id>
+		
+		<property name="codigoSetorComercialInicial" type="java.lang.Integer"
+			column="POSC_CDSETORCOMERCIALINICIAL" not-null="false" length="4" />
+			
+		<property name="codigoSetorComercialFinal" type="java.lang.Integer"
+			column="POSC_CDSETORCOMERCIALFINAL" length="4" not-null="false"/>
+			
+		<property name="numeroQuadraInicial" type="java.lang.Integer"
+			column="POSC_NNQUADRAINICIAL" not-null="false" length="4" />
+			
+		<property name="numeroQuadraFinal" type="java.lang.Integer"
+			column="POSC_NNQUADRAFINAL" not-null="false" length="4" />
+			
+		<property name="codigoTipoOS" type="java.lang.Integer"
+			column="POSC_CDTIPOOS" not-null="true" length="4" />
+			
+		<property name="ultimaAlteracao" type="java.sql.Timestamp"
+			column="POSC_TMULTIMAALTERACAO" not-null="true" length="8" />
+			
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to Empresa -->
+		<many-to-one name="empresa"
+			class="gcom.cadastro.empresa.Empresa" not-null="true">
+			<column name="empr_id" />
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to GerenciaRegional -->
+		<many-to-one name="gerenciaRegional"
+			class="gcom.cadastro.localidade.GerenciaRegional" not-null="false">
+			<column name="greg_id" />
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to UnidadeNegocio -->
+		<many-to-one name="unidadeNegocio"
+			class="gcom.cadastro.localidade.UnidadeNegocio" not-null="false">
+			<column name="uneg_id" />
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to Localidade -->
+		<many-to-one name="localidade"
+			class="gcom.cadastro.localidade.Localidade" not-null="false">
+			<column name="loca_id" />
+		</many-to-one>
+		
+		<many-to-one name="comandoOSSeletiva"
+			class="gcom.atendimentopublico.ordemservico.ComandoOrdemSeletiva" not-null="false">
+			<column name="coss_id" />
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

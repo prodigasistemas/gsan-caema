@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+ <class name="gcom.seguranca.acesso.usuario.UsuarioAfastamento" table="seguranca.usuario_afastamento">
+  <id column="usaf_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">seguranca.seq_usuario_afastamento</param>
+   </generator>
+  </id>
+  
+  <property column="usaf_icafastamentotemporario" generated="never" lazy="false"
+   length="2" name="icAfastamentoTemporario" type="java.lang.Short"/>
+   
+  <property column="usaf_dtafastamentoinicial" generated="never"
+   lazy="false" length="8" name="dtAfastamentoInicial" type="java.sql.Timestamp"/>
+  
+  <property column="usaf_dtafastamentofinal" generated="never"
+   lazy="false" length="8" name="dtAfastamentoFinal" type="java.sql.Timestamp"/>
+    
+  <property column="usaf_dsobservacao" generated="never" lazy="false"
+   length="60" name="descricaoObservacao" type="java.lang.String"/>
+      
+  <property column="usaf_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+     
+   <!-- Associations many-to-one --> 
+   <many-to-one name="usuarioAfastado" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+		<column name="usur_id"/>
+	</many-to-one> 
+   
+   <many-to-one name="usuarioEspelho" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+		<column name="usur_idusuarioespelho"/>
+	</many-to-one>     
+	
+	<many-to-one name="usuarioInformante" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+		<column name="usur_idusuarioinformou"/>
+	</many-to-one>
+    <many-to-one name="usuarioAfastamentoMotivo" class="gcom.seguranca.acesso.usuario.UsuarioAfastamentoMotivo" not-null="true">
+		<column name="usam_id"/>
+	</many-to-one>
+	 
+ </class>
+</hibernate-mapping>

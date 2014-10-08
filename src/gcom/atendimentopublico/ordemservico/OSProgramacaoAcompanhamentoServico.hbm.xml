@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+ <class
+  name="gcom.atendimentopublico.ordemservico.OSProgramacaoAcompanhamentoServico" table="atendimentopublico.os_prg_acomp_servico">
+  <id column="osas_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">atendimentopublico.seq_os_prg_acomp_servico</param>
+   </generator>
+  </id>
+  <property column="osas_dtprogramacao" generated="never" lazy="false"
+   length="13" name="dataProgramacao" not-null="true" type="java.sql.Date"/>
+  <property column="osas_nnseqprogramacao" generated="never"
+   lazy="false" length="10" name="sequencialProgramacao" not-null="true" type="int"/>
+  <property column="osas_dspontoreferencia" generated="never"
+   lazy="false" length="370" name="descricaoPontoReferencia" type="java.lang.String"/>
+  <property column="osas_nnimovel" generated="never" lazy="false"
+   length="5" name="numeroImovel" type="java.lang.String"/>
+  <property column="osas_nmsolicitante" generated="never" lazy="false"
+   length="60" name="nomeSolicitante" not-null="true" type="java.lang.String"/>
+  <property column="osas_nnfone" generated="never" lazy="false"
+   length="15" name="numeroTelefone" type="java.lang.String"/>
+  <property column="osas_dsendereco" generated="never" lazy="false"
+   length="70" name="descricaoEndereco" not-null="true" type="java.lang.String"/>
+  <property column="osas_dsligaguasituacao" generated="never"
+   lazy="false" length="20" name="descricaoLigacaoAguaSituacao" type="java.lang.String"/>
+  <property column="osas_dsligesgotosituacao" generated="never"
+   lazy="false" length="20" name="descricaoLigacaoEsgotoSituacao" type="java.lang.String"/>
+  <property column="osas_inscricaoimovel" generated="never" lazy="false"
+   length="20" name="inscricaoImovel" type="java.lang.String"/>
+  <property column="osas_nnhidrometro" generated="never" lazy="false"
+   length="11" name="numeroHidrometro" type="java.lang.String"/>
+  <property column="osas_dshidrometrocapacidade" generated="never"
+   lazy="false" length="20" name="descricaoHidrometroCapacidade" type="java.lang.String"/>
+  <property column="osas_icatualizaos" generated="never" lazy="false"
+   length="5" name="indicadorAtualizacaoOS" not-null="true" type="short"/>
+  <property column="osas_ictransmissao" generated="never" lazy="false"
+   length="5" name="indicadorTrasmissaoOS" not-null="true" type="short"/>
+  <property column="osas_tmultimaalteracao" generated="never"
+   lazy="false" length="29" name="dataUltimaAlteracao" not-null="true" type="java.sql.Timestamp"/>
+  <property column="osas_icexcluido" generated="never" lazy="false"
+   length="5" name="indicadorExcluido" not-null="true" type="short"/>
+  <property column="osas_icvalidaos" generated="never" lazy="false"
+   length="5" name="indicadorValidaOS" not-null="true" type="short"/>
+  <property column="osas_dsobservacaomotnaoaceite" generated="never"
+   lazy="false" length="300" name="descricaoObservacaoMotNaoAceite" type="java.lang.String"/>
+  <property column="OSAS_QTPAVIMENTOENVIADO" generated="never"
+   lazy="false" length="6" name="quantidadeAreaPavimentoEnviado" type="java.math.BigDecimal"/>
+  <property column="OSAS_QTPAVIMENTORETORNADO" generated="never"
+   lazy="false" length="6" name="quantidadeAreaPavimentoRetornado" type="java.math.BigDecimal"/>
+  <property column="OSAS_NNPROFUNDIDADE" generated="never" lazy="false"
+   length="6" name="numeroProfundidade" type="java.math.BigDecimal"/>
+  <property column="OSAS_NNDIAMETRO" generated="never" lazy="false"
+   length="6" name="numeroDiametro" type="java.math.BigDecimal"/>
+  <property column="OSAS_NNDISTANCIAREDE" generated="never" lazy="false"
+   length="6" name="numeroDistanciaRede" type="java.math.BigDecimal"/>
+  <property column="OSAS_DSELEMENTOREFERENCIA" generated="never"
+   lazy="false" length="100" name="descricaoElementoReferencia" type="java.lang.String"/>
+  <property column="OSAS_ICPROGMANUAL" generated="never" lazy="false"
+   length="5" name="indicadorProgramacaoManual" not-null="true" type="short"/>
+  <!-- Associations bi-directional many-to-one association to ServicoTipo -->
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.OsAcompanhamentoMotivoNaoAceite"
+   name="osAcompanhamentoMotivoNaoAceite" not-null="false">
+   <column name="osna_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ServicoTipo -->
+  <many-to-one class="gcom.atendimentopublico.ordemservico.ServicoTipo"
+   name="servicoTipo" not-null="true">
+   <column name="svtp_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to OrdemServicoSituacao -->
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.OrdemServicoSituacao"
+   name="ordemServicoSituacao" not-null="true">
+   <column name="osst_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to OrdemServico -->
+  <many-to-one class="gcom.atendimentopublico.ordemservico.OrdemServico"
+   name="ordemServico" not-null="true">
+   <column name="orse_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Imovel -->
+  <many-to-one class="gcom.cadastro.imovel.Imovel" name="imovel" not-null="false">
+   <column name="imov_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Equipe -->
+  <many-to-one class="gcom.atendimentopublico.ordemservico.Equipe"
+   name="equipe" not-null="true">
+   <column name="eqpe_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ArqTxtAcompServico -->
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.ArquivoTextoAcompanhamentoServico"
+   name="arquivoTextoAcompanhamentoServico" not-null="true">
+   <column name="txac_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to OsProgNaoEncerMotivo -->
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.OsProgramNaoEncerMotivo"
+   name="osProgramacaoNaoEncerramentoMotivo" not-null="false">
+   <column name="opne_id"/>
+  </many-to-one>
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.EquipamentosEspeciais"
+   name="equipamentosEspeciaisFaltante" not-null="false">
+   <column name="eqes_idfaltante"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoRua -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoRua"
+   name="pavimentoRuaEnviado" not-null="false">
+   <column name="PRUA_IDTIPOPAVRUAENVIADO"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoRua -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoRua"
+   name="pavimentoRuaRetornado" not-null="false">
+   <column name="PRUA_IDTIPOPAVRUARETORNADO"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoCalcada -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoCalcada"
+   name="pavimentoCalcadaEnviado" not-null="false">
+   <column name="PCAL_IDTIPOPAVCALCADAENVIADO"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoCalcada -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoCalcada"
+   name="pavimentoCalcadaRetornado" not-null="false">
+   <column name="PCAL_IDTIPOPAVCALCADARETORNADO"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoCalcada -->
+  <many-to-one
+   class="gcom.atendimentopublico.ordemservico.MotivoDeNaoExecucaoDoServico"
+   name="motivoDeNaoExecucaoDoServico" not-null="false">
+   <column name="mnes_id"/>
+  </many-to-one>
+  <many-to-one
+   class="gcom.atendimentopublico.ligacaoagua.LigacaoAguaMaterial"
+   name="ligacaoAguaMaterial" not-null="false">
+   <column name="lagm_id"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.atendimentopublico.ordemservico.OrdemServicoContas" 
+    table="atendimentopublico.ordem_servico_contas"
+>
+    
+    <id name="id" type="java.lang.Integer" column="osct_id">
+		<generator class="sequence">
+			<param name="sequence">
+				atendimentopublico.seq_ordem_servico_contas
+			</param>
+		</generator>
+	</id>
+
+    <property name="valorConta" type="java.math.BigDecimal" column="osct_vlconta" not-null="true" length="13" />
+    
+    <property name="anoMesReferenciaEncerramento" type="java.lang.Integer" column="osct_amreferenciaencerramento" length="6" />
+ 	
+ 	<property name="ultimaAlteracao" type="java.sql.Timestamp" column="osct_tmultimaalteracao" not-null="true" length="8" />
+
+    <!-- Associations -->
+  
+    <many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico" not-null="true">
+		<column name="orse_id"/>
+	</many-to-one>
+	
+	<many-to-one name="contaGeral" class="gcom.faturamento.conta.ContaGeral" not-null="false">
+		<column name="cnta_id"/>
+	</many-to-one>
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>	
+	<form-beans>
+		<form-bean name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.IncluirProgramacaoRoteirosDiasEspeciaisActionForm" />
+	</form-beans>
+
+	<!--******************* P�GINAS GLOBAIS *******************-->
+	<global-forwards />
+	
+	<action-mappings>
+		<action name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirIncluirProgramacaoRoteirosDiasEspeciaisAction" 
+			validate="true"	
+			scope="session"	
+			path="/exibirIncluirProgramacaoRoteirosDiasEspeciaisAction">
+			
+			<forward name="exibirIncluirProgramacaoRoteirosDiasEspeciaisAction" 
+				path="/jsp/atendimentopublico/ordemservico/programacao_roteiro_dias_especiais_incluir.jsp" />
+		</action>
+		
+		<action name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm" 
+		type="gcom.gui.atendimentopublico.ordemservico.IncluirProgramacaoRoteirosDiasEspeciaisAction"
+			path="/incluirProgramacaoRoteirosDiasEspeciaisAction">
+		</action>
+	<!--
+		<action name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.SelecionarAcompanhamentoArquivosRoteiroAction"
+			validate="true" 
+			scope="session"	
+			path="/selecionarAcompanhamentoArquivosRoteiroAction">
+			
+			<forward name="fotos" path="/jsp/atendimentopublico/ordemservico/acompanhamento_arquivo_roteiro_fotos_popup.jsp" />
+			
+			<forward name="exibirAcompanhamentoArquivosRoteiro" 
+				path="/jsp/atendimentopublico/ordemservico/acompanhamento_arquivo_roteiro.jsp" />
+			
+		</action>
+		
+		<action name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarAcompanhamentoArqRoteiroAction"
+			validate="true" scope="session"
+			path="/atualizarAcompanhamentoArqRoteiroAction">
+			<forward name="exibirAcompanhamentoArquivosRoteiro"
+				path="/jsp/atendimentopublico/ordemservico/acompanhamento_arquivo_roteiro.jsp" />
+		</action>
+		
+		<action name="IncluirProgramacaoRoteirosDiasEspeciaisActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirConsultarPercursoAcompanhamentoArqRoteiroPopupAction"
+			validate="true" scope="session"
+			path="/exibirConsultarPercursoAcompanhamentoArqRoteiroPopupAction">
+
+			<forward name="exibirConsultarPercursoAcompanhamentoArqRoteiro"
+				path="/jsp/atendimentopublico/ordemservico/consultar_percurso_acomp_arq_roteiro.jsp" />	
+		</action>
+		
+		<action type="gcom.gui.atendimentopublico.ordemservico.RetornarArquivoTxtAcompanhamentoArqRoteiroAction"
+			path="/retornarArquivoTxtAcompanhamentoArqRoteiroAction">
+		</action>
+		  -->	
+	
+	</action-mappings>
+</struts-config>

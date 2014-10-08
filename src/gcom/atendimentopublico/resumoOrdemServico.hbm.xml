@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.ResumoOrdemServico" table="atendimentopublico.resumo_ordem_servico">
+		<id name="id" type="java.lang.Integer" column="rsos_id">
+			<generator class="sequence">
+				<param name="sequence">
+				atendimentopublico.seq_resumo_ordem_servico</param>
+			</generator>
+		</id>
+		<property name="anoMesReferencia" type="int" column="rsos_amreferencia" not-null="true" length="4"/>
+		<property name="codigoSetorComercial" type="int" column="rsos_cdsetorcomercial" not-null="true" length="4"/>
+		<property name="quantidadeContas" type="int" column="rsos_qtcontas" not-null="true" length="4"/>
+		<property name="quantidadeOrdemServico" type="int" column="rsos_qtordemservico" not-null="true" length="4"/>
+		<property name="valorDocumentos" type="java.math.BigDecimal" column="rsos_vlcontas" not-null="true" length="13"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="rsos_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to CobrancaDebitoSituacao -->
+		<many-to-one name="cobrancaDebitoSituacao" class="gcom.cobranca.CobrancaDebitoSituacao" not-null="true">
+			<column name="cdst_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to SetorComercial -->
+		<many-to-one name="setorComercial" class="gcom.cadastro.localidade.SetorComercial" not-null="true">
+			<column name="stcm_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to LigacaoEsgotoSituacao -->
+		<many-to-one name="ligacaoEsgotoSituacao" class="gcom.atendimentopublico.ligacaoesgoto.LigacaoEsgotoSituacao" not-null="true">
+			<column name="lest_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to EsferaPoder -->
+		<many-to-one name="esferaPoder" class="gcom.cadastro.cliente.EsferaPoder">
+			<column name="epod_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to ImovelPerfil -->
+		<many-to-one name="imovelPerfil" class="gcom.cadastro.imovel.ImovelPerfil" not-null="true">
+			<column name="iper_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GerenciaRegional -->
+		<many-to-one name="gerenciaRegional" class="gcom.cadastro.localidade.GerenciaRegional" not-null="true">
+			<column name="greg_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Localidade -->
+		<many-to-one name="localidade" class="gcom.cadastro.localidade.Localidade" not-null="true">
+			<column name="loca_id"/>
+		</many-to-one>	
+		<!-- bi-directional many-to-one association to LigacaoAguaSituacao -->
+		<many-to-one name="ligacaoAguaSituacao" class="gcom.atendimentopublico.ligacaoagua.LigacaoAguaSituacao" not-null="true">
+			<column name="last_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Categoria -->
+		<many-to-one name="categoria" class="gcom.cadastro.imovel.Categoria" not-null="true">
+			<column name="catg_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to FiscalizacaoSituacao -->
+		<many-to-one name="fiscalizacaoSituacao" class="gcom.atendimentopublico.ordemservico.FiscalizacaoSituacao" not-null="true">
+			<column name="fzst_id"/>
+		</many-to-one>
+		<many-to-one name="empresa" class="gcom.cadastro.empresa.Empresa" not-null="false">
+			<column name="empr_id"/>
+		</many-to-one>
+		<many-to-one name="motivoEncerramento" class="gcom.atendimentopublico.registroatendimento.AtendimentoMotivoEncerramento" not-null="false">
+			<column name="amen_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Unidade de Negocio-->
+		<many-to-one name="unidadeNegocio" class="gcom.cadastro.localidade.UnidadeNegocio" not-null="false">
+			<column name="uneg_id"/>
+		</many-to-one>		
+		<!-- bi-directional many-to-one association to OrdemServico -->
+	    <many-to-one name="ServicoTipo" class="gcom.atendimentopublico.ordemservico.ServicoTipo">
+	        <column name="svtp_id" />
+	    </many-to-one>
+	    <!-- bi-directional many-to-one association to OrdemServicoSituacao -->
+	  <many-to-one
+		   class="gcom.atendimentopublico.ordemservico.OrdemServicoSituacao"
+		   name="ordemServicoSituacao" not-null="true">
+		   <column name="osst_id"/>
+	  </many-to-one>
+	</class>
+</hibernate-mapping>

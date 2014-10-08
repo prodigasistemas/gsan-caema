@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.ordemservico.ServicoRepavimentadora" table="atendimentopublico.servico_repav">
+		<id name="id" type="java.lang.Integer" column="svrp_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_servico_repav</param>
+			</generator>
+		</id>
+		
+		<property name="descricao" type="java.lang.String" column="svrp_dsservico" not-null="true" length="50"/>
+		<property name="descricaoAbreviada" type="java.lang.String" column="svrp_dsabreviada" not-null="false" length="10"/>
+		<property name="indicadorUso" type="java.lang.Short" column="svrp_icuso" not-null="true" length="2"/>
+		<property name="valorServico" type="java.math.BigDecimal" column="svrp_vlservico" not-null="true" length="12"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="svrp_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to UnidadeOrganizacional -->
+		<many-to-one name="unidadeRepavimentadora" class="gcom.cadastro.unidade.UnidadeOrganizacional" not-null="true">
+			<column name="unid_idrepavimentadora"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to MaterialUnidade -->
+		<many-to-one name="materialUnidade" class="gcom.atendimentopublico.ordemservico.MaterialUnidade" not-null="true">
+			<column name="mtun_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

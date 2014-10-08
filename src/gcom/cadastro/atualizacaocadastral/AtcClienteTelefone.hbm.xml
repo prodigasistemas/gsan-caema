@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcClienteTelefone" 
+    table="atc_cliente_telefone"
+>
+
+    <id name="atcCtlId" type="java.lang.Integer" column="atc_ctl_id">
+		<generator class="sequence">
+			<param name="sequence">public.atc_cliente_telefone_atc_ctl_id_seq</param>
+		</generator>
+	</id>
+
+    <property
+        name="atcCtlDdd"
+        type="java.lang.String"
+        column="atc_ctl_ddd"
+        not-null="true"
+        length="5"
+    />
+    <property
+        name="atcCtlNumero"
+        type="java.lang.String"
+        column="atc_ctl_numero"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="atcCtlRamal"
+        type="java.lang.String"
+        column="atc_ctl_ramal"
+        length="20"
+    />
+    <property
+        name="atcCliId"
+        type="long"
+        column="atc_cli_id"
+        not-null="true"
+    />
+    <property
+        name="atcCtlNomeContato"
+        type="java.lang.String"
+        column="atc_ctl_nome_contato"
+        length="20"
+    />
+    <property
+        name="atcTtpId"
+        type="java.lang.Integer"
+        column="atc_ttp_id"
+        length="4"
+    />
+    <property
+        name="atcCliFonePadrao"
+        type="java.lang.Boolean"
+        column="atc_cli_fone_padrao"
+        length="1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

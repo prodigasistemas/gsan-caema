@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="ConsultarComandosContasCobrancaEmpresaActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ConsultarComandosContasCobrancaEmpresaActionForm" />	
+		<form-bean name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoActionForm" />
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL *******************-->
+		<!-- [UC1167] Consultar Comandos de Cobrança por Empresa - Autor: Mariana Victor Data:03/05/2011 -->
+		<action name="ConsultarComandosContasCobrancaEmpresaActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirConsultarComandosContasCobrancaEmpresaAction"
+			validate="true" 
+			scope="session"
+			path="/exibirConsultarComandosContasCobrancaEmpresaAction">
+			
+			<forward name="exibirConsultarComandosContasCobrancaEmpresa"
+				path="/jsp/cobranca/cobrancaporresultado/comandos_contas_em_cobranca_consultar.jsp" />
+		</action>
+		
+		<action name="ConsultarComandosContasCobrancaEmpresaActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ConsultarComandosContasCobrancaEmpresaAction"
+			validate="true" scope="session"
+			path="/consultarComandosContasCobrancaEmpresaAction">
+		</action>
+		
+		<action name="ConsultarComandosContasCobrancaEmpresaActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirConsultarComandosContasCobrancaEmpresaPopupAction"
+			validate="true" scope="session"
+			path="/exibirConsultarComandosContasCobrancaEmpresaPopupAction">
+			
+			<forward name="exibirConsultarComandosContasCobrancaEmpresaPopupAction"
+				path="/jsp/cobranca/cobrancaporresultado/comandos_contas_em_cobranca_consultar_popup.jsp" />
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirMovimentarOrdemServicoAction"
+			validate="false" scope="session" 
+			path="/exibirMovimentarOrdemServicoAction">
+			
+			<forward name="movimentarOrdemServicoEmitirOS"
+				     path="/movimentarOrdemServicoWizardAction.do?action=exibirMovimentarOrdemServicoEmitirOSAction" />
+			
+			<forward name="emitirOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoEmitirOSAction" />
+			
+			<forward name="gerarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoGerarOSAction" />
+				     
+			<forward name="consultarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoConsultarOSAction" />	     
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				     
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirMovimentarOrdemServicoEmitirOSAction"
+			validate="false" scope="session" 
+			path="/exibirMovimentarOrdemServicoEmitirOSAction">
+			
+			<forward name="emitirOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoEmitirOSAction" />
+				
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirMovimentarOrdemServicoGerarOSAction"
+			validate="false" scope="session" 
+			path="/exibirMovimentarOrdemServicoGerarOSAction">
+			
+			<forward name="gerarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoGerarOSAction" />
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirMovimentarOrdemServicoConsultarOSAction"
+			validate="false" scope="session" 
+			path="/exibirMovimentarOrdemServicoConsultarOSAction">
+			
+			<forward name="consultarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoConsultarOSAction" />
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				
+		</action>
+		
+		<action name="MovimentarOrdemServicoActionForm"
+			    type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoWizardAction"
+			    validate="false" 
+			    parameter="action" 
+			    scope="session"
+			    path="/movimentarOrdemServicoWizardAction">
+			
+			<forward name="movimentarOrdemServicoEmitirOS"
+				     path="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_emitir.jsp" />
+				
+			<forward name="movimentarOrdemServicoGerarOS"
+				     path="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_gerar.jsp" />
+				
+			<forward name="movimentarOrdemServicoEncerrarOS"
+				     path="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_encerrar.jsp" />
+				     
+			<forward name="movimentarOrdemServicoConsultarOS"
+				     path="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_consultar.jsp" />
+			
+			<forward name="emitirOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoEmitirOSAction" />
+			
+			<forward name="gerarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoGerarOSAction" />
+				     
+			<forward name="consultarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoConsultarOSAction" />
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				     
+			<!-- SERVIÇO_TIPO_ID=1 -->	
+			<forward 
+				name="efetuarLigacaoAguaAction"
+				path="/exibirEfetuarLigacaoAguaAction.do" />				
+			<!-- SERVIÇO_TIPO_ID=2 -->	
+			<forward 
+				name="efetuarLigacaoEsgotoAction"
+				path="/exibirEfetuarLigacaoEsgotoAction.do" />	
+			<!-- SERVIÇO_TIPO_ID=6 -->
+			<forward 
+				name="efetuarCorteLigacaoAguaAction"
+				path="/exibirEfetuarCorteLigacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=8 -->
+			<forward 
+				name="efetuarSupressaoLigacaoAguaAction"
+				path="/exibirEfetuarSupressaoLigacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=9 -->
+			<forward 
+				name="efetuarRestabelecimentoLigacaoAguaAction"
+				path="/exibirEfetuarRestabelecimentoLigacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=10 -->
+			<forward 
+				name="efetuarReligacaoAguaAction"
+				path="/exibirEfetuarReligacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=11 -->
+			<forward 
+				name="efetuarCorteAdministrativoLigacaoAguaAction"
+				path="/exibirEfetuarCorteAdministrativoLigacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=15 -->
+			<forward 
+				name="efetuarRetiradaHidrometroAction"
+				path="/exibirEfetuarRetiradaHidrometroAction.do" />
+			<!-- SERVIÇO_TIPO_ID=17 -->
+			<forward 
+				name="efetuarRemanejamentoHidrometroAction"
+				path="/exibirEfetuarRemanejamentoHidrometroAction.do" />
+			<!-- SERVIÇO_TIPO_ID=21 -->
+			<forward 
+				name="efetuarInstalacaoHidrometroAction"
+				path="/exibirEfetuarInstalacaoHidrometroAction.do" />
+			<!-- SERVIÇO_TIPO_ID=23 -->
+			<forward 
+				name="efetuarSubstituicaoHidrometroAction"
+				path="/exibirEfetuarSubstituicaoHidrometroAction.do" />
+			<!-- SERVIÇO_TIPO_ID=26,27,28,29 -->
+			<forward 
+				name="efetuarMudancaSituacaoFaturamentoLigacaoEsgotoAction"
+				path="/exibirEfetuarMudancaSituacaoFaturamentoLigacaoEsgotoAction.do" />
+			
+			<forward 
+				name="atualizarConsumoMinimoLigacaoAguaAction"
+				path="/exibirAtualizarConsumoMinimoLigacaoAguaAction.do" />
+			<!-- SERVIÇO_TIPO_ID=25 -->
+			<forward 
+				name="atualizarVolumeMinimoLigacaoEsgotoAction"
+				path="/exibirAtualizarVolumeMinimoLigacaoEsgotoAction.do" />
+			<!-- SERVIÇO_TIPO-->	
+			<forward 
+				name="efetuarLigacaoAguaComInstalacaoHidrometroAction"
+				path="/exibirEfetuarLigacaoAguaComInstalacaoHidrometroAction.do" />
+			<forward 
+				name="efetuarRestabelecimentoLigacaoAguaComInstalacaoHidrometroAction"
+				path="/exibirEfetuarRestabelecimentoLigacaoAguaComInstalacaoHidrometroAction.do" />				
+			<forward 
+				name="alterarTipoCorteAction"
+				path="/exibirAlterarTipoCorteAction.do" />
+			<!-- SERVIÇO_TIPO=Alterar Tipo de Corte -->	
+			<forward 
+				name="exibirEncerrarOrdemServico"
+				path="/exibirEncerrarOrdemServicoAction.do?retornoConsulta=informarOS" />
+					     
+				
+		</action>
+		
+		<action
+			type="gcom.gui.cobranca.cobrancaporresultado.CancelarMovimentarOrdemServicoAction"
+			validate="false" 
+			path="/cancelarMovimentarOrdemServicoAction" />
+			
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoEncerrarOSAction"
+			validate="false" scope="session" 
+			path="/movimentarOrdemServicoEncerrarOSAction">
+			
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				     
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoEmitirOSAction"
+			validate="false" scope="session" 
+			path="/movimentarOrdemServicoEmitirOSAction">
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+		
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoGerarOSAction"
+			validate="false" scope="session" 
+			path="/movimentarOrdemServicoGerarOSAction">
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				
+		</action>
+		
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoConsultarOSAction"
+			validate="false" scope="session" 
+			path="/movimentarOrdemServicoConsultarOSAction">
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				
+		</action>
+		
+		<action	name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.MovimentarOrdemServicoAction"
+			validate="false" scope="session" 
+			path="/movimentarOrdemServicoAction">
+				     
+			<forward name="gerarRelatorioEmitirDocumentoVisitaCobranca"
+				     path="/gerarRelatorioEmitirDocumentoVisitaCobrancaAction.do" />
+			
+			<forward name="emitirOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoEmitirOSAction" />
+			
+			<forward name="gerarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoGerarOSAction" />
+				     
+			<forward name="consultarOSAction"
+				     path="/movimentarOrdemServicoWizardAction.do?action=movimentarOrdemServicoConsultarOSAction" />	     
+				     
+			<forward name="movimentarOrdemServicoAction"
+				     path="/movimentarOrdemServicoAction" />
+				
+		</action>
+		
+		<action name="MovimentarOrdemServicoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.GerarArquivoTextoCodigoBarrasDocumentoCobrancaAction"
+			validate="false" scope="session"
+			path="/gerarArquivoTextoCodigoBarrasDocumentoCobrancaAction" >
+			
+		</action>
+			
+	</action-mappings>
+
+</struts-config>

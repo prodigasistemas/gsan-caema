@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="NormaProcedimentosActionForm"
+			type="gcom.gui.atendimentopublico.registroatendimento.NormaProcedimentosActionForm" />
+	</form-beans>
+
+
+	<!--******************* P�GINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="NormaProcedimentosActionForm" 
+			type="gcom.gui.atendimentopublico.registroatendimento.ExibirFiltrarNormasProcedimentosAction"
+			validate="false" scope="session" path="/exibirFiltrarNormasProcedimentosAction">
+			<forward name="filtrarNormasProcedimentos"
+				path="/jsp/atendimentopublico/registroatendimento/normas_procedimentos_filtrar.jsp" />
+		</action>
+		
+		<action name="NormaProcedimentosActionForm" 
+			type="gcom.gui.atendimentopublico.registroatendimento.FiltrarNormasProcedimentosAction"
+			validate="false" scope="session"
+			path="/filtrarNormasProcedimentosAction">
+			
+			<forward name="retornarFiltroNormasProcedimentos" path="/exibirManterNormasProcedimentosAction.do" />
+		</action>
+		
+		<action name="NormaProcedimentosActionForm" 
+			type="gcom.gui.atendimentopublico.registroatendimento.ExibirConsultarNormasProcedimentosAction"
+			validate="false" scope="session" path="/exibirConsultarNormasProcedimentosAction">
+			
+			<forward name="consultarNormasProcedimentos"
+				path="/jsp/atendimentopublico/registroatendimento/normas_procedimentos_consultar.jsp" />
+		
+		</action>
+		
+		<action name="NormaProcedimentosActionForm" 
+			type="gcom.gui.atendimentopublico.registroatendimento.ConsultarNormasProcedimentosAction"
+			validate="false" scope="session" path="/consultarNormasProcedimentosAction">
+			
+			<forward name="retornoConsultarNormasProcedimentos"
+				path="/jsp/atendimentopublico/registroatendimento/normas_procedimentos_consultar_retorno.jsp" />
+		
+		</action>
+		
+		<action name="NormaProcedimentosActionForm" 
+			type="gcom.gui.atendimentopublico.registroatendimento.ObterArquivoNormasProcedimentoAction"
+			validate="false" scope="session" path="/obterArquivoNormasProcedimentoAction">
+		</action>
+		
+	</action-mappings>
+
+	<message-resources null="false" parameter="gcom.properties.application" />
+		
+</struts-config>

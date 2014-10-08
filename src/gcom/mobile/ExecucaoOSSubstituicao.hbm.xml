@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.mobile.ExecucaoOSSubstituicao" table="mobile.exe_os_substituicao">
+		<composite-id name="comp_id" class="gcom.mobile.ExecucaoOSPK">
+			<!-- bi-directional many-to-one association to ArquivoTextoOSCobranca -->
+			<key-many-to-one name="arquivoTextoOSCobranca" class="gcom.mobile.ArquivoTextoOSCobranca">
+				<column name="aosc_id"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>
+		</composite-id>
+		
+		<property name="numeroLeitura" type="java.lang.Integer" column="eosb_nnleitura" not-null="true" length="8"/>
+   		<property name="indicadorTipoHidrometro" type="java.lang.Short" column="eosb_ictipohidrometro" not-null="true" length="2" />
+   		<property name="indicadorCavalete" type="java.lang.Short" column="eosb_iccavalete" not-null="true" length="2" />
+		<property name="numeroLeituraInstalacao" type="java.lang.Integer" column="eosb_nnleiturainstalacao" not-null="false" length="8"/>
+		<property name="numeroSelo" type="java.lang.String" column="eosb_nnselo" not-null="false" length="12"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="eosb_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- Associations -->
+
+		<!-- bi-directional many-to-one association to HidrometroSituacao -->
+		<many-to-one name="hidrometroSituacao" class="gcom.micromedicao.hidrometro.HidrometroSituacao" not-null="true">
+			<column name="hist_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to HidrometroLocalArmazenagem -->
+		<many-to-one name="hidrometroLocalArmazenagem" class="gcom.micromedicao.hidrometro.HidrometroLocalArmazenagem" not-null="true">
+			<column name="hila_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Hidrometro -->
+		<many-to-one name="hidrometro" class="gcom.micromedicao.hidrometro.Hidrometro" not-null="true">
+			<column name="hidr_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

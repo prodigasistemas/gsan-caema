@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="InformarRetirarSituacaoFactivelFaturavelEsgotoActionForm"
+			type="gcom.gui.atendimentopublico.InformarRetirarSituacaoFactivelFaturavelEsgotoActionForm" />
+
+
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="InformarRetirarSituacaoFactivelFaturavelEsgotoActionForm"
+			type="gcom.gui.atendimentopublico.ExibirInformarRetirarSituacaoFactivelFaturavelEsgotoAction"
+			validate="false" scope="session"
+			path="/exibirInformarRetirarSituacaoFactivelFaturavelEsgotoAction">
+			<forward name="informarRetirarSituacaoFactivelFaturavelEsgoto"
+				path="/jsp/atendimentopublico/informar_retirar_situacao_factivel_faturavel_esgoto.jsp" />
+			<forward name="informarDadosDaLigacaoEsgoto"
+				path="/jsp/atendimentopublico/informar_dados_ligacao_factivel_faturavel_esgoto.jsp" />	
+			<forward name="retirarDadosDaLigacaoEsgoto"
+				path="/jsp/atendimentopublico/retirar_imovel_ligacao_factivel_faturavel_esgoto.jsp" />	
+		</action>
+
+		<action name="InformarRetirarSituacaoFactivelFaturavelEsgotoActionForm"
+			type="gcom.gui.atendimentopublico.InformarRetirarSituacaoFactivelFaturavelEsgotoAction"
+			validate="false" scope="session"
+			path="/informarRetirarSituacaoFactivelFaturavelEsgotoAction">
+		</action>
+
+	</action-mappings>
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>  
+
+	<form-beans>
+	
+		<form-bean name="AtualizarMotivoNaoAceiteActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarMotivoNaoAceiteActionForm" />
+	
+		<form-bean name="ManutencaoRegistroActionForm" 
+			type="gcom.gui.ManutencaoRegistroActionForm" />
+			
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+
+	<global-forwards />
+	
+	
+	<action-mappings> 	
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirManterMotivoNaoAceiteAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirManterMotivoNaoAceiteAction">
+			<forward name="manterMotivoNaoAceite"
+				path="/jsp/atendimentopublico/ordemservico/motivo_nao_aceite_manter.jsp" />
+			
+			<forward name="exibirAtualizarMotivoNaoAceite"
+				path="/exibirAtualizarMotivoNaoAceiteAction.do" /> 
+		</action>
+		
+		<action name="AtualizarMotivoNaoAceiteActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirAtualizarMotivoNaoAceiteAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirAtualizarMotivoNaoAceiteAction">
+			<forward name="atualizarMotivoNaoAceite"
+				path="/jsp/atendimentopublico/ordemservico/motivo_nao_aceite_atualizar.jsp" />
+		</action>
+		
+		<action name="AtualizarMotivoNaoAceiteActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarMotivoNaoAceiteAction"
+			validate="false" 
+			scope="session" 
+			path="/atualizarMotivoNaoAceiteAction">
+		</action>		
+		
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExcluirMotivoNaoAceiteAction"
+			validate="false" 
+			scope="session" 
+			path="/excluirMotivoNaoAceiteAction">
+		</action>	
+			
+		<action name="FiltrarMotivoNaoAceiteActionForm"
+			type="gcom.gui.relatorio.atendimentopublico.ordemservico.GerarRelatorioMotivoNaoAceiteManterAction"
+			validate="true" 
+			scope="session"
+			path="/gerarRelatorioMotivoNaoAceiteManterAction" />	
+			
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+		
+</struts-config>

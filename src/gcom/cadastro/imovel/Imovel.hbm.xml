@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+ <class name="gcom.cadastro.imovel.Imovel" table="cadastro.imovel">
+  <id column="imov_id" name="id" type="java.lang.Integer">
+   <!-- generator class="sequence">
+          <param name="sequence">cadastro.sequence_imovel</param>
+      </generator>
+      -->
+   <generator class="assigned"/>
+  </id>
+  <property column="imov_nnlote" generated="never" lazy="false"
+   length="2" name="lote" not-null="true" type="short"/>
+  <property column="imov_nnsublote" generated="never" lazy="false"
+   length="2" name="subLote" not-null="true" type="short"/>
+  <property column="imov_nntestadalote" generated="never" lazy="false"
+   length="2" name="testadaLote" type="short"/>
+  <property column="imov_nnimovel" generated="never" lazy="false"
+   length="5" name="numeroImovel" not-null="true" type="java.lang.String"/>
+  <property column="imov_nmimovel" generated="never" lazy="false"
+   length="30" name="nomeImovel" type="java.lang.String"/>
+  <property column="imov_dscomplementoendereco" generated="never"
+   lazy="false" length="25" name="complementoEndereco" type="java.lang.String"/>
+  <property column="imov_dsinformacaocomplementar" generated="never"
+   lazy="false" length="750" name="informacoesComplementares" type="java.lang.String"/>
+  <property column="imov_nnareaconstruida" generated="never"
+   lazy="false" length="8" name="areaConstruida" type="java.math.BigDecimal"/>
+  <property column="imov_icimovelcondominio" generated="never"
+   lazy="false" length="2" name="indicadorImovelCondominio"
+   not-null="true" type="java.lang.Short"/>
+  <property column="imov_voreservatoriosuperior" generated="never"
+   lazy="false" length="5" name="volumeReservatorioSuperior" type="java.math.BigDecimal"/>
+  <property column="imov_voreservatorioinferior" generated="never"
+   lazy="false" length="5" name="volumeReservatorioInferior" type="java.math.BigDecimal"/>
+  <property column="imov_vopiscina" generated="never" lazy="false"
+   length="5" name="volumePiscina" type="java.math.BigDecimal"/>
+  <property column="imov_dtsupressaoparcial" generated="never"
+   lazy="false" length="4" name="dataSupressaoParcial" type="java.sql.Date"/>
+  <property column="imov_dtinfracao" generated="never" lazy="false"
+   length="4" name="dataInfracao" type="java.sql.Date"/>
+  <property column="imov_nnpontosutilizacao" generated="never"
+   lazy="false" length="2" name="numeroPontosUtilizacao" type="java.lang.Short"/>
+  <property column="imov_nnmorador" generated="never" lazy="false"
+   length="2" name="numeroMorador" type="java.lang.Short"/>
+  <property column="imov_nnretificacao" generated="never" lazy="false"
+   length="2" name="numeroRetificacao" type="java.lang.Short"/>
+  <property column="imov_nnleituraexcecao" generated="never"
+   lazy="false" length="2" name="numeroLeituraExcecao" type="java.lang.Short"/>
+  <property column="imov_nnparcelamento" generated="never" lazy="false"
+   length="2" name="numeroParcelamento" type="java.lang.Short"/>
+  <property column="imov_nnreparcelamento" generated="never"
+   lazy="false" length="2" name="numeroReparcelamento" type="java.lang.Short"/>
+  <property column="imov_nnreparcmtconsec" generated="never"
+   lazy="false" length="2" name="numeroReparcelamentoConsecutivos" type="java.lang.Short"/>
+  <property column="imov_ddvencimento" generated="never" lazy="false"
+   length="2" name="diaVencimento" type="java.lang.Short"/>
+  <property column="imov_nniptu" generated="never" lazy="false"
+   length="20" name="numeroIptu" type="java.math.BigDecimal"/>
+  <property column="imov_nncontratoenergia" generated="never"
+   lazy="false" length="10" name="numeroCelpe" type="java.lang.Long"/>
+  <!-- bi-directional many-to-one association to ImovelContaEnvio -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelContaEnvio"
+   name="imovelContaEnvio" not-null="true">
+   <column name="icte_id"/>
+  </many-to-one>
+  <property column="imov_icemsextfatmt" generated="never" lazy="false"
+   length="2" name="indicadorEmissaoExtratoFaturamento" type="java.lang.Short"/>
+  <property column="imov_icdebitoconta" generated="never" lazy="false"
+   length="2" name="indicadorDebitoConta" not-null="true" type="java.lang.Short"/>
+  <property column="imov_icexclusao" generated="never" lazy="false"
+   length="2" name="indicadorExclusao" type="java.lang.Short"/>
+  <property column="imov_nncoordenadax" generated="never" lazy="false"
+   length="5" name="coordenadaX" type="java.math.BigDecimal"/>
+  <property column="imov_nncoordenaday" generated="never" lazy="false"
+   length="5" name="coordenadaY" type="java.math.BigDecimal"/>
+  <property column="imov_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+  <property column="imov_icsuspensaoabastecimento" generated="never"
+   lazy="false" length="2" name="indicadorSuspensaoAbastecimento" type="java.lang.Short"/>
+  <property column="imov_qteconomia" generated="never" lazy="false"
+   length="2" name="quantidadeEconomias" type="java.lang.Short"/>
+  <property column="imov_icjardim" generated="never" lazy="false"
+   length="2" name="indicadorJardim" type="java.lang.Short"/>
+  <property column="imov_nnsequencialrota" generated="never"
+   lazy="false" length="4" name="numeroSequencialRota" type="java.lang.Integer"/>
+  <property column="imov_nnsequencialrotaentrega" generated="never"
+   lazy="false" length="4" name="numeroSequencialRotaEntrega" type="java.lang.Integer"/>
+  <property column="imov_nnmedidorenergia" generated="never"
+   lazy="false" length="10" name="numeroMedidorEnergia" type="java.lang.String"/>
+  <property column="imov_dtvisitacomercial" generated="never"
+   lazy="false" length="4" name="dataVisitaComercial" type="java.sql.Date"/>
+  <property column="imov_icvencimentomesseguinte" generated="never"
+   lazy="false" length="2" name="indicadorVencimentoMesSeguinte"
+   not-null="true" type="java.lang.Short"/>
+  <property column="imov_icreincidenciainfracao" generated="never"
+   lazy="false" name="indicadorReincidenciaInfracao" type="java.lang.Integer"/>
+  <property column="imov_cddebitoautomatico" generated="never"
+   lazy="false" name="codigoDebitoAutomatico" type="java.lang.Integer"/>
+  <property column="imov_nnquadraentrega" generated="never" lazy="false"
+   name="numeroQuadraEntrega" type="java.lang.Integer"/>
+  <property column="imov_amrefexclusaotarifasocial" generated="never"
+   lazy="false" name="anoMesExclusaoTarifaSocial" type="java.lang.Integer"/>
+  <property column="imov_icnivelinstalacaoesgoto" generated="never"
+   lazy="false" name="indicadorNivelInstalacaoEsgoto" type="java.lang.Short"/>
+  <property column="imov_icimovelareacomum" generated="never"
+   lazy="false" name="indicadorImovelAreaComum" type="java.lang.Short"/>
+  <property column="imov_idcategoriaprincipal" generated="never"
+   lazy="false" name="categoriaPrincipalId" type="java.lang.Integer"/>
+  <property column="imov_idsubcategoriaprincipal" generated="never"
+   lazy="false" name="subCategoriaPrincipalId" type="java.lang.Integer"/>
+  <property column="imov_icrateionegativo" generated="never"
+   lazy="false" name="indicadorRateioNegativo" type="java.lang.Short"/>
+  <property column="imov_icvinculocliente" generated="never"
+   lazy="false" name="indicadorVinculoCliente" not-null="true" type="java.lang.Short"/>
+  <property column="imov_icrateioconsumofranquia" generated="never"
+   lazy="false" name="indicadorRateioConsumoFranquia" type="java.lang.Short"/>
+  <property column="lest_idanterior" generated="never"
+   lazy="false" name="idLigacaoEsgotoSituacaoAnterior" type="java.lang.Integer"/> 
+   <property column="imov_dtcadastroatucad" generated="never"
+   lazy="false" length="4" name="dataCadastramento" type="java.sql.Timestamp"/>
+   
+  <!-- associations 
+ bi-directional one-to-one association to LigacaoEsgoto -->
+  <one-to-one
+   class="gcom.atendimentopublico.ligacaoesgoto.LigacaoEsgoto" name="ligacaoEsgoto"/>
+  <!-- associations  bi-directional one-to-one association to LigacaoEsgoto -->
+  
+  <many-to-one class="gcom.operacional.SubSistemaEsgoto" name="subSistemaEsgoto" not-null="false">
+   <column name="sseg_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Imovel -->
+  <many-to-one class="gcom.cadastro.imovel.Imovel"
+   name="imovelPrincipal" not-null="true">
+   <column name="imov_idimovelprincipal"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Imovel -->
+  <many-to-one class="gcom.cadastro.imovel.Imovel"
+   name="imovelCondominio" not-null="true">
+   <column name="imov_idimovelcondominio"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to LogradouroBairro -->
+  <many-to-one class="gcom.cadastro.endereco.LogradouroBairro"
+   name="logradouroBairro" not-null="false">
+   <column name="lgbr_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to LogradouroCep -->
+  <many-to-one class="gcom.cadastro.endereco.LogradouroCep"
+   name="logradouroCep" not-null="false">
+   <column name="lgcp_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.funcionario.Funcionario"
+   name="funcionario" not-null="true">
+   <column name="func_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.micromedicao.Rota" name="rotaEntrega" not-null="false">
+   <column name="rota_identrega"/>
+  </many-to-one>
+  <many-to-one class="gcom.micromedicao.Rota" name="rotaAlternativa" not-null="false">
+   <column name="rota_idalternativa"/>
+  </many-to-one>
+  <!-- bi-directional one-to-many association to ClienteImovel-->
+  <set inverse="true" lazy="true" name="clienteImoveis" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.cadastro.cliente.ClienteImovel"/>
+  </set>
+  <!-- bi-directional one-to-many association to ClienteImovel-->
+  <set inverse="true" lazy="true"
+   name="contratosDemandaImovelComercialIndustrial" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.faturamento.contratodemanda.ContratoDemandaImovelComercialIndustrial"/>
+  </set>
+  <!-- bi-directional one-to-many association to FaturamentoSituacaoHistorico
+    <set
+        name="faturamentoSituacaoHistoricos"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="imov_id" />
+        </key>
+        <one-to-many
+            class="gcom.cadastro.FaturamentoSituacaoHistorico"
+        />
+    </set>
+    
+ bi-directional one-to-one association to TarifaSocialDado 
+    <one-to-one
+        name="tarifaSocialDado"
+        class="gcom.cadastro.tarifasocial.TarifaSocialDado"
+        outer-join="auto"
+    /> 
+bi-directional one-to-many association to ImovelSubcategoria-->
+  <set inverse="true" lazy="true" name="imovelSubcategorias" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.cadastro.imovel.ImovelSubcategoria"/>
+  </set>
+  <!-- bi-directional one-to-one association to LigacaoAgua -->
+  <one-to-one class="gcom.atendimentopublico.ligacaoagua.LigacaoAgua" name="ligacaoAgua"/>
+  <set inverse="true" lazy="true" name="medicaoHistoricos" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.micromedicao.medicao.MedicaoHistorico"/>
+  </set>
+  <!-- bi-directional one-to-many association to ImovelCobrancaSituacao
+    <set
+        name="imovelCobrancaSituacaos"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="imov_id" />
+        </key>
+        <one-to-many
+            class="gcom.cadastro.ImovelCobrancaSituacao"
+        />
+    </set>
+    
+ bi-directional one-to-many association to HidrometroInstalacaoHistorico
+    <set
+        name="hidrometroInstalacaoHistoricos"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="imov_id" />
+        </key>
+        <one-to-many
+            class="gcom.cadastro.HidrometroInstalacaoHistorico"
+        />
+    </set>
+    
+ bi-directional one-to-many association to CobrancaSituacaoHistorico
+    <set
+        name="cobrancaSituacaoHistoricos"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="imov_id" />
+        </key>
+        <one-to-many
+            class="gcom.cadastro.CobrancaSituacaoHistorico"
+        />
+    </set>
+    
+ bi-directional one-to-one association to ImovelEnderecoAnterior -->
+  <one-to-one class="gcom.cadastro.imovel.ImovelEnderecoAnterior" name="imovelEnderecoAnterior"/>
+  <!-- bi-directional many-to-one association to LigacaoEsgotoSituacao -->
+  <many-to-one
+   class="gcom.atendimentopublico.ligacaoesgoto.LigacaoEsgotoSituacao"
+   name="ligacaoEsgotoSituacao" not-null="true">
+   <column name="lest_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to HidrometroInstalacaoHistorico -->
+  <many-to-one
+   class="gcom.micromedicao.hidrometro.HidrometroInstalacaoHistorico"
+   name="hidrometroInstalacaoHistorico" not-null="true">
+   <column name="hidi_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to LeituraAnormalidade -->
+  <many-to-one class="gcom.micromedicao.leitura.LeituraAnormalidade"
+   name="leituraAnormalidade" not-null="true">
+   <column name="ltan_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to EloAnormalidade -->
+  <many-to-one class="gcom.cadastro.imovel.EloAnormalidade"
+   name="eloAnormalidade" not-null="true">
+   <column name="eanm_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to SetorComercial -->
+  <many-to-one class="gcom.cadastro.localidade.SetorComercial"
+   name="setorComercial" not-null="true">
+   <column name="stcm_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to AreaConstruidaFaixa -->
+  <many-to-one class="gcom.cadastro.imovel.AreaConstruidaFaixa"
+   name="areaConstruidaFaixa" not-null="false">
+   <column name="acon_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoCalcada -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoCalcada"
+   name="pavimentoCalcada" not-null="true">
+   <column name="pcal_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ImovelPerfil -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelPerfil"
+   name="imovelPerfil" not-null="true">
+   <column name="iper_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ReservatorioVolumeFaixa -->
+  <many-to-one class="gcom.cadastro.imovel.ReservatorioVolumeFaixa"
+   name="reservatorioVolumeFaixaSuperior" not-null="true">
+   <column name="resv_idreservatoriosuperior"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ReservatorioVolumeFaixa -->
+  <many-to-one class="gcom.cadastro.imovel.ReservatorioVolumeFaixa"
+   name="reservatorioVolumeFaixaInferior" not-null="true">
+   <column name="resv_idreservatorioinferior"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Localidade -->
+  <many-to-one class="gcom.cadastro.localidade.Localidade"
+   name="localidade" not-null="true">
+   <column name="loca_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Quadra -->
+  <many-to-one class="gcom.cadastro.localidade.Quadra" name="quadra" not-null="true">
+   <column name="qdra_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to CobrancaSituacaoTipo -->
+  <many-to-one class="gcom.cobranca.CobrancaSituacaoTipo"
+   name="cobrancaSituacaoTipo" not-null="true">
+   <column name="cbsp_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to CobrancaSituacao -->
+  <many-to-one class="gcom.cobranca.CobrancaSituacao"
+   name="cobrancaSituacao" not-null="true">
+   <column name="cbst_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PavimentoRua -->
+  <many-to-one class="gcom.cadastro.imovel.PavimentoRua"
+   name="pavimentoRua" not-null="true">
+   <column name="prua_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to EnderecoImovelReferencia -->
+  <many-to-one class="gcom.cadastro.endereco.EnderecoReferencia"
+   name="enderecoReferencia" not-null="true">
+   <column name="edrf_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to CadastroOcorrencia -->
+  <many-to-one class="gcom.cadastro.imovel.CadastroOcorrencia"
+   name="cadastroOcorrencia" not-null="true">
+   <column name="cocr_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PocoTipo -->
+  <many-to-one class="gcom.cadastro.imovel.PocoTipo" name="pocoTipo" not-null="true">
+   <column name="poco_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one asso
+
+
+ciation to LigacaoAguaSituacao -->
+  <many-to-one
+   class="gcom.atendimentopublico.ligacaoagua.LigacaoAguaSituacao"
+   name="ligacaoAguaSituacao" not-null="true">
+   <column name="last_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Despejo -->
+  <many-to-one class="gcom.cadastro.imovel.Despejo" name="despejo" not-null="true">
+   <column name="depj_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to FaturamentoSituacaoTipo -->
+  <many-to-one class="gcom.faturamento.FaturamentoSituacaoTipo"
+   name="faturamentoSituacaoTipo" not-null="true">
+   <column name="ftst_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to FonteAbastecimento -->
+  <many-to-one class="gcom.cadastro.imovel.FonteAbastecimento"
+   name="fonteAbastecimento" not-null="true">
+   <column name="ftab_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to PiscinaVolumeFaixa -->
+  <many-to-one class="gcom.cadastro.imovel.PiscinaVolumeFaixa"
+   name="piscinaVolumeFaixa" not-null="true">
+   <column name="pisc_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.faturamento.consumotarifa.ConsumoTarifa"
+   name="consumoTarifa" not-null="true">
+   <column name="cstf_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ImovelTipoHabitacao -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelTipoHabitacao" name="imovelTipoHabitacao">
+   <column name="imha_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ImovelTipoPropriedade -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelTipoPropriedade" name="imovelTipoPropriedade">
+   <column name="impr_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ImovelTipoConstrucao -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelTipoConstrucao" name="imovelTipoConstrucao">
+   <column name="imco_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ImovelTipoCobertura -->
+  <many-to-one class="gcom.cadastro.imovel.ImovelTipoCobertura" name="imovelTipoCobertura">
+   <column name="imcb_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to FaturamentoTipo -->
+  <many-to-one class="gcom.faturamento.FaturamentoTipo"
+   name="faturamentoTipo" not-null="true">
+   <column name="fttp_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to FaturamentoSituacaoMotivo -->
+  <many-to-one class="gcom.faturamento.FaturamentoSituacaoMotivo"
+   name="faturamentoSituacaoMotivo" not-null="true">
+   <column name="ftsm_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to SituacaoAtualizacaoCadastral -->
+  <many-to-one class="gcom.cadastro.SituacaoAtualizacaoCadastral"
+   name="situacaoAtualizacaoCadastral" not-null="true">
+   <column name="siac_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to QuadraFace -->
+  <many-to-one class="gcom.cadastro.localidade.QuadraFace"
+   name="quadraFace" not-null="false">
+   <column name="qdfa_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.endereco.Logradouro"
+   name="perimetroInicial" not-null="false">
+   <column name="logr_idinicioperimetro"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.endereco.Logradouro"
+   name="perimetroFinal" not-null="false">
+   <column name="logr_idfimperimetro"/>
+  </many-to-one>
+  
+  
+  <many-to-one class="gcom.operacional.SistemaAbastecimento"
+   name="sistemaAbastecimento" not-null="false">
+   <column name="sabs_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.operacional.SubsistemaAbastecimento"
+   name="subsistemaAbastecimento" not-null="false">
+   <column name="sbab_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.operacional.SetorAbastecimento"
+   name="setorAbastecimento" not-null="false">
+   <column name="stab_id"/>
+  </many-to-one>
+  
+  <many-to-one class="gcom.operacional.DistritoOperacional"
+   name="distritoOperacional" not-null="false">
+   <column name="diop_id"/>
+  </many-to-one>
+  
+  <many-to-one class="gcom.operacional.AreaOperacional"
+   name="areaOperacional" not-null="false">
+   <column name="arop_id"/>
+  </many-to-one>
+  
+  <many-to-one class="gcom.operacional.ZonaPressao"
+   name="zonaPressao" not-null="false">
+   <column name="znpr_id"/>
+  </many-to-one>
+  
+  <!-- bi-directional many-to-one association to Consumo Historico -->
+  <set inverse="true" lazy="true" name="consumosHistoricos" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.micromedicao.consumo.ConsumoHistorico"/>
+  </set>
+  <!-- bi-directional many-to-one association to Consumo Historico -->
+  <set inverse="true" lazy="true" name="contas" sort="unsorted">
+   <key>
+    <column name="imov_id"/>
+   </key>
+   <one-to-many class="gcom.faturamento.conta.Conta"/>
+  </set>
+ </class>
+</hibernate-mapping>

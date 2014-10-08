@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.PesquisaSatisfacaoLoja" table="atendimentopublico.pesquisa_satisfacao_loja">
+		<id name="id" type="java.lang.Integer" column="pqsl_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_pesquisa_satisfacao_loja</param>
+			</generator>
+		</id>
+		<property name="nomeCliente" type="java.lang.String" column="pqsl_nmcliente" not-null="false" length="50"/>
+		<property name="codigoDDD" type="java.lang.Short" column="pqsl_cdddd" not-null="false" length="2" />
+		<property name="telefone" type="java.lang.String" column="pqsl_nnfone" not-null="false" length="9" />
+		<property name="email" type="java.lang.String" column="pqsl_dsemail" not-null="false" length="40" />
+		<property name="dataAtendimento" type="java.sql.Timestamp" column="pqsl_tmatendimento" not-null="false" length="8"/>
+		<property name="avaliacaoAtendente" type="java.lang.Short" column="pqsl_cdavaliacaoatendente" not-null="true" length="2" />
+		<property name="agilidadeAtendimento" type="java.lang.Short" column="pqsl_cdagilidadeatendimento" not-null="true" length="2" />
+		<property name="tempoEspera" type="java.lang.Short" column="pqsl_cdtempoespera" not-null="true" length="2" />
+		<property name="confortoLimpeza" type="java.lang.Short" column="pqsl_cdconfortolimpeza" not-null="true" length="2" />
+		<property name="localizacao" type="java.lang.Short" column="pqsl_cdlocalizacao" not-null="true" length="2" />
+		<property name="seguranca" type="java.lang.Short" column="pqsl_cdseguranca" not-null="true" length="2" />
+		<property name="estacionamento" type="java.lang.Short" column="pqsl_cdestacionamento" not-null="true" length="2" />
+		<property name="comentarios" type="java.lang.String" column="pqsl_dscomentarios" not-null="false" length="450" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pqsl_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to LogradouroBairro -->
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="false">
+			<column name="imov_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to LogradouroBairro -->
+		<many-to-one name="unidadeOrganizacional" class="gcom.cadastro.unidade.UnidadeOrganizacional" not-null="false">
+			<column name="unid_id"/>
+		</many-to-one>
+	
+	</class>
+</hibernate-mapping>

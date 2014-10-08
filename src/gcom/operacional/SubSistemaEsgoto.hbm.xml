@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.operacional.SubSistemaEsgoto" table="operacional.subsistema_esgoto">
+		
+		<id name="id" type="java.lang.Integer" column="sseg_id">
+			<generator class="sequence">
+				<param name="sequence">operacional.seq_subsistema_esgoto</param>
+			</generator>
+		</id>
+		
+		<property name="descricao" type="java.lang.String" column="sseg_dssubsistema" not-null="true" length="50"/>
+		
+		<property name="descricaoAbreviada" type="java.lang.String" column="sseg_dsabreviado" not-null="false" length="6"/>
+		
+		<property name="indicadorUso" type="java.lang.Short" column="sseg_icuso" length="2"/>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="sseg_tmultimaalteracao" length="8"/>
+
+		<many-to-one name="sistemaEsgoto" class="gcom.operacional.SistemaEsgoto" not-null="true">
+			<column name="sesg_id"/>
+		</many-to-one>
+    
+	</class>
+</hibernate-mapping>

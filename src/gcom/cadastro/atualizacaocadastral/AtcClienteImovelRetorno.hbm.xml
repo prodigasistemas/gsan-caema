@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcClienteImovelRetorno" 
+    table="atc_cliente_imovel_retorno"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.AtcClienteImovelRetornoPK">
+        <key-property 
+            name="atcImoRetornoId" 
+            column="atc_imo_retorno_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+        <key-property 
+            name="atcCimId" 
+            column="atc_cim_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+    </composite-id>    
+
+    <property
+        name="atcCliId"
+        type="int"
+        column="atc_cli_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcImoId"
+        type="int"
+        column="atc_imo_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcRltId"
+        type="int"
+        column="atc_rlt_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcCimDataInicio"
+        type="java.lang.String"
+        column="atc_cim_data_inicio"
+        length="50"
+    />
+    <property
+        name="atcCimDataFim"
+        type="java.lang.String"
+        column="atc_cim_data_fim"
+        length="21"
+    />
+    <property
+        name="atcCimDesde"
+        type="java.sql.Date"
+        column="atc_cim_desde"
+        length="4"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

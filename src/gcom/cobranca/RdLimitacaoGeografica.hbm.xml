@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/ 
+-->
+	<class name="gcom.cobranca.RdLimitacaoGeografica" table="cobranca.rd_limitacao_geografica">
+		<id name="id" type="java.lang.Integer" column="rdlg_id">
+			<generator class="sequence">
+				<param name="sequence">cobranca.seq_rd_limitacao_geografica</param>
+			</generator>
+		</id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="rdlg_tmultimaalteracao" length="8" not-null="true"/>
+		<property name="dataVigenciaInicio" type="java.sql.Date" column="rdlg_dtvigenciainicio" length="8"/>
+		<property name="dataVigenciaFim" type="java.sql.Date" column="rdlg_dtvigenciafim" length="8"/>
+		<property name="dataLimiteVencimentoContaParcelar" type="java.sql.Date" column="rdlg_dtlimvenccontaparc" length="8"/>
+		<property name="dataLimiteVencimentoContaVista" type="java.sql.Date" column="rdlg_dtlimvenccontavista" length="8"/>
+
+		<!-- bi-directional many-to-one association to RdLimitacaoGeografica-->
+		<many-to-one name="resolucaoDiretoria" class="gcom.cobranca.ResolucaoDiretoria" not-null="true">
+			<column name="rdir_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to GerenciaRegional -->
+		<many-to-one name="gerenciaRegional" class="gcom.cadastro.localidade.GerenciaRegional" not-null="false">
+			<column name="greg_id"/>
+		</many-to-one>
+		
+		<many-to-one name="unidadeNegocio" class="gcom.cadastro.localidade.UnidadeNegocio" not-null="false">
+			<column name="uneg_id"/>
+		</many-to-one>
+	
+	</class>
+</hibernate-mapping>
+

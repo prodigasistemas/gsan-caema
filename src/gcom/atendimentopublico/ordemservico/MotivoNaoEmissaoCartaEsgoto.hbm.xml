@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.atendimentopublico.ordemservico.MotivoNaoEmissaoCartaEsgoto" table="atendimentopublico.mtvo_nao_emiss_carta_esg">
+		<id name="id" type="java.lang.Integer" column="mnec_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_mtvo_nao_emiss_carta_esg</param>
+			</generator>
+		</id>
+		
+		<property name="descricao"  type="java.lang.String" column="mnec_dsmotivo" not-null="true" length="60"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="mnec_tmultimaalteracao" length="6"/>
+		
+	</class>
+</hibernate-mapping>

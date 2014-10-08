@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcClienteImovel" 
+    table="atc_cliente_imovel"
+>
+
+
+	<id name="atcCimId" type="java.lang.Integer" column="atc_cim_id">
+		<generator class="sequence">
+			<param name="sequence">public.atc_cliente_imovel_atc_cim_id_seq</param>
+		</generator>
+	</id>
+
+    <property
+        name="atcCliId"
+        type="int"
+        column="atc_cli_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcImoId"
+        type="int"
+        column="atc_imo_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcRltId"
+        type="int"
+        column="atc_rlt_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcCimDataInicio"
+        type="java.lang.String"
+        column="atc_cim_data_inicio"
+        length="50"
+    />
+    <property
+        name="atcCimDataFim"
+        type="java.lang.String"
+        column="atc_cim_data_fim"
+        length="21"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

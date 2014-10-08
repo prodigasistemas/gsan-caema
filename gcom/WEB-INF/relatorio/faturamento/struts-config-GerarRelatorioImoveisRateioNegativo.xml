@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+
+	<form-beans>
+		<form-bean name="GerarRelatorioImoveisRateioNegativoActionForm"
+			type="gcom.gui.relatorio.faturamento.GerarRelatorioImoveisRateioNegativoActionForm" />
+	</form-beans>
+
+	<!--******************* PAGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+		
+		<action name="GerarRelatorioImoveisRateioNegativoActionForm"
+			type="gcom.gui.relatorio.faturamento.ExibirGerarRelatorioImoveisRateioNegativoAction"
+			validate="true" 
+			path="/exibirGerarRelatorioImoveisRateioNegativoAction">
+			
+			<forward name="exibirGerarRelatorioImoveisRateioNegativo" 
+				path="/jsp/relatorio/faturamento/relatorio_imoveis_rateio_negativo_gerar.jsp" />
+				
+		</action>
+		
+		<action name="GerarRelatorioImoveisRateioNegativoActionForm"
+			type="gcom.gui.relatorio.faturamento.GerarRelatorioImoveisRateioNegativoAction"
+			validate="true" 
+			path="/gerarRelatorioImoveisRateioNegativoAction" />
+		
+	</action-mappings>
+
+</struts-config>

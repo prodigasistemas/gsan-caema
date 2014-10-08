@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/05/2013 16:54:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="gcom.faturamento.consumotarifa.ConsumoTarifaPpp" table="faturamento.consumo_tarifa_ppp">
+        <id name="id" type="java.lang.Integer" column="cstf_id"></id>    	
+    	<property name="descricao" type="java.lang.String" column="ctpp_dsconsumotarifa" length="30"/>
+		<property name="indicadorUso" type="java.lang.Short" column="ctpp_icuso" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ctpp_tmultimaalteracao" length="8"/>
+		<property name="indicadorContratoDemanda" type="java.lang.Short" column="ctpp_iccontratodemanda" length="2"/>
+		
+		<!-- associations -->
+		<!-- bi-directional one-to-many association to ConsumoTarifaVigencia -->
+		<set name="consumoTarifaVigencias" lazy="true" inverse="true">
+			<key>
+				<column name="cstf_id"/>
+			</key>
+			<one-to-many class="gcom.faturamento.consumotarifa.ConsumoTarifaVigenPpp"/>
+		</set>
+		<!-- associations -->
+		<!-- bi-directional many-to-one association to LigacaoAguaPerfil -->
+		<many-to-one name="ligacaoAguaPerfil" class="gcom.atendimentopublico.ligacaoagua.LigacaoAguaPerfil" not-null="false">
+			<column name="lapf_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to TarifaTipoCalculo -->
+		<many-to-one name="tarifaTipoCalculo" class="gcom.faturamento.TarifaTipoCalculo" not-null="true">
+			<column name="ttpc_id"/>
+		</many-to-one>
+		<!-- bi-directional one-to-many association to ContaHistorico -->
+		<!--
+    <set
+        name="contaHistoricos"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="cstf_id" />
+        </key>
+        <one-to-many
+            class="mapeamentohibernate.ContaHistorico"
+        />
+    </set> -->
+		<!-- bi-directional one-to-many association to Conta -->
+		<!--
+    <set
+        name="contas"
+        lazy="true"
+        inverse="true"
+    >
+        <key>
+            <column name="cstf_id" />
+        </key>
+        <one-to-many
+            class="mapeamentohibernate.Conta"
+        />
+    </set> -->    
+    </class>
+</hibernate-mapping>

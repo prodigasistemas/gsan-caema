@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="EfetuarDigitacaoDadosAtualizacaoCadastralActionForm"
+			type="gcom.gui.cadastro.atualizacaocadastral.EfetuarDigitacaoDadosAtualizacaoCadastralActionForm" />
+
+		<form-bean name="EfetuarDigitacaoDadosAtualizacaoCadastralImovelActionForm"
+			type="gcom.gui.cadastro.atualizacaocadastral.EfetuarDigitacaoDadosAtualizacaoCadastralImovelActionForm" />
+
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+		
+		<action name="EfetuarDigitacaoDadosAtualizacaoCadastralActionForm"  
+			type="gcom.gui.cadastro.atualizacaocadastral.ExibirEfetuarDigitacaoDadosAtualizacaoCadastralAction" 
+			validate="true"
+			scope="session"
+			path="/exibirEfetuarDigitacaoDadosAtualizacaoCadastralAction">
+			
+			<forward name="exibirEfetuarDigitacaoDadosAtualizacaoCadastral"
+			path="/jsp/cadastro/atualizacaocadastral/digitacao_dados_atualizacao_cadatral_capa_lote.jsp" />
+			
+		</action>
+		
+		<action name="EfetuarDigitacaoDadosAtualizacaoCadastralImovelActionForm"  
+			type="gcom.gui.cadastro.atualizacaocadastral.ExibirEfetuarDigitacaoDadosAtualizacaoCadastralImovelAction" 
+			validate="true"
+			scope="session"
+			path="/exibirEfetuarDigitacaoDadosAtualizacaoCadastralImovelAction">
+			
+			<forward name="exibirEfetuarDigitacaoDadosAtualizacaoCadastralImovel"
+			path="/jsp/cadastro/atualizacaocadastral/digitacao_dados_atualizacao_cadatral_imovel.jsp" />
+			
+		</action>
+		
+		<action name="EfetuarDigitacaoDadosAtualizacaoCadastralImovelActionForm"  
+			type="gcom.gui.cadastro.atualizacaocadastral.EfetuarDigitacaoDadosAtualizacaoCadastralImovelAction" 
+			validate="true"
+			scope="session"
+			path="/efetuarDigitacaoDadosAtualizacaoCadastralImovelAction">
+			
+			<forward name="exibirEfetuarDigitacaoDadosAtualizacaoCadastralImovel2"
+			path="/jsp/cadastro/atualizacaocadastral/digitacao_dados_atualizacao_cadatral_imovel.jsp" />
+			
+		</action>
+		
+
+	</action-mappings>
+</struts-config>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM NAME="page0"
+  PATH="/jsp/seguranca/acesso/alteracao_tipo_inserir.jsp"
+  SHAPE="240,34,0,0" SUBTYPE="jsp" TITLE="alteracao_tipo_inserir.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/inserirAlteracaoTipoAction.do" SUBTYPE="confirmed"
+   TARGET="action1" TITLE="/inserirAlteracaoTipoAction.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  ID="#exibirInserirMotivoNaoGeracaoCobrancaResultadoAction"
+  NAME="action0"
+  PATH="/exibirInserirMotivoNaoGeracaoCobrancaResultadoAction"
+  SHAPE="32,17,0,0"
+  TITLE="InserirMotivoNaoGeracaoCobrancaResultadoActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="inserirMotivoNaoGeracaoCobrancaResultado"
+   NAME="forward0"
+   PATH="/jsp/cobranca/cobrancaporresultado/motivo_nao_geracao_cobranca_resultado_inserir.jsp"
+   TARGET="page1" TITLE="inserirMotivoNaoGeracaoCobrancaResultado"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1"
+  PATH="/jsp/cobranca/cobrancaporresultado/motivo_nao_geracao_cobranca_resultado_inserir.jsp"
+  SHAPE="240,129,0,0" SUBTYPE="jsp"
+  TITLE="motivo_nao_geracao_cobranca_resultado_inserir.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/inserirMotivoNaoGeracaoCobrancaResultadoAction.do"
+   SUBTYPE="confirmed" TARGET="action2"
+   TITLE="/inserirMotivoNaoGeracaoCobrancaResultadoAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#inserirAlteracaoTipoAction" NAME="action1"
+  PATH="/inserirAlteracaoTipoAction" SHAPE="448,34,0,0"
+  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#inserirMotivoNaoGeracaoCobrancaResultadoAction"
+  NAME="action2" PATH="/inserirMotivoNaoGeracaoCobrancaResultadoAction"
+  SHAPE="32,241,0,0"
+  TITLE="InserirMotivoNaoGeracaoCobrancaResultadoActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="telaSucesso" NAME="forward0"
+   PATH="/jsp/util/sucesso.jsp" TARGET="page2" TITLE="telaSucesso"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/jsp/util/sucesso.jsp"
+  SHAPE="240,353,0,0" SUBTYPE="jsp" TITLE="sucesso.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="telaPrincipal"
+   SUBTYPE="confirmed" TARGET="page3" TITLE="telaPrincipal" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page3" PATH="telaPrincipal" SHAPE="448,353,0,0"
+  SUBTYPE="tile" TITLE="telaPrincipal" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4"
+  PATH="/jsp/cobranca/cobrancaporresultado/motivo_nao_geracao_cob_resultado_filtrar.jsp"
+  SHAPE="240,465,0,0" SUBTYPE="jsp"
+  TITLE="motivo_nao_geracao_cob_resultado_filtrar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/filtrarMotivoNaoGeracaoCobrancaResultadoAction.do"
+   SUBTYPE="confirmed" TARGET="action3"
+   TITLE="/filtrarMotivoNaoGeracaoCobrancaResultadoAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#filtrarMotivoNaoGeracaoCobrancaResultadoAction"
+  NAME="action3" PATH="/filtrarMotivoNaoGeracaoCobrancaResultadoAction"
+  SHAPE="448,577,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+</PROCESS>

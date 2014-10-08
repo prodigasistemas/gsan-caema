@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">        
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+	<class name="gcom.atendimentopublico.ordemservico.ProgramacaoDiasEspeciais" table="atendimentopublico.progr_dias_especiais">
+		<id name="id" type="java.lang.Integer" column="pgde_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_progr_dias_especiais</param>
+			</generator>
+		</id>
+
+    <property
+        name="dataProgramacao"
+        type="java.sql.Date"
+        column="pgde_dtprogramacao"
+        not-null="true"
+        length="13"
+    />
+    
+     <property
+        name="dataUltimaAlteracao"
+        type="java.sql.Timestamp"
+        column="pgde_tmultimaalteracao"
+        not-null="true"
+        length="29"
+    />
+       
+    <!-- bi-directional many-to-one association to Equipe -->
+    <many-to-one
+        name="equipe"
+        class="gcom.atendimentopublico.ordemservico.Equipe"
+        not-null="true"
+    >
+        <column name="eqpe_id" />
+    </many-to-one>
+    
+     <many-to-one
+        name="empresa"
+        class="gcom.cadastro.empresa.Empresa"
+        not-null="true"
+    >
+        <column name="empr_id" />
+    </many-to-one>
+   
+    
+
+</class>
+</hibernate-mapping>

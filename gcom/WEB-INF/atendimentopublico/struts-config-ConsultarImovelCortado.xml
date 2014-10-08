@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="FiltrarImovelCortadoActionForm"
+			type="gcom.gui.atendimentopublico.FiltrarImovelCortadoActionForm" />
+
+
+	</form-beans>
+
+	<!--******************* PaGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="FiltrarImovelCortadoActionForm"  
+			type="gcom.gui.atendimentopublico.ExibirConsultarImovelCortadoAction" 
+			validate="false"
+			scope="session"
+			path="/exibirConsultarImovelCortadoAction">
+
+			<forward name="exibirConsultarImovelCortadoAction"
+			path="/jsp/atendimentopublico/imovel_cortado_consultar.jsp" />
+			
+		</action>
+		
+		
+		
+		<action name="FiltrarImovelCortadoActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.EmitirOrdemFiscalizacaoImovelCortadoAction"
+			validate="false" scope="session"
+			path="/emitirOrdemFiscalizacaoImovelCortadoAction">
+		</action>
+		
+		<action name="FiltrarImovelCortadoActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.GerarRelatorioImoveisCortadosAction"
+			validate="false" scope="session"
+			path="/gerarRelatorioImoveisCortadosAction">
+		</action>
+		
+		<action name="FiltrarImovelCortadoActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.GerarOrdemServicoFiscalizacaoImoveisCortadosAction"
+			validate="false" scope="session"
+			path="/gerarOrdemServicoFiscalizacaoImoveisCortadosAction">
+		</action>
+		
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcSubcategoriaImovelRetorno" 
+    table="atc_subcategoria_imovel_retorno"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.AtcSubcategoriaImovelRetornoPK">
+        <key-property 
+            name="atcImoRetornoId" 
+            column="atc_imo_retorno_id" 
+            type="java.lang.Integer"
+            length="4"
+        />
+        <key-property 
+            name="atcSciId" 
+            column="atc_sci_id" 
+            type="java.lang.Long"
+        />
+    </composite-id>    
+
+    <property
+        name="atcSubId"
+        type="int"
+        column="atc_sub_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcSciQtdEconomias"
+        type="int"
+        column="atc_sci_qtd_economias"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcImoId"
+        type="int"
+        column="atc_imo_id"
+        not-null="true"
+        length="4"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

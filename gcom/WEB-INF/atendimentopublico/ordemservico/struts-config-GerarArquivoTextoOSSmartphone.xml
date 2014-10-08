@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean 
+			name="GerarArquivoTextoOrdensServicoSmartphoneActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.GerarArquivoTextoOrdensServicoSmartphoneActionForm" /> 
+	</form-beans>
+	
+	<global-forwards />
+	
+	<action-mappings>
+		
+		<action 
+			name="GerarArquivoTextoOrdensServicoSmartphoneActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirGerarArquivoTextoOrdensServicoSmartphoneAction" 
+			validate="true"
+			scope="session"
+			path="/exibirGerarArquivoTextoOrdensServicoSmartphoneAction">
+			<forward 
+				name="exibirGerarArquivoTextoOrdensServicoSmartphone"
+				path="/jsp/atendimentopublico/ordemservico/ordem_servico_txt_gerar_smartphone.jsp" />
+		</action>
+		
+		<action name="GerarArquivoTextoOrdensServicoSmartphoneActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.GerarArquivoTextoOrdensServicoSmartphoneAction"
+			validate="true" scope="session"
+			path="/gerarArquivoTextoOrdensServicoSmartphoneAction" />
+			
+		<action name="GerarArquivoTextoOrdensServicoSmartphoneActionForm"
+			type="gcom.gui.mobile.GerarRelatorioQuantitativoImoveisTipoServicoAction"
+			validate="true" scope="session"
+			path="/gerarRelatorioQuantitativoImoveisTipoServicoAction" />	
+		
+	</action-mappings>
+	<message-resources null="false" parameter="gcom.properties.application" />		
+</struts-config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.faturamento.contratodemanda.ContratoDemandaImovelComercialIndustrial" table="faturamento.contrato_dem_com_ind_imo">
+		<composite-id name="comp_id" class="gcom.faturamento.contratodemanda.ContratoDemandaImovelComercialIndustrialPK">
+			<!-- bi-directional many-to-one association to Imovel -->
+			<key-many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel">
+				<column name="imov_id"/>
+			</key-many-to-one>
+			
+			<!-- bi-directional many-to-one association to Subcategoria -->
+			<key-many-to-one name="contratoDemandaComercialIndustrial" class="gcom.faturamento.contratodemanda.ContratoDemandaComercialIndustrial">
+				<column name="ctdm_id"/>
+			</key-many-to-one>
+		</composite-id>
+		
+		<property name="volumeInformadoEsgotoRateado" type="java.lang.Integer" column="ctdi_nnvolumeminesgotorateado" not-null="false"/>
+		<property name="indicadorPrincipal" type="java.lang.Short" column="ctdi_icprincipalimovel" not-null="true" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ctdi_tmultimaalteracao" length="8" not-null="true" />
+		<property name="dataContratoEncerrado" type="java.sql.Date" column="ctdi_dtcontratoencerramento" not-null="false" length="4"/>
+		
+	</class>
+</hibernate-mapping>

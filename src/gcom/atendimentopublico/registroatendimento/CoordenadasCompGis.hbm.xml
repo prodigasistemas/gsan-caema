@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="gcom.atendimentopublico.registroatendimento.CoordenadasCompGis" table="atendimentopublico.coordenadas_compgis">
+		<id name="id" type="java.lang.Integer" column="cocg_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_coordenadas_compgis</param>
+			</generator>
+		</id>
+		<property name="coordenadaX" type="java.math.BigDecimal" column="cocg_coordenadax" not-null="true" length="28"/>
+		<property name="coordenadaY" type="java.math.BigDecimal" column="cocg_coordenaday" length="28"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="cocg_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<many-to-one name="usuario" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+			<column name="usur_id"></column>
+		</many-to-one>
+		
+		<many-to-one name="logradouroBairro" class="gcom.cadastro.endereco.LogradouroBairro" >
+			<column name="lgbr_id"></column>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

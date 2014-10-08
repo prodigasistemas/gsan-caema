@@ -1,0 +1,672 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- Created by the Middlegen Hibernate plugin http://boss.bekk.no/boss/middlegen/ 
+		http://hibernate.sourceforge.net/ -->
+ <class name="gcom.cadastro.sistemaparametro.SistemaParametro" table="cadastro.sistema_parametros">
+  <id column="parm_id" name="parmId" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">cadastro.seq_sistema_parametros</param>
+   </generator>
+  </id>
+  <property column="parm_icbloquearfunusuario" generated="never"
+   lazy="false" name="indicadorBloquearFunUsuario" not-null="true" type="short"/>
+  <property column="parm_amreferenciafaturamento" generated="never"
+   lazy="false" length="4" name="anoMesFaturamento" type="int"/>
+  <property column="parm_amreferenciaarrecadacao" generated="never"
+   lazy="false" length="4" name="anoMesArrecadacao" type="int"/>
+  <property column="parm_nmestado" generated="never" lazy="false"
+   length="25" name="nomeEstado" type="java.lang.String"/>
+  <property column="parm_nmempresa" generated="never" lazy="false"
+   length="45" name="nomeEmpresa" type="java.lang.String"/>
+  <property column="parm_nmabreviadoempresa" generated="never"
+   lazy="false" length="10" name="nomeAbreviadoEmpresa" type="java.lang.String"/>
+  <property column="parm_nncnpjempresa" generated="never" lazy="false"
+   length="14" name="cnpjEmpresa" type="java.lang.String"/>
+  <property column="parm_nnimovel" generated="never" lazy="false"
+   length="5" name="numeroImovel" type="java.lang.String"/>
+  <property column="parm_dscomplementoendereco" generated="never"
+   lazy="false" length="25" name="complementoEndereco" type="java.lang.String"/>
+  <property column="parm_nnfone" generated="never" lazy="false"
+   length="9" name="numeroTelefone" type="java.lang.String"/>
+  <property column="parm_nnfoneramal" generated="never" lazy="false"
+   length="4" name="numeroRamal" type="java.lang.String"/>
+  <property column="parm_nnfax" generated="never" lazy="false"
+   length="9" name="numeroFax" type="java.lang.String"/>
+  <property column="parm_dsemail" generated="never" lazy="false"
+   length="40" name="descricaoEmail" type="java.lang.String"/>
+  <property column="parm_nnconsumograndeusuario" generated="never"
+   lazy="false" length="4" name="menorConsumoGrandeUsuario" type="int"/>
+  <property column="parm_nnareamaximatarifasocial" generated="never"
+   lazy="false" length="4" name="areaMaximaTarifaSocial" type="int"/>
+  <property column="parm_nnconsenergiamaxtarsoc" generated="never"
+   lazy="false" length="4" name="consumoEnergiaMaximoTarifaSocial" type="int"/>
+  <property column="parm_vlminimoemissaoconta" generated="never"
+   lazy="false" length="13" name="valorMinimoEmissaoConta" type="java.math.BigDecimal"/>
+  <property column="parm_vlsalariominimo" generated="never" lazy="false"
+   length="13" name="valorSalarioMinimo" type="java.math.BigDecimal"/>
+  <property column="parm_qteconomiasgrandeusuario" generated="never"
+   lazy="false" length="2" name="menorEconomiasGrandeUsuario" type="short"/>
+  <property column="parm_nnmesescalcmediacons" generated="never"
+   lazy="false" length="2" name="mesesMediaConsumo" type="java.lang.Short"/>
+  <property column="parm_icgeracaofaixafalsa" generated="never"
+   lazy="false" length="2" name="indicadorFaixaFalsa" type="java.lang.Short"/>
+  <property column="parm_pcfaixafalsa" generated="never" lazy="false"
+   length="5" name="percentualFaixaFalsa" type="java.math.BigDecimal"/>
+  <property column="parm_icusopercentualfaixafalsa" generated="never"
+   lazy="false" length="2" name="indicadorUsoFaixaFalsa" type="java.lang.Short"/>
+  <property column="parm_icgeracndcomefeiposit" generated="never"
+   lazy="false" length="2"
+   name="indicadorCertidaoNegativaEfeitoPositivo" type="java.lang.Short"/>
+  <property column="parm_icgerfisclzleit" generated="never" lazy="false"
+   length="2" name="indicadorUsoFiscalizadorLeitura" type="java.lang.Short"/>
+  <property column="parm_pcfiscalizacaoleitura" generated="never"
+   lazy="false" length="5" name="percentualFiscalizacaoLeitura" type="java.math.BigDecimal"/>
+  <property column="parm_icusopercentualfisclzleit" generated="never"
+   lazy="false" length="2" name="indicadorPercentualFiscalizacaoLeitura" type="java.lang.Short"/>
+  <property column="parm_nnconsrateioincrementomax" generated="never"
+   lazy="false" length="4" name="incrementoMaximoConsumoRateio" type="java.lang.Integer"/>
+  <property column="parm_nnconsrateiodecrementomax" generated="never"
+   lazy="false" length="4" name="decrementoMaximoConsumoRateio" type="java.lang.Integer"/>
+  <property column="parm_nnmindiasemsvcmto" generated="never"
+   lazy="false" length="2" name="numeroMinimoDiasEmissaoVencimento" type="java.lang.Short"/>
+  <property column="parm_nndiasadicionaiscorreios" generated="never"
+   lazy="false" length="2" name="numeroDiasAdicionaisCorreios" type="java.lang.Short"/>
+  <property column="parm_nnmesesvalidadeconta" generated="never"
+   lazy="false" length="2" name="numeroMesesValidadeConta" type="java.lang.Short"/>
+  <property column="parm_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+  <property column="parm_nnmaxparcelasfinanc" generated="never"
+   lazy="false" length="2" name="numeroMaximoParcelasFinanciamento" type="java.lang.Short"/>
+  <property column="parm_nnmaximoparcelredito" generated="never"
+   lazy="false" length="2" name="numeroMaximoParcelaCredito" type="java.lang.Short"/>
+  <property column="parm_pctaxajurosfinanciamento" generated="never"
+   lazy="false" length="5" name="percentualTaxaJurosFinanciamento" type="java.math.BigDecimal"/>
+  <property column="parm_pcmaximoabatimento" generated="never"
+   lazy="false" length="5" name="percentualMaximoAbatimento" type="java.math.BigDecimal"/>
+  <property column="parm_pcfinancentmin" generated="never" lazy="false"
+   length="5" name="percentualFinanciamentoEntradaMinima" type="java.math.BigDecimal"/>
+  <property column="parm_nnmesesminaltvcmto" generated="never"
+   lazy="false" length="2" name="numeroMesesMinimoAlteracaoVencimento" type="java.lang.Short"/>
+  <property column="parm_nndiasexpiracaoacesso" generated="never"
+   lazy="false" length="2" name="numeroDiasExpiracaoAcesso" type="java.lang.Short"/>
+  <property column="parm_nndiasmsgexpiracao" generated="never"
+   lazy="false" length="2" name="numeroDiasMensagemExpiracao" type="java.lang.Short"/>
+  <property column="parm_nnmaximologinfalho" generated="never"
+   lazy="false" length="2" name="numeroMaximoLoginFalho" type="java.lang.Short"/>
+  <property column="parm_nnlayoutfebraban" generated="never"
+   lazy="false" length="2" name="numeroLayoutFebraban" type="java.lang.Short"/>
+  <property column="parm_nndiasvenctocobranca" generated="never"
+   lazy="false" length="2" name="numeroDiasVencimentoCobranca"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_cdempresafebraban" generated="never"
+   lazy="false" length="2" name="codigoEmpresaFebraban" type="java.lang.Short"/>
+  <property column="parm_nnmaximofavorito" generated="never"
+   lazy="false" length="4" name="numeroMaximoFavorito" type="int"/>
+  <property column="parm_icsugestaotramite" generated="never"
+   lazy="false" length="2" name="indicadorSugestaoTramite" type="java.lang.Short"/>
+  <property column="parm_nndiasreativacao" generated="never"
+   lazy="false" length="2" name="diasReativacao" type="java.lang.Short"/>
+  <property column="parm_nnmaximodiasaltdadosos" generated="never"
+   lazy="false" length="4" name="diasMaximoAlterarOS" type="java.lang.Integer"/>
+  <property column="parm_nmimagemlogomarca" generated="never"
+   lazy="false" length="30" name="imagemLogomarca" type="java.lang.String"/>
+  <property column="parm_nmimagemrelatorio" generated="never"
+   lazy="false" length="30" name="imagemRelatorio" type="java.lang.String"/>
+  <property column="parm_nmimagemconta" generated="never" lazy="false"
+   length="30" name="imagemConta" type="java.lang.String"/>
+  <property column="parm_pcmediaindice" generated="never" lazy="false"
+   length="5" name="percentualMediaIndice" type="java.math.BigDecimal"/>
+  <property column="parm_idultimoramanual" generated="never"
+   lazy="false" length="4" name="ultimoRAManual" not-null="true" type="java.lang.Integer"/>
+  <property column="parm_dstitulopagina" generated="never" lazy="false"
+   length="40" name="tituloPagina" not-null="true" type="java.lang.String"/>
+  <property column="parm_dsmensagemsistema" generated="never"
+   lazy="false" length="200" name="mensagemSistema" type="java.lang.String"/>
+  <property column="parm_nnmaximomesessancoes" generated="never"
+   lazy="false" length="2" name="numeroMaximoMesesSancoes" type="java.lang.Short"/>
+  <property column="parm_ipservidorsmtp" generated="never" lazy="false"
+   length="15" name="ipServidorSmtp" not-null="true" type="java.lang.String"/>
+  <property column="parm_ipservidormodulogerencial" generated="never"
+   lazy="false" length="30" name="ipServidorModuloGerencial" type="java.lang.String"/>
+  <property column="parm_pctoleranciarateio" generated="never"
+   lazy="false" length="3" name="percentualToleranciaRateio" type="java.math.BigDecimal"/>
+  <property column="parm_dsemailresponsavel" generated="never"
+   lazy="false" length="80" name="dsEmailResponsavel" not-null="true" type="java.lang.String"/>
+  <property column="parm_vlsegundavia" generated="never" lazy="false"
+   length="13" name="valorSegundaVia" type="java.math.BigDecimal"/>
+  <property column="parm_nncontratoprestacaoserv" generated="never"
+   lazy="false" length="20" name="numeroContratoPrestacaoServico" type="java.lang.String"/>
+  <property column="parm_armovarreccritica" generated="never"
+   lazy="false" length="65" name="pastaMovimentoArrecadadoresCritica" type="java.lang.String"/>
+  <property column="parm_armovarrecprocessar" generated="never"
+   lazy="false" length="65" name="pastaMovimentoArrecadadoresProcessar" type="java.lang.String"/>
+  <property column="parm_armovarrecprocessados" generated="never"
+   lazy="false" length="65"
+   name="pastaMovimentoArrecadadoresProcessados" type="java.lang.String"/>
+  <property column="parm_icatualizacaotarifaria" generated="never"
+   lazy="false" length="4" name="indicadorAtualizacaoTarifaria"
+   not-null="true" type="short"/>
+  <property column="parm_iccobrartaxaextrato" generated="never"
+   lazy="false" length="4" name="indicadorCobrarTaxaExtrato"
+   not-null="true" type="short"/>
+  <property column="parm_amatualizacaotarifaria" generated="never"
+   lazy="false" length="4" name="anoMesAtualizacaoTarifaria" type="java.lang.Integer"/>
+  <property column="parm_icroteiroempresa" generated="never"
+   lazy="false" length="2" name="indicadorRoteiroEmpresa" type="java.lang.Short"/>
+  <property column="parm_icfaturamentoantecipado" generated="never"
+   lazy="false" length="2" name="indicadorFaturamentoAntecipado"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_tmdadosdiariosarrecadacao" generated="never"
+   lazy="false" length="8" name="dataHoraDadosDiariosArrecadacao" type="java.sql.Timestamp"/>
+  <property column="parm_tmresumoacoescobranca" generated="never"
+   lazy="false" length="8" name="dataHoraResumoAcoesCobranca" type="java.sql.Timestamp"/>
+  <property column="parm_cdperiodicidadenegat" generated="never"
+   lazy="false" length="2" name="codigoPeriodicidadeNegativacao" type="java.lang.Short"/>
+  <property column="parm_nmsiteempresa" generated="never" lazy="false"
+   length="150" name="nomeSiteEmpresa" type="java.lang.String"/>
+  <property column="parm_nn0800empresa" generated="never" lazy="false"
+   length="12" name="numero0800Empresa" type="java.lang.String"/>
+  <property column="parm_nndiascalculoacrescimos" generated="never"
+   lazy="false" length="2" name="numeroDiasCalculoAcrescimos"
+   not-null="true" type="short"/>
+  <property column="parm_nnmesescalculocorrecao" generated="never"
+   lazy="false" length="2" name="numeroMesesCalculoCorrecao" type="java.lang.Short"/>
+  <property column="parm_nninscricaoestadual" generated="never"
+   lazy="false" length="20" name="inscricaoEstadual" type="java.lang.String"/>
+  <property column="parm_nninscricaomunicipal" generated="never"
+   lazy="false" length="20" name="inscricaoMunicipal" type="java.lang.String"/>
+  <property column="parm_ictarifacategoria" generated="never"
+   lazy="false" length="2" name="indicadorTarifaCategoria"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnmesesmaximocalculomedia" generated="never"
+   lazy="false" length="2" name="numeroMesesMaximoCalculoMedia"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasencmtordemserv" generated="never"
+   lazy="false" length="2" name="numeroDiasEncerramentoOrdemServico"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasencmtosseletiva" generated="never"
+   lazy="false" length="2" name="numeroDiasEncerramentoOSSeletiva"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasaltvcmtoposterior" generated="never"
+   lazy="false" length="2" name="numeroDiasAlteracaoVencimentoPosterior"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icloginunico" generated="never" lazy="false"
+   length="2" name="indicadorLoginUnico" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icretificacaovalormenor" generated="never"
+   lazy="false" length="2" name="indicadorRetificacaoValorMenor"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_iclimitealtvcmto" generated="never"
+   lazy="false" length="2" name="indicadorLimiteAlteracaoVencimento"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_iccalculavencimento" generated="never"
+   lazy="false" length="2" name="indicadorCalculaVencimento"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnexecresumonegat" generated="never"
+   lazy="false" length="4" name="numeroExecucaoResumoNegativacao"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_icparcelamentoconfirmado" generated="never"
+   lazy="false" length="2" name="indicadorParcelamentoConfirmado"
+   not-null="true" type="short"/>
+  <property column="parm_ictransferenciacomdebito" generated="never"
+   lazy="false" length="2" name="indicadorTransferenciaComDebito"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_iccontrolaautosinfracao" generated="never"
+   lazy="false" length="2" name="indicadorControlaAutoInfracao"
+   not-null="true" type="short"/>
+  <property column="parm_nndiasvalidadeextrato" generated="never"
+   lazy="false" length="2" name="numeroDiasValidadeExtrato"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasvalidadeextpermesp" generated="never"
+   lazy="false" length="2"
+   name="numeroDiasValidadeExtratoPermissaoEspecial" type="java.lang.Short"/>
+  <property column="parm_nndiasvenctodebgercnd" generated="never"
+   lazy="false" length="2"
+   name="numeroDiasVencimentoDebitoGeracaoCertidaoNegativaDebitos" type="java.lang.Short"/>
+  <property column="parm_icexibemsgnaorecpagmt" generated="never"
+   lazy="false" length="2"
+   name="indicadorExibeMensagemNaoReceberPagamento" not-null="true" type="java.lang.Short"/>
+  <property column="parm_iccontroletramitacaora" generated="never"
+   lazy="false" length="2" name="indicadorControleTramitacaoRA"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icdocumentovalido" generated="never"
+   lazy="false" length="2" name="indicadorDocumentoValido"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icnaomedidotarifa" generated="never"
+   lazy="false" length="2" name="indicadorNaoMedidoTarifa"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icdebacobvalidocertidao" generated="never"
+   lazy="false" length="2"
+   name="indicadorDebitoACobrarValidoCertidaoNegativa" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icusarota" generated="never" lazy="false"
+   length="2" name="indicadorUsaRota" not-null="true" type="java.lang.Short"/>
+  <property column="parm_iccalcprevradiasuteis" generated="never"
+   lazy="false" length="2" name="indicadorCalculoPrevisaoRADiasUteis"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasvariacaoconsumo" generated="never"
+   lazy="false" length="2" name="numeroDiasVariacaoConsumo"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icsupressao" generated="never" lazy="false"
+   length="2" name="indicadorSupressao" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icquadraface" generated="never" lazy="false"
+   length="2" name="indicadorQuadraFace" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icemsextnaconsulta" generated="never"
+   lazy="false" length="2" name="indicadorEmissaoExtratoNaConsulta"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasprazorecursoautoinf" generated="never"
+   lazy="false" length="4" name="numeroDiasPrazoRecursoAutoInfracao"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_icimprimeusuario2via" generated="never"
+   lazy="false" length="2" name="indicadorImprimeUsuarioSegundaVia" type="java.lang.Short"/>
+  <property column="parm_nndigitosquadra" generated="never" lazy="false"
+   length="2" name="numeroDigitosQuadra" not-null="true" type="short"/>
+  <property column="parm_nnmaxparcelasautoinf" generated="never"
+   lazy="false" length="8" name="numeroMaximoParcelasAutoInfracao"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_nnmaxmesescalcconsautoinf" generated="never"
+   lazy="false" length="8"
+   name="numeroMaximoMesesCalculoConsumoAutoInfracao" not-null="true" type="java.lang.Integer"/>
+  <property column="parm_qtmaxcontasretificadas" generated="never"
+   lazy="false" length="2" name="qtdMaxContasRetificadas"
+   not-null="true" type="int"/>
+  <property column="parm_urlhelp" generated="never" lazy="false"
+   length="60" name="urlhelp" type="java.lang.String"/>
+  <property column="parm_icautorizacaorelatorio" generated="never"
+   lazy="false" name="indicadorAutorizacaoRelatorio" not-null="true" type="java.lang.Short"/>
+  <property column="parm_pcbonussocial" generated="never" lazy="false"
+   length="5" name="percentualBonusSocial" type="java.math.BigDecimal"/>
+  <property column="parm_icdividaativa" generated="never" lazy="false"
+   name="indicadorDividaAtiva" not-null="true" type="java.lang.Short"/>
+  <property column="parm_nmcontrolador" generated="never" lazy="false"
+   length="20" name="nomeControlador" not-null="true" type="java.lang.String"/>
+  <property column="parm_dsdiasvcmtoalternativo" generated="never"
+   lazy="false" length="83" name="diasVencimentoAlternativo" type="java.lang.String"/>
+  <property column="parm_nnhorainicioprocesso" generated="never"
+   lazy="false" length="20" name="horaInicioProcesso" type="java.lang.Integer"/>
+  <property column="parm_nnintervalohorasprocesso" generated="never"
+   lazy="false" length="20" name="intervaloHorasProcesso" type="java.lang.Integer"/>
+  <property column="parm_icvalidarlocalzencmtos" generated="never"
+   lazy="false" length="2"
+   name="indicadorValidarLocalizacaoEncerramentoOS" type="java.lang.Short"/>
+  <property column="parm_icdiasexpiracaosenhagrupo" generated="never"
+   lazy="false" name="indicadorControleExpiracaoSenhaPorGrupo"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_icbloqueiosenhasantes" generated="never"
+   lazy="false" name="indicadorControleBloqueioSenhaAnterior"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_icsenhaforte" generated="never" lazy="false"
+   name="indicadorSenhaForte" not-null="true" type="java.lang.Integer"/>
+  <property column="parm_nmversaocelular" generated="never" lazy="false"
+   length="10" name="versaoCelular" type="java.lang.String"/>
+  <property column="parm_dsurl2viaconta" generated="never" lazy="false"
+   length="300" name="url2ViaConta" type="java.lang.String"/>
+  <property column="parm_nnmesesbatchimoveissup" generated="never"
+   lazy="false" name="numeroMesesPesquisaImoveisRamaisSuprimidos" type="java.lang.Integer"/>
+  <property column="parm_nnmodulodigitoverif" generated="never"
+   lazy="false" name="numeroModuloDigitoVerificador" type="java.lang.Short"/>
+  <property column="parm_nnanoquitacao" generated="never" lazy="false"
+   name="numeroAnoQuitacao" type="java.lang.Integer"/>
+  <property column="parm_iccontaparcelada" generated="never"
+   lazy="false" name="indicadorContaParcelada" not-null="true" type="java.lang.Short"/>
+  <property column="parm_iccobrancajudicial" generated="never"
+   lazy="false" name="indicadorCobrancaJudical" not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnmesesanteriores" generated="never"
+   lazy="false" name="numeroMesesAnterioresParaDeclaracaoQuitacao" type="java.lang.Integer"/>
+  <property column="parm_icvlmovarrec" generated="never" lazy="false"
+   name="indicadorValorMovimentoArrecadador" not-null="true" type="java.lang.Integer"/>
+  <property column="parm_nndiasvcmtoentparcmt" generated="never"
+   lazy="false" length="2"
+   name="numeroDiasVencimentoEntradaParcelamento" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqueiocontamobile" generated="never"
+   lazy="false" name="indicadorBloqueioContaMobile" not-null="true" type="java.lang.Short"/>
+  <property column="parm_dtimplantacaosistem" generated="never"
+   lazy="false" length="4" name="dataImplantacaoSistema" type="java.sql.Date"/>
+  <property column="parm_pcconvergenciarepav" generated="never"
+   lazy="false" length="5" name="percentualConvergenciaRepavimentacao" type="java.math.BigDecimal"/>
+  <property column="parm_nndiasrevcompermespecial" generated="never"
+   lazy="false" length="2" name="numeroDiasRevisaoComPermEspecial" type="java.lang.Integer"/>
+  <property column="parm_dsurlacessointernet" generated="never"
+   lazy="false" length="300" name="urlAcessoInternet" type="java.lang.String"/>
+  <property column="parm_icdocobrigatorio" generated="never"
+   lazy="false" name="indicadorDocumentoObrigatorio" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icdocobrigamantercliente" generated="never"
+   lazy="false" length="2"
+   name="indicadorDocumentoObrigatorioManterCliente" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icconsultadocumento" generated="never"
+   lazy="false" name="indicadorConsultaDocumentoReceita" not-null="true" type="java.lang.Short"/>
+  <property column="parm_nmsenhacdl" generated="never" lazy="false"
+   name="loginSenhaCdl" type="java.lang.String"/>
+  <property column="parm_nnlimitealtvencimento" generated="never"
+   lazy="false" length="3" name="numeroLimiteAlteracaoVencimento" type="java.lang.Integer"/>
+  <property column="parm_vlextratofichacomp" generated="never"
+   lazy="false" length="13" name="valorExtratoFichaComp" type="java.math.BigDecimal"/>
+  <property column="parm_dsmsgbraile" generated="never" lazy="false"
+   length="500" name="mensagemContaBraile" type="java.lang.String"/>
+  <property column="parm_icpopupatualizcadastral" generated="never"
+   lazy="false" length="2" name="indicadorPopupAtualizacaoCadastral"
+   not-null="true" type="short"/>
+  <property column="parm_vlcontafichacomp" generated="never"
+   lazy="false" length="13" name="valorContaFichaComp" type="java.math.BigDecimal"/>
+  <property column="parm_nndiascelular" generated="never" lazy="false"
+   length="2" name="numeroDiasBloqueioCelular" type="java.lang.Integer"/>
+  <property column="parm_nndiasultimvencaltern" generated="never"
+   lazy="false" length="2" name="ultimoDiaVencimentoAlternativo" type="java.lang.Short"/>
+  <property column="parm_icduplicidadecliente" generated="never"
+   lazy="false" name="indicadorDuplicidadeCliente" type="java.lang.Short"/>
+  <property column="parm_icnomemenordez" generated="never" lazy="false"
+   name="indicadorNomeMenorDez" type="java.lang.Short"/>
+  <property column="parm_icnomeclientegenerico" generated="never"
+   lazy="false" name="indicadorNomeClienteGenerico" type="java.lang.Short"/>
+  <property column="parm_icvariahierarquiaunidade" generated="never"
+   lazy="false" name="indicadorVariaHierarquiaUnidade" type="java.lang.Short"/>
+  <property column="parm_icalteracaoinscrimovel" generated="never"
+   lazy="false" name="indicadorAlteracaoInscricaoImovel" not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnmesesvencidacontara" generated="never"
+   lazy="false" name="numeroMesesRetificarConta" type="java.lang.Integer"/>
+  <property column="parm_icestananormaretificacao" generated="never"
+   lazy="false" length="2" name="indicadorNormaRetificacao" type="java.lang.Short"/>
+  <property column="parm_vlguiafichacomp" generated="never" lazy="false"
+   length="13" name="valorGuiaFichaComp" type="java.math.BigDecimal"/>
+  <property column="parm_vldemonstparcelmfichacomp" generated="never"
+   lazy="false" length="13"
+   name="valorDemonstrativoParcelamentoFichaComp" type="java.math.BigDecimal"/>
+  <property column="parm_icusonmclireceitafantasia" generated="never"
+   lazy="false" length="2" name="indicadorUsoNMCliReceitaFantasia" type="java.lang.Short"/>
+  <property column="parm_ictabelaprice" generated="never" lazy="false"
+   length="2" name="indicadorTabelaPrice" type="java.lang.Short"/>
+  <property column="parm_icbloqctasctrparceldebito" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioContasContratoParcelDebitos" not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqctasctrparcelmntcta" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioContasContratoParcelManterConta"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqdacctrparceldebito" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioDebitoACobrarContratoParcelDebito"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqguiactrparcelmntgui" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioGuiasOuAcresContratoParcelManterConta"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqguiactrparceldebito" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioGuiasOuAcresContratoParcelDebito"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icbloqdacctrparcelmntdac" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqueioDebitoACobrarContratoParcelManterDebito"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnmaxparcelascontrparcel" generated="never"
+   lazy="false" length="4"
+   name="numeroMaximoParcelasContratosParcelamento" type="java.lang.Integer"/>
+  <property column="parm_nndiasenviocntaempcob" generated="never"
+   lazy="false" length="4" name="numeroDiasEnvioContaEmpresaCobranca" type="java.lang.Integer"/>
+  <property column="parm_nndiasretirarcntaempcob" generated="never"
+   lazy="false" length="4" name="numeroDiaRetiradaContaEmpresaCobraca" type="java.lang.Integer"/>
+  <property column="parm_qtdiasencerraordservfisc" generated="never"
+   lazy="false" length="4" name="qtdeDiasEncerraOSFiscalizacao" type="java.lang.Integer"/>
+  <property column="parm_cdtipocalcnaomedido" generated="never"
+   lazy="false" name="codigoTipoCalculoNaoMedido" not-null="true" type="java.lang.Integer"/>
+  <property column="parm_qtdiasvalidadeordservfisc" generated="never"
+   lazy="false" length="4" name="qtdeDiasValidadeOSFiscalizacao" type="java.lang.Integer"/>
+  <property column="parm_qtdiaenvioemailconta" generated="never"
+   lazy="false" length="2" name="qtdeDiasEnvioEmailConta" type="java.lang.Integer"/>
+  <property column="parm_icbloquearinstsubsthidrom" generated="never"
+   lazy="false" length="2"
+   name="indicadorBloqFuncInstalacaoSubtHidrometro" type="java.lang.Short"/>
+  <property column="parm_dsdecretoloja" generated="never" lazy="false"
+   length="30" name="descricaoDecreto" type="java.lang.String"/>
+  <property column="parm_ardecretoloja" generated="never" lazy="false"
+   length="-1" name="arquivoDecreto" type="binary"/>
+  <property column="parm_dsleitarifaloja" generated="never" lazy="false"
+   length="30" name="descricaoLeiEstTarif" type="java.lang.String"/>
+  <property column="parm_arleitarifaloja" generated="never" lazy="false"
+   length="-1" name="arquivoLeiEstTarif" type="binary"/>
+  <property column="parm_dsleinormamedicaoloja" generated="never"
+   lazy="false" length="30" name="descricaoLeiIndividualizacao" type="java.lang.String"/>
+  <property column="parm_arleinormamedicaoloja" generated="never"
+   lazy="false" length="-1" name="arquivoLeiIndividualizacao" type="binary"/>
+  <property column="parm_dsnormacoloja" generated="never" lazy="false"
+   length="30" name="descricaoNormaCO" type="java.lang.String"/>
+  <property column="parm_arnormacoloja" generated="never" lazy="false"
+   length="-1" name="arquivoNormaCO" type="binary"/>
+  <property column="parm_dsnormacmloja" generated="never" lazy="false"
+   length="30" name="descricaoNormaCM" type="java.lang.String"/>
+  <property column="parm_arnormacmloja" generated="never" lazy="false"
+   length="-1" name="arquivoNormaCM" type="binary"/>
+  <property column="parm_qtdiasvalidadeosanormfisc" generated="never"
+   lazy="false" name="qtdeDiasValidadeOSAnormalidadeFiscalizacao" type="java.lang.Integer"/>
+  <property column="parm_cddadosdiarios" generated="never" lazy="false"
+   length="2" name="cdDadosDiarios" type="java.lang.Integer"/>
+  <property column="parm_nndiasencosfiscdecprazo" generated="never"
+   lazy="false" length="2"
+   name="numeroDiasEncerrarOsFiscalizacaoDecursoPrazo" type="java.lang.Short"/>
+  <property column="parm_nnvezessuspendeleitura" generated="never"
+   lazy="false" length="2" name="numeroVezesSuspendeLeitura" type="java.lang.Integer"/>
+  <property column="parm_nnmesesleiturasuspensa" generated="never"
+   lazy="false" length="2" name="numeroMesesLeituraSuspensa" type="java.lang.Integer"/>
+  <property column="parm_nnmesesreiniciositespfatu" generated="never"
+   lazy="false" length="2" name="numeroMesesReinicioSitEspFaturamento" type="java.lang.Integer"/>
+  <property column="parm_iccriticarretornonegativ" generated="never"
+   lazy="false" length="2"
+   name="indicadorCriticarConteudoRetornoMovimentoNegativacao" type="java.lang.Short"/>
+  <property column="parm_ictotaldebito" generated="never" lazy="false"
+   length="2" name="indicadorTotalDebito" type="java.lang.Short"/>
+  <!-- RM 5759 -->
+  <property column="parm_iccanceladebitoacobrar" generated="never"
+   lazy="false" length="2" name="indicadorPermiteCancelarDebito" type="java.lang.Short"/>
+  <property column="parm_iccalculaproporcional" generated="never"
+   lazy="false" length="2" name="indicadorCalculaProporcional" type="java.lang.Short"/>
+  <property column="parm_icinccontacobranca" generated="never"
+   lazy="false" length="2" name="indicadorIncluirContaEmCobranca"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasvenccobres" generated="never"
+   lazy="false" length="7" name="numeroDiasVencimentoCobrancaResultado" type="java.lang.Integer"/>
+  <property column="parm_icpermissaoespecialgrupo" generated="never"
+   lazy="false" length="2" name="indicadorPermissaoEspecialGrupo" type="java.lang.Short"/>
+  <property column="parm_icinccontaforavenccobr" generated="never"
+   lazy="false" length="2" name="indicadorIncluirContasForaVenCobranca"
+   not-null="true" type="java.lang.Short"/>
+  <!-- associations -->
+  <property column="parm_nnconvenfichacompensacao" generated="never"
+   lazy="false" length="7" name="numeroConvenioFichaCompensacao" type="java.lang.Integer"/>
+  <property column="parm_icinccanccobranca" generated="never"
+   lazy="false" length="2"
+   name="indicadorIncluirContasCanceladasPagamento" type="java.lang.Short"/>
+  <property column="parm_iclogausuariodb" generated="never" lazy="false"
+   length="2" name="indicadorUsuarioBd" type="java.lang.Short"/>
+  <property column="parm_iccancnegatcontavencalter" generated="never"
+   lazy="false" length="2" name="indicadorCanceNegatContaVencAlter"
+   not-null="true" type="java.lang.Short"/>
+  <!-- RM 3892 -->
+  <property column="parm_dsdominioemailcorporativo" generated="never"
+   lazy="false" length="20" name="dominioEmailCorporativo" type="java.lang.String"/>
+  <property column="parm_nndiasbloqueiasenha" generated="never"
+   lazy="false" length="7" name="numeroDiasBloqueiaSenha" type="java.lang.Integer"/>
+  <property column="parm_icmoduloseguranca" generated="never"
+   lazy="false" length="7" name="icModulosSeguranca" type="java.lang.Integer"/>
+  <property column="parm_nnperiodorevalidarsenha" generated="never"
+   lazy="false" length="3" name="periodoRevalidarSenha" type="java.lang.Integer"/>
+  <property column="parm_nndiasrevalidarsenha" generated="never"
+   lazy="false" length="3" name="diasRevalidarSenha" type="java.lang.Integer"/>
+  <property column="parm_icpercentualcoletaesgoto" generated="never"
+   lazy="false" length="2" name="indicadorPercentualColetaEsgoto"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_icdescrateioesgoto" generated="never"
+   lazy="false" length="2" name="indicadorDesconsiderarRateioEsgoto"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_ictramitarraesgoto" generated="never"
+   lazy="false" length="2" name="indicadorTramitarRAEsgoto"
+   not-null="true" type="java.lang.Short"/>
+  <property column="parm_nndiasatuligaguaimofisc" generated="never"
+   lazy="false" length="3" name="diasAtualizarLigacaoAguaImovelFisc" type="java.lang.Integer"/>
+  <property column="parm_nnconsumofixoanormhidr" generated="never"
+   lazy="false" length="2" name="consumoAguaFixadoAnormalidadeHidro" type="java.lang.Integer"/>
+  <property column="parm_qtdmesesaposinstsubsthidr" generated="never"
+   lazy="false" length="2" name="qtdMesIstalSubistituicaoHidro" type="java.lang.Integer"/>
+  <property column="parm_qtdincidenciaanormhidr" generated="never"
+   lazy="false" length="2" name="qtdVezIncidenciaAnormalidadeHidro" type="java.lang.Integer"/>
+  <property column="parm_dtlimitecadastrosorteio" generated="never"
+   lazy="false" length="4" name="dataLimiteCadastroSorteio" type="java.sql.Date"/>
+  <property column="parm_dtsorteio" generated="never" lazy="false"
+   length="4" name="dataSorteio" type="java.sql.Date"/>
+  <property column="parm_qteconomiacontratodemanda" generated="never"
+   lazy="false" length="3" name="qtdEconomiaContratoDemanda" type="java.lang.Integer"/>
+  <!-- RM5120 -->
+  <property column="parm_arresetorizacaoaprocessar" generated="never"
+   lazy="false" length="30" name="arquivosResetorizacaoAProcessar" type="java.lang.String"/>
+  <property column="parm_arresetorizacaoprocessado" generated="never"
+   lazy="false" length="30" name="arquivosResetorizacaoProcessado" type="java.lang.String"/>
+  <property column="parm_arresetorizacaocritica" generated="never"
+   lazy="false" length="30" name="arquivosResetorizacaoCritica" type="java.lang.String"/>
+  <property column="parm_icimprimirextratosorteio" generated="never"
+   lazy="false" length="2" name="indicadorImprimirExtratoSorteio"
+   not-null="true" type="java.lang.Short"/>
+  <!-- <property column="parm_qteconomiacontratodemanda" generated="never"
+   lazy="false" length="3" name="qtdEconomiaContratoDemanda" type="java.lang.Integer"/> 
+quantidade maxima de vezes para alterar o vinculo de uma conta.-->
+  <property column="parm_nnqtdmaxalterarvinculocon" generated="never"
+   lazy="false" length="2" name="numeroVezesAlterarVinculo" type="java.lang.Integer"/>
+  <!-- Numero de dias que é permitido para inserir processo de comando de cobranca.-->
+  <property column="parm_nndiasinsproccob" generated="never"
+   lazy="false" name="numeroDiasInserirProcessoCobranca" type="java.lang.Integer"/>
+  <!-- Quantidade maxima de contas itens especial faturamento.-->
+  <property column="parm_qtmaxcntasitespecialfatur" generated="never"
+   lazy="false" name="quantidadeMaximaContasItensEspecialFaturamento"
+   not-null="true" type="java.lang.Integer"/>
+  <property column="parm_amfaturamentoinicioppp" generated="never"
+   lazy="false" name="faturamentoInicioContratoPPP" type="java.lang.Integer"/>
+  <property column="parm_pcppp" generated="never" lazy="false"
+   name="percentualPPP" type="java.math.BigDecimal"/>
+  <!-- Quantidade de dia para faturar imovel com ligacao de esgoto com situacao Faturar Factivel.-->
+  <property column="parm_qtdiasfaturarfactivel" generated="never"
+   lazy="false" name="quantidadeDiasFaturarFactivel" type="java.lang.Integer"/>
+  <!-- RM9188 -->
+  <property column="parm_nnidademinima" generated="never" lazy="false"
+   length="2" name="idadeMinimaUsuario" not-null="true" type="java.lang.Short"/>
+  <property column="parm_nnlimiteoscobranca" generated="never"
+   lazy="false" length="4" name="numeroLimiteOSCobranca" type="java.lang.Integer"/>
+  <!-- RM9021 -->
+  <property column="parm_nndiasencosfacfat" generated="never"
+   lazy="false"
+   name="numeroDiasEncerramentoOrdemServicoFactivelFaturavel" type="java.lang.Short"/>
+  <property column="parm_qtdiasSuspensaoDoacao" generated="never"
+   lazy="false" length="3" name="qtdDiasParaSuspensaoDoacao" type="java.lang.Integer"/>
+  <property column="parm_nmimagemarpe" generated="never" lazy="false"
+   length="30" name="imagemArpe" type="java.lang.String"/>
+  <property column="parm_nmimagemrodapeconta" generated="never"
+   lazy="false" length="30" name="imagemRodapeConta" type="java.lang.String"/>
+  <property column="parm_amreferenciacntamodeloant" generated="never"
+   lazy="false" length="6" name="anoMesReferenciaContaModeloAnterior" type="int"/>
+   
+  <property column="PARM_NNANEXOTAMANHOMAX" generated="never" lazy="false" length="4" name="tamanhoMaximoAnexoRA" type="java.lang.Integer"/>
+  <property column="PARM_NNIMAGEMRESOLARGURA" generated="never" lazy="false" length="4" name="imagemResolucaoLargura" type="java.lang.Integer"/>
+  <property column="PARM_NNIMAGEMRESOALTURA" generated="never" lazy="false" length="4" name="imagemResolucaoAltura" type="java.lang.Integer"/>
+  
+  <!-- bi-directional many-to-one association to Logradouro -->
+  <many-to-one class="gcom.cadastro.endereco.Logradouro"
+   name="logradouro" not-null="false">
+   <column name="logr_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Bairro -->
+  <many-to-one class="gcom.cadastro.geografico.Bairro" name="bairro" not-null="false">
+   <column name="bair_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to EnderecoImovelReferencia -->
+  <many-to-one class="gcom.cadastro.endereco.EnderecoReferencia"
+   name="enderecoReferencia" not-null="false">
+   <column name="edrf_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to HidrometroCapacidade -->
+  <many-to-one class="gcom.micromedicao.hidrometro.HidrometroCapacidade"
+   name="hidrometroCapacidade" not-null="false">
+   <column name="hicp_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Cep -->
+  <many-to-one class="gcom.cadastro.endereco.Cep" name="cep" not-null="true">
+   <column name="cep_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.arrecadacao.banco.ContaBancaria"
+   name="contaBancaria" not-null="false">
+   <column name="ctbc_iddevolucao"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente"
+   name="clientePresidenteCompesa" not-null="false">
+   <column name="clie_idpresidente"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente"
+   name="clienteDiretorComercialCompesa" not-null="false">
+   <column name="clie_iddiretorcom"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.unidade.UnidadeOrganizacional"
+   name="unidadeOrganizacionalIdPresidencia" not-null="false">
+   <column name="unid_idpresidencia"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Logradouro -->
+  <many-to-one class="gcom.cadastro.endereco.LogradouroBairro"
+   name="logradouroBairro" not-null="false">
+   <column name="lgbr_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Logradouro -->
+  <many-to-one class="gcom.cadastro.endereco.LogradouroCep"
+   name="logradouroCep" not-null="false">
+   <column name="lgcp_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to ContaMotivoRetificacao -->
+  <many-to-one class="gcom.faturamento.conta.ContaMotivoRetificacao"
+   name="contaMotivoRetificacaoPagamentoAntecipado" not-null="false">
+   <column name="cmrt_idantecipado"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente"
+   name="clienteResponsavelProgramaEspecial" not-null="false">
+   <column name="clie_idprogramaespecial"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.imovel.ImovelPerfil"
+   name="perfilProgramaEspecial" not-null="false">
+   <column name="iper_idprogramaespecial"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.unidade.UnidadeOrganizacional"
+   name="unidadeOrganizacionalTramiteGrandeConsumidor" not-null="false">
+   <column name="unid_idtramitegrandeconsumidor"/>
+  </many-to-one>
+  <many-to-one class="gcom.cobranca.ResolucaoDiretoria"
+   name="resolucaoDiretoria" not-null="false">
+   <column name="rdir_id"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente"
+   name="clienteFicticioParaAssociarOsPagamentosNaoIdentificados" not-null="false">
+   <column name="clie_iddocnaoidentificado"/>
+  </many-to-one>
+  <many-to-one class="gcom.faturamento.FaturamentoSituacaoTipo"
+   name="faturamentoSituacaoTipoParalisacaoGeral" not-null="false">
+   <column name="ftst_idparalisacaogeral"/>
+  </many-to-one>
+  <many-to-one class="gcom.faturamento.FaturamentoSituacaoTipo"
+   name="faturamentoSituacaoTipoParalisacaoEsgoto" not-null="false">
+   <column name="ftst_idparalisacaoesgoto"/>
+  </many-to-one>
+  <many-to-one class="gcom.faturamento.FaturamentoSituacaoMotivo"
+   name="faturamentoSituacaoMotivoParalisacaoMensal" not-null="false">
+   <column name="ftsm_idparalisacaomensal"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente"
+   name="clienteDiretorGestao" not-null="false">
+   <column name="clie_iddiretorgestao"/>
+  </many-to-one>
+  <many-to-one class="gcom.cadastro.cliente.Cliente" lazy="false"
+   name="clienteUsuarioDesconhecido" not-null="false">
+   <column name="clie_idusuariodesconhecido"/>
+  </many-to-one>
+  <many-to-one class="gcom.atendimentopublico.ordemservico.ServicoTipo"
+   lazy="false" name="servicoTipo" not-null="false">
+   <column name="svtp_idservselfacfat"/>
+  </many-to-one>
+  <many-to-one name="resolucaoImagem"
+		class="gcom.atendimentopublico.ResolucaoImagem"
+		not-null="false">
+		<column name="reim_id" />
+  </many-to-one>
+ </class>
+</hibernate-mapping>

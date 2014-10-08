@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.cadastro.cliente.ClienteUnificado" table="cadastro.cliente_unificado">
+		<id name="id" type="java.lang.Integer" column="clun_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_cliente_unificado</param>
+			</generator>
+		</id>
+	    <property name="cpf" type="java.lang.String" column="clun_nncpf" length="11" not-null="false" />
+	    <property name="cnpj" type="java.lang.String" column="clun_nncnpj" length="14" not-null="false" />
+  		<property name="nomeClienteAtual" type="java.lang.String" column="clun_nmclienteatual" length="50" not-null="true" />
+  		<property name="nomeClienteAnterior" type="java.lang.String" column="clun_nmclienteanterior" length="50" not-null="true" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="clun_tmultimaalteracao" length="8"/>
+		<!-- associations -->
+		<!-- bi-directional many-to-one association to Cliente -->
+		<many-to-one name="clienteAtual" class="gcom.cadastro.cliente.Cliente" not-null="true">
+			<column name="clie_idatual"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Cliente -->
+		<many-to-one name="clienteAnterior" class="gcom.cadastro.cliente.Cliente" not-null="true">
+			<column name="clie_idanterior"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to Imovel -->
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="false">
+			<column name="imov_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

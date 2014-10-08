@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="FiltrarDistritoOperacionalActionForm"
+			type="gcom.gui.operacional.FiltrarDistritoOperacionalActionForm" />
+
+		<form-bean name="AtualizarDistritoOperacionalActionForm"
+			type="gcom.gui.operacional.AtualizarDistritoOperacionalActionForm" />
+
+		<form-bean name="ManutencaoRegistroActionForm"
+			type="gcom.gui.ManutencaoRegistroActionForm" />
+
+	</form-beans>
+
+	<global-forwards />
+
+
+	<action-mappings>
+		<action name="FiltrarDistritoOperacionalActionForm"
+			type="gcom.gui.operacional.ExibirManterDistritoOperacionalAction"
+			validate="false" scope="session"
+			path="/exibirManterDistritoOperacionalAction">
+
+			<forward name="manterDistritoOperacional"
+				path="/jsp/operacional/distrito_operacional_manter.jsp" />
+
+			<forward name="exibirAtualizarDistritoOperacional"
+				path="/exibirAtualizarDistritoOperacionalAction.do" />
+		</action>
+
+		<action name="AtualizarDistritoOperacionalActionForm"
+			type="gcom.gui.operacional.ExibirAtualizarDistritoOperacionalAction"
+			validate="false" scope="session" parameter="action"
+			path="/exibirAtualizarDistritoOperacionalAction">
+
+			<forward name="atualizarDistritoOperacional"
+				path="/jsp/operacional/distrito_operacional_atualizar.jsp" />
+		</action>
+
+		<action name="AtualizarDistritoOperacionalActionForm"
+			type="gcom.gui.operacional.AtualizarDistritoOperacionalAction"
+			validate="false" scope="session" path="/atualizarDistritoOperacionalAction" />
+
+		
+
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.operacional.RemoverDistritoOperacionalAction"
+			validate="false" scope="session" path="/removerDistritoOperacionalAction"/>
+
+		    
+	    <action name="FiltrarDistritoOperacionalActionForm"
+        	type="gcom.gui.relatorio.operacional.GerarRelatorioDistritoOperacionalManterAction"
+    		scope="session" parameter="action" path="/gerarRelatorioDistritoOperacionalManterAction" /> 
+		    
+	
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

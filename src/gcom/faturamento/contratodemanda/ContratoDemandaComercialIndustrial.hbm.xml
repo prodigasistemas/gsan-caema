@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.faturamento.contratodemanda.ContratoDemandaComercialIndustrial" table="faturamento.contrato_demanda_com_ind">
+		<id name="id" type="java.lang.Integer" column="ctdm_id">
+			<generator class="sequence">
+				<param name="sequence">faturamento.seq_contrato_demanda_com_ind</param>
+			</generator>
+		</id>
+		<property name="dataContratoInicio" type="java.sql.Date" column="ctdm_dtcontratoinicio" not-null="true" length="4"/>
+		<property name="dataContratoFim" type="java.sql.Date" column="ctdm_dtcontratofim" not-null="true" length="4"/>
+		<property name="numeroContrato" type="java.lang.String" column="ctdm_nncontrato" not-null="true" length="10"/>
+		<property name="percentualColetaEsgoto" type="java.math.BigDecimal" column="ctdm_pccoletaesgoto" not-null="false" length="8"  />
+		<property name="numeroVolumeInformadoFixadoEsgoto" type="java.lang.Integer" column="ctdm_nnvolumeminfixadoesgoto" not-null="false" length="5" />
+		<property name="percentualValorTarifaAgua" type="java.math.BigDecimal" column="ctdm_pcvalortarifaagua" not-null="false" length="8" />
+		<property name="dataContratoEncerrado" type="java.sql.Date" column="ctdm_dtcontratoencerramento" not-null="false" length="4"/>
+		<property name="numeroVolumeAgua" type="java.lang.Integer" column="ctdm_nnvolumeaguacontratado" not-null="true" length="5" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ctdm_tmultimaalteracao" not-null="true" length="8"/>
+		<!-- Associations -->
+		
+		<!-- bi-directional many-to-one association to Imovel -->
+		<many-to-one name="consumoTarifa" class="gcom.faturamento.consumotarifa.ConsumoTarifa" not-null="true">
+			<column name="cstf_id"/>
+		</many-to-one>
+		
+		<many-to-one name="motivoEncerramento" class="gcom.faturamento.contratodemanda.ContratoDemandaMotivoEncerramento" not-null="false">
+			<column name="cdme_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

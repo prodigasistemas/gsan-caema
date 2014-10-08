@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="AdicionarLimitacaoGeograficaRDPopupActionForm"
+			type="gcom.gui.cobranca.AdicionarLimitacaoGeograficaRDPopupActionForm" />					
+	</form-beans>
+
+	<!--******************* PAGINA GLOBAIS *******************-->
+	<global-forwards />
+
+	<action-mappings>
+		<!--******************* PAGINA PRINCIPAL *******************-->
+		<!-- [UC0217] Inserir Resolução diretoria / Adicionar limite geografico RD-->
+	
+		<action name="AdicionarLimitacaoGeograficaRDPopupActionForm"
+			type="gcom.gui.cobranca.ExibirAdicionarLimitacaoGeograficaRDPopupAction"
+			validate="true" scope="session"
+			path="/exibirAdicionarLimitacaoGeograficaRDPopupAction">
+			
+			
+			<forward name="exibirAdicionarLimitacaoGeograficaRD"
+				path="/jsp/cobranca/adicionar_limitacao_geografica_rd_popup.jsp" />
+		</action>
+		
+		<action name="AdicionarLimitacaoGeograficaRDPopupActionForm"
+			type="gcom.gui.cobranca.AdicionarLimitacaoGeograficaRDPopupAction"
+			validate="true" scope="session"
+			path="/adicionarLimitacaoGeograficaRDPopupAction">
+
+			<forward name="adicionarLimitacaoGeograficaRDPopup"
+				path="/jsp/cobranca/adicionar_limitacao_geografica_rd_popup.jsp" />
+			
+		</action>
+
+
+	</action-mappings>
+
+</struts-config>

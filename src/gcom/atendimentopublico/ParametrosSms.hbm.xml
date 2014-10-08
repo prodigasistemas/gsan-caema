@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.atendimentopublico.ParametrosSms" table="atendimentopublico.parametros_sms">
+		<id name="id" type="java.lang.Integer" column="pasm_id"/>
+		<property name="ipProxy" type="java.lang.String" column="pasm_nnipproxy" length="15"/>
+		<property name="portaProxy" type="java.lang.String" column="pasm_nnportaproxy" length="5"/>
+		<property name="urlWebService" type="java.lang.String" column="pasm_nmurlwebservice" length="2000"/>
+		<property name="usuarioWebService" type="java.lang.String" column="pasm_nmusuariowebservice" length="100"/>
+		<property name="senhaWebService" type="java.lang.String" column="pasm_nmsenhawebservice" length="100"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pasm_tmultimaalteracao" length="8"/>
+	</class>
+</hibernate-mapping>

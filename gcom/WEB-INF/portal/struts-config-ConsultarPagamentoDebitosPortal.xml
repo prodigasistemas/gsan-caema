@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="ConsultarPagamentoDebitosPortalActionForm"
+			type="gcom.gui.portal.ConsultarPagamentoDebitosPortalActionForm" />
+	</form-beans>
+	
+	<!--******************* P�GINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="ConsultarPagamentoDebitosPortalActionForm"
+			type="gcom.gui.portal.ExibirConsultarPagamentoPortalAction"
+			validate="false" scope="session" path="/exibirConsultarPagamentoPortalAction">
+			
+			<forward name="consultarPagamentoDebitosPortal"
+				path="/jsp/portal/pagamento_debitos_portal_consultar.jsp"/>
+							
+		</action>
+		
+		<action name="ConsultarPagamentoDebitosPortalActionForm"
+			type="gcom.gui.portal.GerarRelatorioDocumentosParcelamentoPortalAction"
+			validate="false" scope="session"
+			path="/gerarRelatorioDocumentosParcelamentoPortalAction">
+		</action>
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>
+

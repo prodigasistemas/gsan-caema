@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>  
+
+	<form-beans>
+	
+		<form-bean name="AtualizarNaturezaEquipeActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarNaturezaEquipeActionForm" />
+	
+		<form-bean name="ManutencaoRegistroActionForm" 
+			type="gcom.gui.ManutencaoRegistroActionForm" />
+			
+	</form-beans>
+
+	<global-forwards />
+	
+	
+	<action-mappings> 	
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirManterNaturezaEquipeAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirManterNaturezaEquipeAction">
+			
+			<forward name="manterNaturezaEquipe"
+				path="/jsp/atendimentopublico/ordemservico/natureza_equipe_manter.jsp" />
+			
+			<forward name="exibirNaturezaEquipe"
+				path="/exibirAtualizarNaturezaEquipeAction.do" /> 
+		</action>
+		
+		<action name="AtualizarNaturezaEquipeActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirAtualizarNaturezaEquipeAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirAtualizarNaturezaEquipeAction">
+			<forward name="atualizarNaturezaEquipe"
+				path="/jsp/atendimentopublico/ordemservico/natureza_equipe_atualizar.jsp" />
+		</action>
+		
+		<action name="AtualizarNaturezaEquipeActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarNaturezaEquipeAction"
+			validate="false" 
+			scope="session" 
+			path="/atualizarNaturezaEquipeAction">
+		</action>		
+		
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.RemoverNaturezaEquipeAction"
+			validate="false" 
+			scope="session" 
+			path="/removerNaturezaEquipeAction">
+		</action>
+		
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.relatorio.atendimentopublico.ordemservico.GerarRelatorioNaturezaEquipeAction"
+			validate="false"
+			scope="session"
+			path="/gerarRelatorioNaturezaEquipeAction">
+			
+		</action>	
+			
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+		
+</struts-config>

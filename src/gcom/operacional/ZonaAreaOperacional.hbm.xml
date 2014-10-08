@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.operacional.ZonaAreaOperacional" table="operacional.zona_area_operacional">
+		<id name="id" type="java.lang.Integer" column="ZAOP_ID">
+			<generator class="sequence">
+				<param name="sequence">operacional.SEQ_ZONA_AREA_OPERACIONAL</param>
+			</generator>
+		</id>
+		<property name="indicadorPrincipal" type="java.lang.Short" column="ZAOP_ICPRINCIPAL" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ZAOP_TMULTIMAALTERACAO" length="8"/>
+		
+		<many-to-one name="zonaPressao" class="gcom.operacional.ZonaPressao" not-null="true">
+			<column name="ZNPR_ID"/>
+		</many-to-one>
+		<many-to-one name="areaOperacional" class="gcom.operacional.AreaOperacional" not-null="true">
+			<column name="AROP_ID"/>
+		</many-to-one>
+		<!-- associations -->
+		
+	</class>
+</hibernate-mapping>

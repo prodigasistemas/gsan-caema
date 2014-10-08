@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/03/2013 15:40:14 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="gcom.cadastro.atualizacaocadastral.LogradouroCepAtlzCad" table="cadastro.log_cep_atlz_cadastral">
+    	<id name="id" type="java.lang.Integer" column="lcac_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_log_cep_atlz_cadastral</param>
+			</generator>
+		</id> 
+		
+		<!-- bi-directional many-to-one association to CepAtlzCad -->
+		<many-to-one name="cepAtlzCad" class="gcom.cadastro.atualizacaocadastral.CepAtlzCad" not-null="true">
+			<column name="ceac_id"/>
+		</many-to-one>       
+		
+		<!-- bi-directional many-to-one association to LogradouroAtlzCad -->
+		<many-to-one name="logradouroAtlzCad" class="gcom.cadastro.atualizacaocadastral.LogradouroAtlzCad" not-null="true">
+			<column name="loac_id"/>
+		</many-to-one>
+
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="lcac_tmultimaalteracao" length="8"/>
+    </class>
+</hibernate-mapping>

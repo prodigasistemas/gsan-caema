@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.BairroAdmin" 
+    table="cadastro.bairro_admin"
+>
+	<id name="id" type="java.lang.Integer" column="baad_id">
+		<generator class="assigned"/>
+	</id>
+
+    <property
+        name="nomeBairro"
+        type="java.lang.String"
+        column="baad_nmbairro"
+        not-null="true"
+        length="4000"
+    />
+    <property
+        name="indicadorAtualizado"
+        type="java.lang.Short"
+        column="baad_icatualizacao"
+        length="22"
+    />
+    <property
+        name="dataAtualizacaoGsan"
+        type="java.sql.Date"
+        column="baad_dtatualizacaogsan"
+        length="7"
+    />
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="baad_tmultimaalteracao"
+        not-null="true"
+        length="11"
+    />
+
+    
+
+</class>
+</hibernate-mapping>

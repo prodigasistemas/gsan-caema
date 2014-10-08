@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+
+    Created by the Middlegen Hibernate plugin 2.1
+
+
+
+    http://boss.bekk.no/boss/middlegen/
+
+    http://www.hibernate.org/
+
+-->
+	<class name="gcom.cadastro.PremioSorteio" table="cadastro.premio_sorteio">
+		<id name="id" type="java.lang.Integer" column="prso_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_premio_sorteio</param>
+			</generator>
+		</id>
+		
+		<property name="descricao" type="java.lang.String" column="prso_dssorteio" not-null="true" length="40"/>
+		<property name="quantidadeInicial" type="java.lang.Integer" column="prso_qtinicial" length="6"/>
+		<property name="quantidadeFinal" type="java.lang.Integer" column="prso_qtsorteiada" length="6"/>
+		<property name="numeroOrdemSorteio" type="java.lang.Integer" column="prso_nnordemsorteio" length="6"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="prso_tmultimaalteracao" not-null="true" length="8"/>
+		<property name="indicadorInformarPremioSecundario" type="java.lang.Short" column="prso_icpremiosecundario" not-null="true" length="2"/>
+		<property name="indicadorInformarPremioPrincipal" type="java.lang.Short" column="prso_icpremioprincipal" not-null="true" length="2"/>
+		<property name="numeroSorteio" type="java.lang.Integer" column="prso_nnsorteio" length="6"/>
+		<property name="dataCadastroInicial" type="java.sql.Date" column="prso_dtcadastroinicial" not-null="false" length="4"/>
+		<property name="dataCadastroFinal" type="java.sql.Date" column="prso_dtcadastrofinal" not-null="false" length="4"/>
+		
+		<!-- bi-directional many-to-one association to Sorteios -->
+		<many-to-one name="sorteios" class="gcom.cadastro.Sorteios" not-null="false">
+			<column name="sort_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

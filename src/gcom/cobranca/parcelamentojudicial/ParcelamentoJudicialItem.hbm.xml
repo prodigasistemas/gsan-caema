@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cobranca.parcelamentojudicial.ParcelamentoJudicialItem" table="cobranca.parcel_judicial_item" >
+		<id name="id" type="java.lang.Integer" column="pjit_id">
+			<generator class="sequence">
+				<param name="sequence">cobranca.seq_parcel_judicial_item</param>
+			</generator>
+		</id>
+		
+		<property name="valorConta" type="java.math.BigDecimal" column="pjit_vlconta" not-null="true" length="13"/>
+		<property name="valorAcrescimosImpontualidade" type="java.math.BigDecimal" column="pjit_vlacrescimos" not-null="true" length="13"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pjit_tmultimaalteracao" not-null="true" length="8"/>		
+		
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to FormaPagamento -->
+		
+	  	<many-to-one name="parcelamentoJudicial" class="gcom.cobranca.parcelamentojudicial.ParcelamentoJudicial" not-null="true">
+	   		<column name="pjud_id"/>
+	  	</many-to-one>
+		
+		<many-to-one name="contaGeral" class="gcom.faturamento.conta.ContaGeral" not-null="true">
+			<column name="cnta_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

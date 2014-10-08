@@ -1,0 +1,112 @@
+package gcom.relatorio.cadastro;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import gcom.cadastro.atualizacaocadastral.bean.DadosResumoMovimentoAtualizacaoCadastralHelper;
+import gcom.cadastro.sistemaparametro.SistemaParametro;
+import gcom.fachada.Fachada;
+import gcom.gui.ActionServletException;
+import gcom.relatorio.ConstantesRelatorios;
+import gcom.relatorio.RelatorioDataSource;
+import gcom.seguranca.acesso.usuario.Usuario;
+import gcom.tarefa.TarefaException;
+import gcom.tarefa.TarefaRelatorio;
+import gcom.util.Util;
+import gcom.util.agendadortarefas.AgendadorTarefas;
+
+public class RelatorioResumoPosicaoAtualizacaoCadastralPacote extends TarefaRelatorio{
+
+	private static final long serialVersionUID = 1L;
+	
+	public RelatorioResumoPosicaoAtualizacaoCadastralPacote(Usuario usuario) {
+		super(usuario, ConstantesRelatorios.RELATORIO_RESUMO_POSICAO_ATUALIZACAO_CADASTRAL_PACOTE);
+	}
+	
+	@Deprecated
+	public RelatorioResumoPosicaoAtualizacaoCadastralPacote(){
+		super(null, "");
+	}
+
+	@Override
+	public Object executar() throws TarefaException {
+		
+		//Valor de Retorno
+		byte[] retorno = null;
+		
+		String nomeEmpresa = (String) getParametro("nomeEmpresa");
+		String nomeGerencia = (String) getParametro("nomeGerencia");
+		String codSetorInicial = (String) getParametro("codigoSetorInicial");
+		String codSetorFinal = (String) getParametro("codigoSetorFinal");
+		String quadraInicial = (String) getParametro("quadraInicial");
+		String quadraFinal = (String) getParametro("quadraFinal");
+		String cadastrador = (String) getParametro("cadastrador");
+		String analista = (String) getParametro("analista");
+		String tipoInconsistencia = (String) getParametro("tipoInconsistencia");
+		
+		Integer tipoFormatoRelatorio = (Integer) getParametro("tipoFormatoRelatorio");
+		
+		DadosResumoMovimentoAtualizacaoCadastralHelper helper = 
+				(DadosResumoMovimentoAtualizacaoCadastralHelper) getParametro("dadosRelatorio");
+		
+		// coleção de beans do relatório
+		List<Object> relatorioBeans = new ArrayList<Object>();
+		
+		Collection<RelatorioResumoPosicaoAtualizacaoCadastralPacoteBean> colResumos =
+				Fachada.getInstancia().pesquisarResumoPosicaoAtualizacaoCadastralPacote(helper);
+		
+		if(Util.isVazioOrNulo(colResumos)){
+			throw new ActionServletException("atencao.relatorio.vazio");
+		}else{
+			Iterator<?> iterator = colResumos.iterator();
+			while(iterator.hasNext()){
+				RelatorioResumoPosicaoAtualizacaoCadastralPacoteBean bean = 
+					(RelatorioResumoPosicaoAtualizacaoCadastralPacoteBean) iterator.next();
+				
+				relatorioBeans.add(bean);
+			}
+		}
+		
+		//Parametros do Relatorio
+		Map<Object, Object> parametros = new HashMap<Object, Object>();
+		
+		SistemaParametro sistemaParametro = Fachada.getInstancia().pesquisarParametrosDoSistema();
+		
+		//Adiciona os parametros no relatório
+		parametros.put("imagem", sistemaParametro.getImagemRelatorio());
+		parametros.put("nomeEmpresa", nomeEmpresa);
+		parametros.put("nomeGerencia", nomeGerencia);
+		parametros.put("codigoSetorInicial", codSetorInicial);
+		parametros.put("codigoSetorFinal", codSetorFinal);
+		parametros.put("quadraInicial", quadraInicial);
+		parametros.put("quadraFinal", quadraFinal);
+		parametros.put("cadastrador", cadastrador);
+		parametros.put("analista", analista);
+		parametros.put("tipoInconsistencia", tipoInconsistencia);
+		parametros.put("tipoFormatoRelatorio", "R1315");
+		
+		//Cria uma instancia do dataSource do Relatorio
+		RelatorioDataSource ds = new RelatorioDataSource(relatorioBeans);
+		
+		retorno = gerarRelatorio(ConstantesRelatorios.RELATORIO_RESUMO_POSICAO_ATUALIZACAO_CADASTRAL_PACOTE, 
+				parametros, ds, tipoFormatoRelatorio);
+		
+		//Retorna o relatório gerado
+		return retorno;
+	}
+	
+	@Override
+	public int calcularTotalRegistrosRelatorio() {
+		return 0;
+	}
+	
+	@Override
+	public void agendarTarefaBatch() {
+		AgendadorTarefas.agendarTarefa("RelatorioResumoPosicaoAtualizacaoCadastralPacote", this);
+	}
+	
+}

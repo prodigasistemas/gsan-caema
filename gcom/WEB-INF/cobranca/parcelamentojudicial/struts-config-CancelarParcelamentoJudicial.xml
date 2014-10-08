@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="CancelarParcelamentoJudicialActionForm"
+			type="gcom.gui.cobranca.parcelamentojudicial.CancelarParcelamentoJudicialActionForm" />				
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+
+		<action name="CancelarParcelamentoJudicialActionForm"
+			type="gcom.gui.cobranca.parcelamentojudicial.ExibirCancelarParcelamentoJudicialAction"
+			validate="false" input="/exibirCancelarParcelamentoJudicialAction.do"
+			scope="session" path="/exibirCancelarParcelamentoJudicialAction">
+			<forward name="cancelarParcJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/cancelar_parc_judicial_popup.jsp" />
+		</action>
+		
+		<action name="CancelarParcelamentoJudicialActionForm"
+			type="gcom.gui.cobranca.parcelamentojudicial.CancelarParcelamentoJudicialAction"
+			validate="true" parameter="action" scope="session"
+			path="/cancelarParcelamentoJudicialAction"
+			input="/cancelarParcelamentoJudicialAction.do" >
+			<forward name="informarDadosConcluir"
+					 path="/jsp/util/popup_concluir.jsp" />	
+		</action>
+			
+	</action-mappings>
+	<!--********************************************************************************-->
+	<!--******************* ARQUIVO DE PROPRIEDADES *******************-->
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="EfetuarParcelamentoJudicialActionForm"
+			type="gcom.gui.cobranca.parcelamentojudicial.EfetuarParcelamentoJudicialActionForm" />				
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+
+		<action 
+			type="gcom.gui.cobranca.parcelamentojudicial.ExibirEfetuarParcelamentoJudicialAction"
+			validate="false" input="/exibirEfetuarParcelamentoJudicialAction.do"
+			scope="session" path="/exibirEfetuarParcelamentoJudicialAction">
+			<forward name="efetuarParcelamentoJudicial"
+				path="/efetuarParcelamentoJudicialWizardAction.do?action=exibirEfetuarParcelamentoJudicialImovelAction" />
+		</action>
+		
+		<action name="EfetuarParcelamentoJudicialActionForm"
+			type="gcom.gui.cobranca.parcelamentojudicial.EfetuarParcelamentoJudicialWizardAction"
+			validate="true" parameter="action" scope="session"
+			path="/efetuarParcelamentoJudicialWizardAction"
+			input="/efetuarParcelamentoJudicialWizardAction.do">
+			<forward name="efetuarParcelamentoJudicialImovelAction"
+				path="/jsp/cobranca/parcelamentojudicial/efetuar_parc_judicial_imovel.jsp" />
+			<forward name="efetuarParcelamentoJudicialDebitosAction"
+				path="/jsp/cobranca/parcelamentojudicial/efetuar_parc_judicial_debitos.jsp" />
+			<forward name="efetuarParcelamentoJudicialNegociacaoAction"
+				path="/jsp/cobranca/parcelamentojudicial/efetuar_parc_judicial_negociacao.jsp" />
+			<forward name="efetuarParcelamentoJudicialConclusaoAction"
+				path="/jsp/cobranca/parcelamentojudicial/efetuar_parc_judicial_conclusao.jsp" />
+			<forward name="informarValorParcelasPopupAction"
+				path="/jsp/cobranca/parcelamentojudicial/informar_valor_parcelas_popup.jsp" />	
+			<forward name="concluir"
+				path="/jsp/util/popup_concluir.jsp" />
+		</action>
+			
+	</action-mappings>
+	<!--********************************************************************************-->
+	<!--******************* ARQUIVO DE PROPRIEDADES *******************-->
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.operacional.SubSistemaEsgotoArquivoTextoErro" table="operacional.subsis_esgoto_arq_txt_er">
+		
+		<id name="id" type="java.lang.Integer" column="sate_id">
+			<generator class="sequence">
+				<param name="sequence">operacional.seq_subsis_esgoto_arq_txt_er</param>
+			</generator>
+		</id>
+		
+		<property name="descricaoRegistro" type="java.lang.String" column="sate_dsregistro" not-null="true" length="50" />
+		
+		<property name="mensagemErro" type="java.lang.String" column="sate_dsmensagemerro" not-null="true" length="50" />
+	
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="sate_tmultimaalteracao" not-null="true" length="8" />
+
+		<many-to-one name="subSistemaEsgotoArquivoTexto" class="gcom.operacional.SubSistemaEsgotoArquivoTexto" not-null="true">
+			<column name="seat_id"/>
+		</many-to-one>
+    
+	</class>
+</hibernate-mapping>

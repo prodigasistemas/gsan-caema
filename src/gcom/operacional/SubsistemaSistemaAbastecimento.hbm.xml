@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.operacional.SubsistemaSistemaAbastecimento" table="operacional.subsis_sis_abastecimento">
+		<id name="id" type="java.lang.Integer" column="sbsi_id">
+			<generator class="sequence">
+				<param name="sequence">operacional.seq_subsis_sis_abastecimento</param>
+			</generator>
+		</id>
+		<property name="indicadorPrincipal" type="java.lang.Short" column="sbsi_icprincipal" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="sbsi_tmultimaalteracao" length="8"/>
+		
+		<many-to-one name="subsistemaAbastecimento" class="gcom.operacional.SubsistemaAbastecimento" not-null="true">
+			<column name="sbab_id"/>
+		</many-to-one>
+		<many-to-one name="sistemaAbastecimento" class="gcom.operacional.SistemaAbastecimento" not-null="true">
+			<column name="sabs_id"/>
+		</many-to-one>
+		<!-- associations -->
+		
+	</class>
+</hibernate-mapping>

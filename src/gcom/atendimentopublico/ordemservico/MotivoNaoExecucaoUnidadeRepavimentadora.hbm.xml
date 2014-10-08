@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.atendimentopublico.ordemservico.MotivoNaoExecucaoUnidadeRepavimentadora" table="atendimentopublico.motivo_naoexec_unidrepav">
+		<composite-id name="comp_id" class="gcom.atendimentopublico.ordemservico.MotivoNaoExecucaoUnidadeRepavimentadoraPK">
+			<!-- bi-directional many-to-one association to Imovel -->
+			<key-many-to-one name="motivoDeNaoExecucaoDoServico" class="gcom.atendimentopublico.ordemservico.MotivoDeNaoExecucaoDoServico">
+				<column name="mnes_id"/>
+			</key-many-to-one>
+			
+			<!-- bi-directional many-to-one association to Subcategoria -->
+			<key-many-to-one name="unidadeRepavimentadora" class="gcom.cadastro.unidade.UnidadeOrganizacional">
+				<column name="unid_id"/>
+			</key-many-to-one>
+		</composite-id>
+						
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="mneu_tmultimaalteracao" length="8"/>
+		
+	</class>
+</hibernate-mapping>

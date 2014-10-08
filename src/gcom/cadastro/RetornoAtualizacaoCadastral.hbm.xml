@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.RetornoAtualizacaoCadastral" 
+    table="cadastro.retorno_atlz_cadastral"
+>
+
+    <id
+        name="id"
+        type="java.lang.Integer"
+        column="reat_id"
+    >
+        <generator class="sequence">
+           <param name="sequence">cadastro.seq_retorno_atlz_cadastral</param>
+        </generator>
+    </id>
+
+    <property
+        name="codigoSituacao"
+        type="java.lang.Short"
+        column="reat_cdsituacao"
+        not-null="true"
+        length="22"
+    />
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="reat_tmultimaalteracao"
+        not-null="true"
+        length="11"
+    />
+
+	<property
+        name="codigoAlteracao"
+        type="java.lang.Short"
+        column="reat_cdopcaoalteracao"
+        not-null="false"
+        length="22"
+    />
+    
+    <property
+        name="dataAtualizacao"
+        type="java.sql.Date"
+        column="reat_dtatualizacao"
+        length="11"
+    />
+    
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to MensagemAtlzCadastral -->
+    <many-to-one
+        name="mensagemAtualizacaoCadastral"
+        class="gcom.cadastro.MensagemAtualizacaoCadastral"
+        not-null="true"
+    >
+        <column name="matc_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to ParamTabAtualizCadast -->
+    <many-to-one
+        name="parametroTabelaAtualizacaoCadastro"
+        class="gcom.cadastro.ParametroTabelaAtualizacaoCadastro"
+        not-null="true"
+    >
+        <column name="ptac_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to AtributoAtlzCadastral -->
+    <many-to-one
+        name="atributoAtualizacaoCadastral"
+        class="gcom.cadastro.AtributoAtualizacaoCadastral"
+        not-null="true"
+    >
+        <column name="atac_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Cliente -->
+    <many-to-one
+        name="cliente"
+        class="gcom.cadastro.cliente.Cliente"
+        not-null="true"
+    >
+        <column name="clie_id" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Imovel -->
+    <many-to-one
+        name="imovel"
+        class="gcom.cadastro.imovel.Imovel"
+        not-null="true"
+    >
+        <column name="imov_id" />
+    </many-to-one>
+    
+       <many-to-one
+        name="imovelAtualizacaoCadastral"
+        class="gcom.cadastro.imovel.ImovelAtualizacaoCadastral"
+        not-null="true"
+    >
+        <column name="imac_id" />
+    </many-to-one>
+
+	<!-- bi-directional many-to-one association to MedicaoTipo -->
+	<many-to-one name="medicaoTipo" class="gcom.micromedicao.medicao.MedicaoTipo" not-null="false">
+		<column name="medt_id"/>
+	</many-to-one>
+	
+	<!-- bi-directional many-to-one association to Usuario -->
+	<many-to-one name="usuario" class="gcom.seguranca.acesso.usuario.Usuario" not-null="false">
+			<column name="usur_id"/>
+		</many-to-one>
+
+</class>
+</hibernate-mapping>

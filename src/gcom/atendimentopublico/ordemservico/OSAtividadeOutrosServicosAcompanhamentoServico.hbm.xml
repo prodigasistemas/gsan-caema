@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+	<class name="gcom.atendimentopublico.ordemservico.OSAtividadeOutrosServicosAcompanhamentoServico" table="atendimentopublico.os_at_otsv_acomp_servico">
+		<id name="id" type="java.lang.Integer" column="osos_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_os_at_otsv_acomp_servico</param>
+			</generator>
+		</id>
+		
+    <property
+        name="quantidadeServico"
+        type="java.math.BigDecimal"
+        column="osos_qtservico"
+        not-null="true"
+        length="12"
+    />
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="osos_tmultimaalteracao"
+        not-null="true"
+        length="8"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to OrdemServico -->
+    <many-to-one
+        name="osAtividadeProgramacaoAcompanhamentoServico"
+        class="gcom.atendimentopublico.ordemservico.OSAtividadeProgramacaoAcompanhamentoServico"
+        not-null="true">
+        <column name="oats_id" />
+    </many-to-one>
+    
+    <many-to-one 
+    	name="ordemServico"
+    	class="gcom.atendimentopublico.ordemservico.OrdemServico"
+    	not-null="true">
+    	<column name="orse_id"/>	
+    </many-to-one>
+    
+    <many-to-one 
+    	name="servicoRepavimentadora"
+    	class="gcom.atendimentopublico.ordemservico.ServicoRepavimentadora"
+    	not-null="true">
+    	<column name="svrp_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

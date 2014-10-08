@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="GerarOsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.GerarOsAnormalidadeConsumoFiltrarActionForm" />
+		<form-bean name="OsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.OsAnormalidadeConsumoFiltrarActionForm" />	 
+	</form-beans>
+
+	<!--******************* P�GINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+		<action  name="GerarOsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.ExibirFiltrarGerarOsAnormalidadeConsumoAction"
+			validate="false" scope="session" path="/exibirFiltrarGerarOsAnormalidadeConsumoAction">
+			<forward name="exibirFiltrarGerarOsAnormalidadeConsumo"
+				path="/jsp/faturamento/gerar_os_anormalidade_consumo_filtrar.jsp" />
+		</action>
+		
+	 	<action name="GerarOsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.FiltrarGerarOsAnormalidadeConsumoAction"
+			validate="false" scope="session" path="/filtrarGerarOsAnormalidadeConsumoAction">
+			<forward name="manterCobrancaAcao" path="/filtrarGerarOsAnormalidadeConsumoAction" />
+		</action>	
+		
+		<action  name="OsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.ExibirFiltrarOsAnormalidadeConsumoAction"
+			validate="false" scope="session" path="/exibirFiltrarOsAnormalidadeConsumoAction">
+			<forward name="exibirFiltrarOsAnormalidadeConsumo"
+				path="/jsp/faturamento/os_anormalidade_consumo_filtrar.jsp" />
+		</action>
+		
+		<action  name="OsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.ExibirExcluirOsAnormalidadeConsumoAction"
+			validate="false" scope="session" path="/exibirExcluirOsAnormalidadeConsumoAction">
+			<forward name="exibirExcluirOsAnormalidadeConsumo"
+				path="/jsp/faturamento/exibir_os_anormalidade_consumo_excluir.jsp" />
+		</action>
+		
+		<action  name="OsAnormalidadeConsumoFiltrarActionForm"
+			type="gcom.gui.faturamento.ConsultarOsAnormalidadeConsumoAction"
+			validate="false" scope="session" path="/consultarOsAnormalidadeConsumoAction">
+			<forward name="consultarOsAnormalidadeConsumo"
+				path="/jsp/faturamento/os_anormalidade_consumo_consultar.jsp" />
+		</action>
+		
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.faturamento.ExcluirOsAnormalidadeConsumoAction"
+			validate="false" input="/excluirOsAnormalidadeConsumoAction.do"
+			scope="request" path="/excluirOsAnormalidadeConsumoAction" />
+	
+		
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

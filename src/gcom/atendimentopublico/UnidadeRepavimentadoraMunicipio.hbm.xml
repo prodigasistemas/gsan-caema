@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.atendimentopublico.UnidadeRepavimentadoraMunicipio" table="atendimentopublico.unid_repav_municipio">
+		<id name="id" type="java.lang.Integer" column="unrm_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_unid_repav_municipio</param>
+			</generator>
+		</id>
+		
+		<property name="descricaoAgrupamento"  type="java.lang.String" column="unrm_dsagrupamento" not-null="true" length="30"/>
+		<property name="indicadorUso"  type="java.lang.Short" column="unrm_icuso" not-null="true" length="2" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="unrm_tmultimaalteracao" length="8"/>
+		
+		<many-to-one name="unidadeRepavimentadora" class="gcom.cadastro.unidade.UnidadeOrganizacional" not-null="true">
+			<column name="unid_idrepavimentadora"/>
+		</many-to-one>
+		
+		<many-to-one name="municipio" class="gcom.cadastro.geografico.Municipio" not-null="true">
+			<column name="muni_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

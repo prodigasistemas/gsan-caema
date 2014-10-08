@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cadastro.cliente.MotivoRejeicaoClienteVirtual" table="cadastro.motivo_rej_cliente_virt">
+		<id name="id" type="java.lang.Integer" column="mrcv_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_motivo_rej_cliente_virt</param>
+			</generator>
+		</id>
+		
+		<property name="descricaoMotivo" type="java.lang.String" column="mrcv_dsmotivo" not-null="true" length="100" />
+		<property name="indicadorUso" type="java.lang.Short" column="mrcv_icuso" not-null="true" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="mrcv_tmultimaalteracao" not-null="true" length="8"/>
+	</class>
+</hibernate-mapping>

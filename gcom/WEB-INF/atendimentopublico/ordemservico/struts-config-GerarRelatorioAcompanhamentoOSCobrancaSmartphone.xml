@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="GerarRelatorioAcompanhamentoOSCobrancaSmartphoneActionForm"
+			type="gcom.gui.mobile.GerarRelatorioAcompanhamentoOSCobrancaSmartphoneActionForm" />
+
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL *******************-->
+		<action name="GerarRelatorioAcompanhamentoOSCobrancaSmartphoneActionForm"
+			type="gcom.gui.mobile.ExibirGerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction"
+			input="/exibirGerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction.do"
+			path="/exibirGerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction"
+			validate="true" scope="session">
+			<forward name="exibirGerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction"
+				path="/jsp/atendimentopublico/ordemservico/acompanhamento_OS_cobranca_smartphone_relatorio_gerar.jsp" />
+		</action>
+		
+		<action name="GerarRelatorioAcompanhamentoOSCobrancaSmartphoneActionForm"
+			type="gcom.gui.mobile.GerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction"
+			input="/exibirGerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction.do"
+			path="/gerarRelatorioAcompanhamentoOSCobrancaSmartphoneAction" 
+			validate="true" scope="session"/>
+	</action-mappings>
+</struts-config>

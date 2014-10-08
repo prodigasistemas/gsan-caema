@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+<form-beans>
+
+<form-bean name="GerarRelatorioAnormalidadeImoveisCorrigidosActionForm"
+			type="gcom.gui.relatorio.micromedicao.GerarRelatorioAnormalidadeImoveisCorrigidosActionForm" />					
+</form-beans>
+
+
+<action-mappings>
+	
+	<action name="GerarRelatorioAnormalidadeImoveisCorrigidosActionForm"
+			type="gcom.gui.relatorio.micromedicao.ExibirGerarRelatorioAnormalidadeImoveisCorrigidosAction"
+			path="/exibirGerarRelatorioAnormalidadeImoveisCorrigidosAction">
+			<forward name="exibirGerarRelatorioAnormalidadeImoveisCorrigidos"
+				path="/jsp/relatorio/micromedicao/gerar_relatorio_anormalidade_imoveis_corrigidos.jsp" />
+		</action>
+		
+		<action name="GerarRelatorioAnormalidadeImoveisCorrigidosActionForm"
+			type="gcom.gui.relatorio.micromedicao.GerarRelatorioAnormalidadeImoveisCorrigidosAction"
+			path="/gerarRelatorioAnormalidadeImoveisCorrigidosAction" />
+
+</action-mappings>
+
+
+</struts-config>

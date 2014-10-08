@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.registroatendimento.NormaArquivos" table="atendimentopublico.norma_arquivos">
+		<id name="id" type="java.lang.Integer" column="narq_id">
+			<generator class="sequence">
+				<param name="sequence">
+				atendimentopublico.seq_norma_arquivos</param>
+			</generator>
+		</id>
+		<property name="descricaoArquivoTexto" type="java.lang.String" column="narq_dsarquivotexto" length="50"/>
+		<property name="imagemArquivo" type="binary" column="narq_imarquivo" not-null="true" length="-1"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="narq_tmultimaalteracao" length="8"/>
+		
+	  <!-- bi-directional many-to-one association to NormaProcedimentos -->
+	  <many-to-one class="gcom.atendimentopublico.registroatendimento.NormaProcedimentos"  name="normaProcedimentos" not-null="false">
+	  <column name="npro_id"/>
+	  </many-to-one>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcLogradouro" 
+    table="atc_logradouro"
+>
+
+    <id
+        name="atcLgrId"
+        type="java.lang.Integer"
+        column="atc_lgr_id"
+    >
+       <generator class="assigned"/>
+    </id>
+
+    <property
+        name="atcLgrDescricao"
+        type="java.lang.String"
+        column="atc_lgr_descricao"
+        not-null="true"
+        length="50"
+    />
+    <property
+        name="atcLtpId"
+        type="java.lang.Integer"
+        column="atc_ltp_id"
+        length="4"
+    />
+    <property
+        name="atcLttId"
+        type="java.lang.Integer"
+        column="atc_ltt_id"
+        length="4"
+    />
+    
+     <property
+        name="atcMunId"
+        type="java.lang.Integer"
+        column="atc_mun_id"
+        length="4"
+    />
+    
+    <property
+        name="atcLgrAtualizado"
+        type="java.lang.String"
+        column="atc_lgr_ind_cad"
+        not-null="false"
+        length="50"
+    />
+    
+    <property
+        name="atcLgrDataHoraImportacao"
+        type="java.sql.Timestamp"
+        column="atc_lgr_data_atualizacao"
+        not-null="false"
+        length="8"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

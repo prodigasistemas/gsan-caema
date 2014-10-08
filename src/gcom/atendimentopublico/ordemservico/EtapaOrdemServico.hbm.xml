@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+	<class name="gcom.atendimentopublico.ordemservico.EtapaOrdemServico" table="atendimentopublico.etapa_os">
+		<id name="id" type="java.lang.Integer" column="etap_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_etapa_os</param>
+			</generator>
+		</id>
+		
+	    <property name="numeroLargura"  type="java.math.BigDecimal" column="etap_nnlargura" not-null="true" />
+	    <property name="numeroComprimento"  type="java.math.BigDecimal" column="etap_nncomprimento" not-null="true" />
+	    <property name="metroCubico"  type="java.math.BigDecimal" column="etap_nnmcubico" not-null="true"  />
+	    <property name="ultimaAlteracao"  type="java.sql.Timestamp" column="etap_tmultimaalteracao" not-null="true" length="8"  />   
+	
+	    <!-- Associations -->
+	   
+	    <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico" not-null="true">
+	        <column name="orse_id" />
+	    </many-to-one>
+	     <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="pavimentoRua" class="gcom.cadastro.imovel.PavimentoRua" not-null="true">
+	        <column name="prua_id" />
+	    </many-to-one>
+	     <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="pavimentoCalcada" class="gcom.cadastro.imovel.PavimentoCalcada" not-null="true">
+	        <column name="pcal_id" />
+	    </many-to-one>
+	     <!-- bi-directional many-to-one association to RegistroAtendimento -->
+	    <many-to-one name="servicoTipo" class="gcom.atendimentopublico.ordemservico.ServicoTipo" not-null="true">
+	        <column name="svtp_id" />
+	    </many-to-one>
+	
+	</class>
+</hibernate-mapping>

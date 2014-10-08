@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.faturamento.ComandoOsAnormalidade" table="faturamento.comando_os_anormalidade">
+		<id name="id" type="java.lang.Integer" column="cooa_id">
+			<generator class="sequence">
+				<param name="sequence">faturamento.seq_comando_os_anormalidade</param>
+			</generator>
+		</id>
+		<property name="anoMesReferencia" type="int" column="cooa_amreferencia" not-null="true" length="4"/>
+		<property name="indicadorComandoExecutado" type="java.lang.Short" column="cooa_iccomandoexecutado" not-null="true" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="cooa_tmultimaalteracao" not-null="true" length="8"/>
+		<property name="indicadorBaixoConsumo" type="java.lang.Short" column="cooa_icgeracaoosbc" not-null="true" length="2"/>
+		<property name="indicadorEstouroConsumo" type="java.lang.Short" column="cooa_icgeracaoosec" not-null="true" length="2"/>
+		<!-- Associations -->
+		<many-to-one name="gerenciaRegional" class="gcom.cadastro.localidade.GerenciaRegional" not-null="true">
+			<column name="greg_id"/>
+		</many-to-one>
+		<many-to-one name="unidadeNegocio" class="gcom.cadastro.localidade.UnidadeNegocio" not-null="true">
+			<column name="uneg_id"/>
+		</many-to-one>
+		<many-to-one name="faturamentoGrupo" class="gcom.faturamento.FaturamentoGrupo" not-null="true">
+			<column name="ftgr_id"/>
+		</many-to-one>
+		<many-to-one name="localidadeInicial" class="gcom.cadastro.localidade.Localidade" not-null="true">
+			<column name="loca_idinicial"/>
+		</many-to-one>
+		<many-to-one name="localidadeFinal" class="gcom.cadastro.localidade.Localidade" not-null="true">
+			<column name="loca_idfinal"/>
+		</many-to-one>
+		<many-to-one name="setorComercialInicial" class="gcom.cadastro.localidade.SetorComercial" not-null="true">
+			<column name="stcm_idinicial"/>
+		</many-to-one>
+		<many-to-one name="setorComercialFinal" class="gcom.cadastro.localidade.SetorComercial" not-null="true">
+			<column name="stcm_idfinal"/>
+		</many-to-one>
+		<many-to-one name="quadraInicial" class="gcom.cadastro.localidade.Quadra" not-null="true">
+			<column name="qdra_idinicial"/>
+		</many-to-one>
+		<many-to-one name="quadraFinal" class="gcom.cadastro.localidade.Quadra" not-null="true">
+			<column name="qdra_idfinal"/>
+		</many-to-one>
+		<many-to-one name="rotaInicial" class="gcom.micromedicao.Rota" not-null="true">
+			<column name="rota_idinicial"/>
+		</many-to-one>
+		<many-to-one name="rotaFinal" class="gcom.micromedicao.Rota" not-null="true">
+			<column name="rota_idfinal"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

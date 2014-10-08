@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="FiltrarAreaOperacionalActionForm" type="gcom.gui.operacional.FiltrarAreaOperacionalActionForm" />
+		<form-bean name="ManutencaoRegistroActionForm" 	type="gcom.gui.ManutencaoRegistroActionForm" />
+		<form-bean name="InserirAreaOperacionalActionForm" type="gcom.gui.operacional.InserirAreaOperacionalActionForm" /> 
+
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+
+		<action name="FiltrarAreaOperacionalActionForm"
+			type="gcom.gui.operacional.ExibirManterAreaOperacionalAction" scope="session"
+			validate="false" path="/exibirManterAreaOperacionalAction">
+			<forward name="manterAreaOperacional"
+				path="/jsp/operacional/area_operacional_manter.jsp" />
+			<forward name="atualizarAreaOperacional"
+				path="/exibirAtualizarAreaOperacionalAction.do" />
+		</action>
+
+		<action name="ManutencaoRegistroActionForm"
+			type="gcom.gui.operacional.RemoverAreaOperacionalAction" scope="request"
+			path="/removerAreaOperacionalAction" />
+			
+		<action name="FiltrarAreaOperacionalActionForm"
+			type="gcom.gui.relatorio.operacional.GerarRelatorioAreaOperacionalManterAction"
+			validate="true" scope="session"
+			path="/gerarRelatorioAreaOperacionalManterAction" />
+
+		<action name="InserirAreaOperacionalActionForm"
+			type="gcom.gui.operacional.ExibirAtualizarAreaOperacionalAction"
+			validate="false" scope="session" path="/exibirAtualizarAreaOperacionalAction">
+			<forward name="atualizarAreaOperacional"
+				path="/jsp/operacional/area_operacional_atualizar.jsp" />
+		</action>
+
+		<action name="InserirAreaOperacionalActionForm" 
+		 	type="gcom.gui.operacional.AtualizarAreaOperacionalAction" 
+			validate="false" scope="session" path="/atualizarAreaOperacionalAction">	
+		</action> 
+
+
+	</action-mappings>
+	<!--******************* ARQUIVO DE PROPRIEDADES *******************-->
+	<message-resources null="false" parameter="gcom.properties.application" />
+
+</struts-config>

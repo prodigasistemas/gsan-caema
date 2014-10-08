@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.faturamento.consumotarifa.ConsumoTarifaVigenPpp" table="faturamento.consumo_tarifa_vigen_ppp">
+		<id name="id" type="java.lang.Integer" column="ctvp_id">
+		<generator class="sequence">
+				<param name="sequence">faturamento.seq_consumo_tarifa_vigen_ppp</param>
+		</generator>
+		</id>
+		<property name="dataVigencia" type="java.sql.Date" column="ctvp_dtvigencia" length="4"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ctvp_tmultimaalteracao" length="8"/>
+		<!-- associations -->
+		<!-- bi-directional one-to-many association to ConsumoTarifaCategoria -->
+		<set name="consumoTarifaCategorias" lazy="true" inverse="true">
+			<key>
+				<column name="ctvp_id"/>
+			</key>
+			<one-to-many class="gcom.faturamento.consumotarifa.ConsumoTarifaCategPpp"/>
+		</set>
+			<!-- bi-directional many-to-one association to ConsumoTarifa -->
+		<many-to-one name="consumoTarifaPpp" class="gcom.faturamento.consumotarifa.ConsumoTarifaPpp" not-null="true">
+			<column name="cstf_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

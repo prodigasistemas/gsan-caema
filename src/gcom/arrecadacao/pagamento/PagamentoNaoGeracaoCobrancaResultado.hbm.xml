@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="gcom.arrecadacao.pagamento.PagamentoNaoGeracaoCobrancaResultado" table="cobranca.pagto_nao_ger_cob_res">
+		<id name="id" type="java.lang.Integer" column="pggc_id">
+			<generator class="sequence">
+				<param name="sequence">
+					cobranca.seq_pagto_nao_ger_cob_res
+				</param>
+			</generator>
+		</id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pggc_tmultimaalteracao" length="8"/>
+		<property name="dataNaoGeracao" type="java.sql.Date" column="pggc_dtnaogeracao" not-null="true" length="12"/>	
+		<property name="dataPagamento" type="java.sql.Date" column="pggc_dtpagamento" not-null="true" length="12"/>
+		<property name="dataProcessamentoPagamento" type="java.sql.Timestamp" column="pggc_tmprocessapagamento" length="12"/>
+		<property name="valorPagamento" type="java.math.BigDecimal" column="pggc_vlpagamento" not-null="true" length="13"/>
+		<property name="anoMesReferenciaPagamento" type="java.lang.Integer" column="pggc_amreferenciapagamento" length="6"/>
+		<property name="anoMesReferenciaArrecadacao" type="java.lang.Integer" column="pggc_amreferenciaarrecadacao" not-null="true" length="6"/>
+		<property name="anoMesReferenciaGeracao" type="java.lang.Integer" column="pggc_amreferenciageracao" not-null="true" length="6"/>
+	    <property name="numeroDiasVencimento" type="java.lang.Integer" column="pggc_nndiasvenccobres" not-null="false" length="7" />
+		<property name="indicadorAtualizarPagamentos" type="java.lang.Short" column="pggc_icatualizarpagamentos" length="4" not-null="true"/>
+   
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="false">
+			<column name="imov_id"/>
+		</many-to-one>
+		<many-to-one name="conta" class="gcom.faturamento.conta.ContaGeral" not-null="false">
+			<column name="cnta_id"/>
+		</many-to-one>
+		<many-to-one name="motivoNaoGeracao" class="gcom.cobranca.MotivoNaoGeracaoCobrancaResultado" not-null="false">
+			<column name="mngc_id"/>
+		</many-to-one>		
+	</class>
+</hibernate-mapping>

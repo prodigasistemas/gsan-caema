@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+
+    Created by the Middlegen Hibernate plugin 2.1
+
+
+
+    http://boss.bekk.no/boss/middlegen/
+
+    http://www.hibernate.org/
+
+-->
+	<class name="gcom.cadastro.ImovelCadastroSorteio" table="cadastro.imovel_cadastro_sorteio">
+		<id name="id" type="java.lang.Integer" column="imcs_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_imovel_cadastro_sorteio</param>
+			</generator>
+		</id>
+		
+		<property name="numeroGerado" type="java.lang.Integer" column="imcs_nngerado" not-null="false" length="6"/>
+		<property name="indicadorImovelApto" type="java.lang.Short" column="imcs_icimovelapto" not-null="true" length="2"/>
+		<property name="dataInscricao" type="java.sql.Timestamp" column="imcs_tminscricao" not-null="true" length="8"/>
+  		<property name="descricaoDiferenca" type="java.lang.String" column="imcs_dsdiferenca" not-null="false" generated="never" lazy="false" length="80"/>
+  		<property name="nomeCliente" type="java.lang.String" column="imcs_nmcliente" generated="never" lazy="false" length="50"/>
+  		<property name="rg" type="java.lang.String" column="imcs_nnrg" generated="never" not-null="false" lazy="false" length="13"/>
+		<property name="dataNascimento" type="java.sql.Date" column="imcs_dtnascimento" not-null="false" length="4"/>
+		<property name="cpf" type="java.lang.String" column="imcs_nncpf" generated="never" not-null="false" lazy="false" length="11"/>
+		<property name="cnpj" type="java.lang.String" column="imcs_nncnpj" generated="never" not-null="false" lazy="false" length="14"/>
+		<property name="indicadorProprietario" type="java.lang.Short" column="imcs_icproprietario" not-null="true" length="2"/>
+		<property name="email" type="java.lang.String" column="imcs_dsemail" generated="never" not-null="false" lazy="false" length="40"/>
+		<property name="dddFixo" type="java.lang.Integer" column="imcs_nndddfixo" not-null="false" length="6"/>
+		<property name="telefoneFixo" type="java.lang.Integer" column="imcs_nntelefonefixo" not-null="false" length="6"/>
+		<property name="dddCelular" type="java.lang.Integer" column="imcs_nndddcelular" not-null="false" length="6"/>
+		<property name="telefoneCelular" type="java.lang.Integer" column="imcs_nntelefonecelular" not-null="false" length="6"/>
+		<property name="logradouro" type="java.lang.String" column="imcs_dslogradouro" generated="never" not-null="true" lazy="false" length="100"/>
+		<property name="numeroEndereco" type="java.lang.Integer" column="imcs_nnendereco" not-null="false" length="6"/>
+		<property name="complemento" type="java.lang.String" column="imcs_dscomplemento" generated="never" not-null="false" lazy="false" length="25"/>
+		<property name="cep" type="java.lang.Integer" column="imcs_nncep" not-null="false" length="6"/>
+		<property name="dataSorteio" type="java.sql.Date" column="imcs_dtsorteio" not-null="false" length="4"/>
+		<property name="numeroOrdemSorteio" type="java.lang.Integer" column="imcs_nnordemsorteio" not-null="false" length="6"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="imcs_tmultimaalteracao" not-null="true" length="8"/>
+		<property name="indicadorParticipacaoSorteio" type="java.lang.Short" column="imcs_icparticipacaosorteio" not-null="true" length="2"/>
+		
+		<!-- bi-directional many-to-one association to Imovel -->
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="true">
+			<column name="imov_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to PremioSortei -->
+		<many-to-one name="premioSorteio" class="gcom.cadastro.PremioSorteio" not-null="false">
+			<column name="prso_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to Bairro -->
+		<many-to-one name="bairro" class="gcom.cadastro.geografico.Bairro" not-null="true">
+			<column name="bair_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to Usuario -->
+		<many-to-one name="usuario" class="gcom.seguranca.acesso.usuario.Usuario" not-null="false">
+			<column name="usur_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to UnidadeOrganizacional -->
+		<many-to-one name="unidadeOrganizacional" class="gcom.cadastro.unidade.UnidadeOrganizacional" not-null="false">
+			<column name="unid_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

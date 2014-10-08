@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="gcom.atendimentopublico.ordemservico.ComandoOsSetor" table="atendimentopublico.comando_os_setor">
+		<composite-id name="pk" class="gcom.atendimentopublico.ordemservico.ComandoOsSetorPK">
+			<key-property name="idComando" column="coss_id" type="java.lang.Integer" length="4"/>
+			<key-property name="idSetor" column="stcm_id" type="java.lang.Integer" length="4"/>
+		</composite-id>
+
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="cosc_tmultimaalteracao" not-null="true" length="8"/>
+		<property name="numeroQuadraIni" type="java.lang.Integer" column="cosc_nnquadrainicial" not-null="false" length="4"/>
+		<property name="numeroQuadraFin" type="java.lang.Integer" column="cosc_nnquadrafinal" not-null="false" length="4"/>
+		<property name="numeroRotaIni" type="java.lang.Integer" column="cosc_cdrotainicial" not-null="false" length="4"/>
+		<property name="numeroRotaFin" type="java.lang.Integer" column="cosc_cdrotafinal" not-null="false" length="4"/>
+		<property name="numeroSequencialIni" type="java.lang.Integer" column="cosc_nnsequencialinicial" not-null="false" length="6"/>
+		<property name="numeroSequencialFin" type="java.lang.Integer" column="cosc_nnsequencialfinal" not-null="false" length="6"/>
+
+		<many-to-one name="comando" class="gcom.atendimentopublico.ordemservico.ComandoOrdemSeletiva"
+			update="false" insert="false">
+			<column name="coss_id"/>
+		</many-to-one>
+		
+		<many-to-one name="setor" class="gcom.cadastro.localidade.SetorComercial"
+			update="false" insert="false">
+			<column name="stcm_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

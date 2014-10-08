@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+	-->
+ <class name="gcom.integracao.CarroPipaAbastecimento" table="integracao.carro_pipa_abastecimento">
+  <id column="cpab_id" name="id" type="java.lang.Integer"></id>
+  <property column="cpab_dsplacacaminhao" length="7" name="descricaoPlaca" not-null="true" type="java.lang.String"/>
+  <property column="cpab_tmabastecimento" name="dataAbastecimento" not-null="true" type="java.sql.Timestamp"/>
+  <property column="cpab_nnvolumeabastecimento" name="volumeAbastecimento" not-null="true" type="java.math.BigDecimal"/>
+  <property column="cpab_iccobranca" name="indicadorCobranca" not-null="true" type="java.lang.Short"/>
+  <property column="cpab_icabastecimentoavulso" name="indicadorAbastecimentoAvulso" not-null="true" type="java.lang.Short"/>
+  <property column="cpab_tmultimaalteracao" name="ultimaAlteracao" not-null="true" type="java.sql.Timestamp"/>
+  <property column="cpab_amreferenciafaturamento" name="anoMesReferenciaFaturamento" type="java.lang.Integer"/>
+  <property column="cpab_vlabastecimento" name="valorAbastecimento" not-null="true" type="java.math.BigDecimal"/>
+  
+  <!-- bi-directional many-to-one association to CarroPipaAbastecimento -->
+  <many-to-one class="gcom.cadastro.imovel.Imovel" name="imovel" not-null="true">
+   <column name="imov_id"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

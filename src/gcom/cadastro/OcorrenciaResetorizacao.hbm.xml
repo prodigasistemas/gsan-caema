@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class name="gcom.cadastro.OcorrenciaResetorizacao" table="cadastro.ocorrencia_resetorizacao">
+
+    <id name="id" type="java.lang.Integer" column="ocre_id">
+        <generator class="sequence">
+         	<param name="sequence">cadastro.seq_ocorrencia_resetorizacao</param>
+    	</generator>
+    </id>
+
+    <property name="descricaoMensagem" type="java.lang.String" column="ocre_dsmensagem" not-null="true" length="30" />
+    <property name="ultimaAlteracao" type="java.sql.Timestamp" column="ocre_tmultimaalteracao" not-null="true" length="11" />
+    
+</class>
+
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.LogradouroAdmin" 
+    table="cadastro.logradouro_admin"
+>
+    
+    <id name="id" type="java.lang.Integer" column="load_id">
+		<generator class="assigned"/>
+	</id>
+
+
+    <property
+        name="nomelogradouro"
+        type="java.lang.String"
+        column="load_nmlogradouro"
+        not-null="true"
+        length="4000"
+    />
+    <property
+        name="indicadorAtualizado"
+        type="java.lang.Short"
+        column="load_icatualizacao"
+        length="22"
+    />
+    <property
+        name="dataAtualizacaoGsan"
+        type="java.sql.Date"
+        column="load_dtatualizacaogsan"
+        length="7"
+    />
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="load_tmultimaalteracao"
+        not-null="true"
+        length="11"
+    />
+    
+    <!-- bi-directional many-to-one association to LogradouroTitulo -->
+	<many-to-one name="logradouroTitulo" class="gcom.cadastro.endereco.LogradouroTitulo" not-null="false">
+		<column name="lgtt_id"/>
+	</many-to-one>
+	
+	<!-- bi-directional many-to-one association to LogradouroTipo -->
+	<many-to-one name="logradouroTipo" class="gcom.cadastro.endereco.LogradouroTipo" not-null="false">
+		<column name="lgtp_id"/>
+	</many-to-one>
+
+</class>
+</hibernate-mapping>

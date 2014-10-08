@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.atendimentopublico.ordemservico.MotivoDeNaoExecucaoDoServico" table="atendimentopublico.motivo_nao_exec_servico">
+		<id name="id" type="java.lang.Integer" column="mnes_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_motivo_nao_exec_servico</param>
+			</generator>
+		</id>
+		
+		<property name="descricao"  type="java.lang.String" column="mnes_dsmotivonaoexecucao" not-null="true" length="80"/>
+		<property name="descricaoAbreviada"  type="java.lang.String" column="mnes_dsabreviada" not-null="false" length="10"/>
+		<property name="indicadorUso"  type="java.lang.Short" column="mnes_icuso" not-null="true" length="2" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="mnes_tmultimaalteracao" length="6"/>
+		
+	</class>
+</hibernate-mapping>

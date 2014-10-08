@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="FiltrarSetorAbastecimentoActionForm"
+			type="gcom.gui.operacional.FiltrarSetorAbastecimentoActionForm" />
+		<form-bean name="AtualizarSetorAbastecimentoActionForm"
+			type="gcom.gui.operacional.AtualizarSetorAbastecimentoActionForm" />
+		
+	</form-beans>
+	<global-forwards />
+
+	<action-mappings>
+		
+	    <!-- ========================== FILTRAR SETOR ABASTECIMENTO ========================== -->
+	    <action name="FiltrarSetorAbastecimentoActionForm"
+	        type="gcom.gui.operacional.ExibirFiltrarSetorAbastecimentoAction"
+	        parameter="action" path="/exibirFiltrarSetorAbastecimentoAction"
+	        scope="session">
+	        	<forward name="filtrarSetorAbastecimento" path="/jsp/operacional/setor_abastecimento_filtrar.jsp"/>
+	    </action>
+	    
+	    <action name="FiltrarSetorAbastecimentoActionForm"
+	        type="gcom.gui.operacional.FiltrarSetorAbastecimentoAction"
+	        parameter="action" path="/filtrarSetorAbastecimentoAction"
+	        scope="session">
+	        	<forward name="manterSetorAbastecimento" path="/exibirManterSetorAbastecimentoAction.do"/>
+	    </action>
+	    <!-- ================================================================================= -->
+	    
+	    <!-- ========================== MANTER SETOR ABASTECIMENTO ========================== -->
+	    <action name="FiltrarSetorAbastecimentoActionForm"
+	        	type="gcom.gui.operacional.ExibirManterSetorAbastecimentoAction"
+	    		scope="session" parameter="action" path="/exibirManterSetorAbastecimentoAction">
+	        <forward name="exibirManterSetorAbastecimento" path="/jsp/operacional/setor_abastecimento_manter.jsp" />
+	        <forward name="exibirAtualizarSetorAbastecimento" path="/exibirAtualizarSetorAbastecimentoAction.do" />
+	    </action>
+	    <!-- ================================================================================ -->
+	    
+	    <!-- ========================== ATUALIZAR SETOR ABASTECIMENTO ========================== -->
+	    <action name="AtualizarSetorAbastecimentoActionForm"
+	        	type="gcom.gui.operacional.ExibirAtualizarSetorAbastecimentoAction"
+	    		scope="session" parameter="action" path="/exibirAtualizarSetorAbastecimentoAction">
+	        <forward name="exibirAtualizarSetorAbastecimento" path="/jsp/operacional/setor_abastecimento_atualizar.jsp" />
+	    </action>
+	    
+	    <action name="AtualizarSetorAbastecimentoActionForm"
+	        	type="gcom.gui.operacional.AtualizarSetorAbastecimentoAction"
+	    		scope="session" parameter="action" path="/atualizarSetorAbastecimentoAction" />
+	    <!-- ================================================================================ -->
+	    
+	    <!-- ========================== GERAR RELATÓRIO SETOR ABASTECIMENTO ========================== -->
+	    <action name="FiltrarSetorAbastecimentoActionForm"
+	        	type="gcom.gui.relatorio.operacional.GerarRelatorioSetorAbastecimentoManterAction"
+	    		scope="session" parameter="action" path="/gerarRelatorioSetorAbastecimentoManterAction" />
+	    <!-- ========================================================================================= -->
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

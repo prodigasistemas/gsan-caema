@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+ <class name="gcom.seguranca.acesso.usuario.UsuarioGrupo" table="seguranca.usuario_grupo">
+  <composite-id class="gcom.seguranca.acesso.usuario.UsuarioGrupoPK"
+   mapped="false" name="comp_id" unsaved-value="undefined">
+   <key-property column="grup_id" length="4" name="grupoId" type="java.lang.Integer"/>
+   <key-property column="usur_id" length="4" name="usuarioId" type="java.lang.Integer"/>
+  </composite-id>
+  <property column="usgr_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+  <!-- Associations 
+ derived association(s) for compound key 
+ bi-directional many-to-one association to Usuario -->
+  <many-to-one class="gcom.seguranca.acesso.usuario.Usuario"
+   insert="false" name="usuario" update="false">
+   <column name="usur_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Grupo -->
+  <many-to-one class="gcom.seguranca.acesso.Grupo" insert="false"
+   name="grupo" update="false">
+   <column name="grup_id"/>
+  </many-to-one>
+  
+  <many-to-one class="gcom.seguranca.acesso.usuario.UsuarioAfastamento" insert="true"
+   name="usuarioAfastamento" update="true">
+   <column name="usaf_id"/>
+  </many-to-one>
+  
+  <!-- end of derived association(s) 
+ bi-directional one-to-many association to UsuarioGrupoRestricao 
+ 
+    <set
+        name="usuarioGrupoRestricaos"
+        lazy="true"
+        inverse="true"
+		cascade="all"
+    >
+        <key>
+            <column name="grup_id" />
+            <column name="usur_id" />
+        </key>
+        <one-to-many 
+            class="gcom.UsuarioGrupoRestricao"
+        />
+    </set>
+    -->
+ </class>
+</hibernate-mapping>

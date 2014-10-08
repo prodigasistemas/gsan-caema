@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="ConsultarMotivoNaoPagamentoCobracaResultadoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ConsultarMotivoNaoPagamentoCobracaResultadoActionForm" />
+	</form-beans>
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="ConsultarMotivoNaoPagamentoCobracaResultadoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirConsultarMotivoNaoPagamentoCobracaResultadoAction"
+			validate="true" scope="session"
+			path="/exibirConsultarMotivoNaoPagamentoCobracaResultadoAction">
+			<forward name="exibirMotivoNaoPagamentoCobrancaResultado" 
+				path="/jsp/cobranca/cobrancaporresultado/motivo_nao_pagamento_cobracao_resultado_consultar.jsp" />
+		</action>
+
+		<action name="ConsultarMotivoNaoPagamentoCobracaResultadoActionForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.consultarMotivoNaoPagamentoCobracaResultadoAction"
+			validate="true" scope="session"
+			path="/consultarMotivoNaoPagamentoCobracaResultadoAction">
+							
+		
+		 </action>
+
+	</action-mappings>
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

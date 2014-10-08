@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="GerarOrdemServicoRemocaoInstalacaoActionForm"
+			type="gcom.gui.atendimentopublico.hidrometro.GerarOrdemServicoRemocaoInstalacaoActionForm" />
+	</form-beans>
+	
+	<action-mappings>
+
+		<action name="GerarOrdemServicoRemocaoInstalacaoActionForm"
+			type="gcom.gui.atendimentopublico.hidrometro.GerarOrdemServicoInstalacaoCaixaProtecaoHidrometroAction"
+			validate="true" scope="session"
+			path="/gerarOrdemServicoInstalacaoCaixaProtecaoHidrometroAction">
+		</action>
+		
+	</action-mappings>
+
+</struts-config>

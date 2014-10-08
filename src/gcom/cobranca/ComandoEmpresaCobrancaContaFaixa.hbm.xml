@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.cobranca.ComandoEmpresaCobrancaContaFaixa" table="cobranca.cmd_empr_cobr_cnta_faixa">
+		<composite-id name="comp_id" class="gcom.cobranca.ComandoEmpresaCobrancaContaFaixaPK">
+			<key-property name="comandoEmpresaCobrancaContaId" column="cecc_id" type="java.lang.Integer" length="4"/>
+			<key-property name="empresaCobrancaFaixaId" column="emcf_id" type="java.lang.Integer" length="4"/>
+		</composite-id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="cecf_tmultimaalteracao" length="8"/>
+		<property name="percentualInformadoFaixa" type="java.math.BigDecimal" column="cecf_pcimovelfaixa" length="5" not-null="true"/>
+		
+		<many-to-one name="empresaCobrancaFaixa" class="gcom.cadastro.empresa.EmpresaCobrancaFaixa" not-null="true"
+			 insert="false" update="false">
+			<column name="emcf_id"/>
+		</many-to-one>
+		
+		<many-to-one name="comandoEmpresaCobrancaConta" class="gcom.cobranca.ComandoEmpresaCobrancaConta" not-null="true"
+			 insert="false" update="false">
+			<column name="cecc_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cobranca.parcelamentojudicial.ParcelamentoJudicial" table="cobranca.parcelamento_judicial" >
+		<id name="id" type="java.lang.Integer" column="pjud_id">
+			<generator class="sequence">
+				<param name="sequence">cobranca.seq_parcelamento_judicial</param>
+			</generator>
+		</id>
+		
+		<property name="anoMesReferenciafaturamento" type="java.lang.Integer" column="pjud_amreferenciafaturamento" not-null="true" length="6"/>
+		<property name="dataParcelamento" type="java.sql.Timestamp" column="pjud_tmparcelamento" not-null="true" length="8"/>
+		<property name="dataCancelamento" type="java.sql.Timestamp" column="pjud_tmcancelamento" length="8"/>
+		
+		<property name="numeroProcesso" type="java.lang.String" column="pjud_nnprocessojudicial" not-null="true" length="25"/>
+		<property name="nomeAdvogado" type="java.lang.String" column="pjud_nmadvogado" not-null="true" length="50"/>
+		<property name="numeroOAB" type="java.lang.String" column="pjud_nnoab" length="10"/>
+		
+		<property name="observacao" type="java.lang.String" column="pjud_dsobservacao" length="100"/>
+		
+		<property name="indicadorValorCusta" type="java.lang.Short" column="pjud_icvalorcusta" not-null="true" length="2"/>
+		<property name="indicadorValorHonorario" type="java.lang.Short" column="pjud_icvalorhonorario" not-null="true" length="2"/>
+		<property name="indicadorValorInformaValorParc" type="java.lang.Short" column="pjud_icvalorinformavalorparc" not-null="true" length="2"/>
+		<property name="indicadorParcelamentoComJuros" type="java.lang.Short" column="pjud_icparcelamentocomjuros" not-null="true" length="2"/>
+		<property name="indicadorPerderDesconto" type="java.lang.Short" column="pjud_icperderdesconto" not-null="true" length="2"/>
+		<property name="indicadorParcelamentoEntrada" type="java.lang.Short" column="pjud_icentrada" not-null="true" length="2"/>
+		
+	
+		<property name="numeroDiasVencimentoParcelas" type="java.lang.Integer" column="pjud_nndiasvencparcelas" not-null="true" />
+		<property name="numeroPrestacoes" type="java.lang.Integer" column="pjud_nnprestacoes" not-null="true"/>
+		
+		<property name="taxaJuros" type="java.math.BigDecimal" column="pjud_txjuros" length="5"/>
+		<property name="percentualCustas" type="java.math.BigDecimal" column="pjud_pccustas" not-null="true" length="5"/>
+		<property name="percentualHonorario" type="java.math.BigDecimal" column="pjud_pchonorario" not-null="true" length="5"/>
+		<property name="percentualDesconto" type="java.math.BigDecimal" column="pjud_pcdesconto" not-null="true" length="5"/>
+		
+		<property name="valorConta" type="java.math.BigDecimal" column="pjud_vlconta" not-null="true" length="15"/>
+		<property name="valorAcrescimos" type="java.math.BigDecimal" column="pjud_vlacrescimos" not-null="true" length="15"/>
+		<property name="valorAcordo" type="java.math.BigDecimal" column="pjud_vlacordo" not-null="true" length="15"/>
+		<property name="valorCustas" type="java.math.BigDecimal" column="pjud_vlcustas" not-null="true" length="15"/>
+		<property name="valorHonorario" type="java.math.BigDecimal" column="pjud_vlhonorario" not-null="true" length="15"/>
+		<property name="valorParcelado" type="java.math.BigDecimal" column="pjud_vlparcelado" not-null="true" length="15"/>
+		<property name="valorEntrada" type="java.math.BigDecimal" column="pjud_vlentrada" length="15"/>
+		
+		<property name="arquivoPDF" type="binary" column="pjud_arpdf" length="-1" />
+
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="pjud_tmultimaalteracao" not-null="true" length="8"/>		
+		
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to FormaPagamento -->
+		
+	  	<many-to-one name="clienteResponsavel" class="gcom.cadastro.cliente.Cliente" not-null="true">
+	   		<column name="clie_idresponsavel"/>
+	  	</many-to-one>
+	  	
+	  	<many-to-one name="clienteUsuario" class="gcom.cadastro.cliente.Cliente" not-null="false">
+	   		<column name="clie_idusuario"/>
+	  	</many-to-one>
+		
+		<many-to-one name="usuarioResponsavel" class="gcom.seguranca.acesso.usuario.Usuario" not-null="true">
+			<column name="usur_id"/>
+		</many-to-one>
+		
+		<many-to-one name="usuarioCancelamento" class="gcom.seguranca.acesso.usuario.Usuario" not-null="false">
+			<column name="usur_idcancelamento"/>
+		</many-to-one>
+		
+		<many-to-one name="parcelamentoSituacao" class="gcom.cobranca.parcelamento.ParcelamentoSituacao" not-null="true">
+			<column name="pcst_id"/>
+		</many-to-one>
+		
+		<many-to-one name="parcelamentoTipo" class="gcom.cobranca.parcelamento.ParcelamentoTipo" not-null="true">
+			<column name="pctp_id"/>
+		</many-to-one>
+		
+		<many-to-one name="motivoDesfazer" class="gcom.cobranca.parcelamento.ParcelamentoMotivoDesfazer" not-null="false">
+			<column name="pmdz_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="gcom.cobranca.ComandoImovelCobrancaSituacao" table="cobranca.cmd_imovel_cobr_situacao">
+		<composite-id name="pk" class="gcom.cobranca.ComandoImovelCobrancaSituacaoPK">
+			<key-property name="idComando" column="cecc_id" type="java.lang.Integer" length="4"/>
+			<key-property name="idImovelCobrancaSituacao" column="iscb_id" type="java.lang.Integer" length="4"/>
+		</composite-id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="cics_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<many-to-one name="comando" class="gcom.cobranca.ComandoEmpresaCobrancaConta"
+			update="false" insert="false">
+			<column name="cecc_id" />	
+		</many-to-one>
+		
+		<many-to-one name="imovelCobranca" class="gcom.cadastro.imovel.ImovelCobrancaSituacao"
+			update="false" insert="false">
+			<column name="iscb_id" />	
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="PagamentosAbastecimentosCarroPipaRelatorioActionForm"
+			type="gcom.gui.faturamento.PagamentosAbastecimentosCarroPipaRelatorioActionForm" />					
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+		<!-- [UC1565] Gerar Relatório Pagamentos Abastecimento Carro Pipa -->
+		<!-- Author: Diogo Luiz --> 
+		<!-- Data: 15/10/2013 -->
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL *******************-->		
+		<action name="PagamentosAbastecimentosCarroPipaRelatorioActionForm"
+			type="gcom.gui.faturamento.ExibirPagamentosAbastecimentosCarroPipaRelatorioAction"
+			validate="true" scope="session"
+			path="/exibirPagamentosAbastecimentosCarroPipaRelatorioAction">			
+			<forward name="pagamentosAbastecimentosCarroPipaRelatorio"
+				path="/jsp/faturamento/pagamentos_abastecimentos_carroPipa_relatorio_gerar.jsp" />
+		</action>
+		<action name="PagamentosAbastecimentosCarroPipaRelatorioActionForm"
+			type="gcom.gui.faturamento.GerarRelatorioPagamentosAbastecimentosCarroPipaAction"
+			validate="true" scope="session"
+			path="/gerarRelatorioPagamentosAbastecimentosCarroPipaAction" />
+
+	</action-mappings>
+
+</struts-config>
+
+
+
+

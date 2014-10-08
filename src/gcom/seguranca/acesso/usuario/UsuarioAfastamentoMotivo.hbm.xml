@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+ <class name="gcom.seguranca.acesso.usuario.UsuarioAfastamentoMotivo" table="seguranca.usu_afastamento_motivo">
+  <id column="usam_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">seguranca.seq_usu_afastamento_motivo</param>
+   </generator>
+  </id>
+  <property column="usam_dsmotivo" generated="never" lazy="false"
+   length="60" name="descricao" type="java.lang.String"/>
+   
+  <property column="usam_dsabreviado" generated="never" lazy="false"
+   length="20" name="descricaoAbreviada" type="java.lang.String"/>
+   
+  <property column="usam_icuso" generated="never" lazy="false"
+   length="2" name="indicadorUso" type="java.lang.Short"/>
+  
+  <property column="usam_tmultimaalteracao" generated="never"
+   lazy="false" length="8" name="ultimaAlteracao" type="java.sql.Timestamp"/>
+ 
+  <property column="USAM_ICAFASTEMPORARIO" generated="never" lazy="false"
+   length="1" name="indicadorAfastamentoTemporario" type="java.lang.Short"/>
+ 
+ </class>
+</hibernate-mapping>

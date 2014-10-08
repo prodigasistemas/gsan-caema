@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.mobile.ExecucaoOSCorte" table="mobile.exe_os_corte">
+		<composite-id name="comp_id" class="gcom.mobile.ExecucaoOSPK">
+			<!-- bi-directional many-to-one association to ArquivoTextoOSCobranca -->
+			<key-many-to-one name="arquivoTextoOSCobranca" class="gcom.mobile.ArquivoTextoOSCobranca">
+				<column name="AOSC_ID"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>
+		</composite-id>
+		<property name="leituraCorte" type="java.lang.Integer" column="eoco_nnleituracorte" not-null="true" length="8"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="eoco_tmultimaaltercao" length="8"/>
+		<property name="numeroSelo" type="java.lang.Integer" column="eoco_nnselo" not-null="true" length="8"/>
+		
+		<!-- Associations -->
+
+		<!-- bi-directional many-to-one association to MotivoCorte -->
+		<many-to-one name="motivoCorte" class="gcom.atendimentopublico.ligacaoagua.MotivoCorte" not-null="true">
+			<column name="mtco_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to CorteTipo -->
+		<many-to-one name="corteTipo" class="gcom.atendimentopublico.ligacaoagua.CorteTipo" not-null="true">
+			<column name="cotp_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

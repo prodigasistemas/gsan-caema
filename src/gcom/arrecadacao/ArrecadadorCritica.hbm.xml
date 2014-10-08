@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="gcom.arrecadacao.ArrecadadorCritica" table="arrecadacao.arrecadador_critica">
+		<id name="id" type="java.lang.Integer" column="arcr_id">
+			<generator class="sequence">
+				<param name="sequence">
+					arrecadacao.seq_arrecadador_critica
+				</param>
+			</generator>
+		</id>
+		<property name="indicadorUso" type="java.lang.Integer" column="arcr_icuso" length="4"/>
+		<property name="descricaoCritica" type="java.lang.String" column="arcr_dscritica" />		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="arcr_tmultimaalteracao" length="8"/>			
+		
+	</class>
+</hibernate-mapping>

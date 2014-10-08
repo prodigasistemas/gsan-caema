@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.mobile.ExecucaoOSRemocao" table="mobile.exe_os_remocao">
+		<composite-id name="comp_id" class="gcom.mobile.ExecucaoOSPK">
+			<!-- bi-directional many-to-one association to ArquivoTextoOSCobranca -->
+			<key-many-to-one name="arquivoTextoOSCobranca" class="gcom.mobile.ArquivoTextoOSCobranca">
+				<column name="aosc_id"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>
+		</composite-id>
+		
+   		<property name="indicadorCavalete" type="java.lang.Short" column="eorm_iccavalete" not-null="true" length="2" />
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="eorm_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- Associations -->
+
+		<!-- bi-directional many-to-one association to HidrometroLocalInstalacao -->
+		<many-to-one name="hidrometroLocalInstalacao" class="gcom.micromedicao.hidrometro.HidrometroLocalInstalacao" not-null="true">
+			<column name="hili_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to HidrometroProtecao -->
+		<many-to-one name="hidrometroProtecao" class="gcom.micromedicao.hidrometro.HidrometroProtecao" not-null="true">
+			<column name="hipr_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

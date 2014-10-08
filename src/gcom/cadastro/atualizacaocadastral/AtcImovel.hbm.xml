@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.AtcImovel" 
+    table="atc_imovel"
+>
+   
+	<id name="atcImoId" type="java.lang.Integer" column="atc_imo_id">
+		<generator class="assigned"/>
+	</id>
+
+    <property
+        name="atcSetId"
+        type="int"
+        column="atc_set_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcQuaId"
+        type="int"
+        column="atc_qua_id"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="atcImoLote"
+        type="java.lang.String"
+        column="atc_imo_lote"
+        length="10"
+    />
+    <property
+        name="atcImoSublote"
+        type="java.lang.String"
+        column="atc_imo_sublote"
+        length="10"
+    />
+    <property
+        name="atcBaiId"
+        type="java.lang.Integer"
+        column="atc_bai_id"
+        length="4"
+    />
+    <property
+        name="atcLgrId"
+        type="java.lang.Integer"
+        column="atc_lgr_id"
+        length="4"
+    />
+    <property
+        name="atcImoNumero"
+        type="java.lang.String"
+        column="atc_imo_numero"
+        length="20"
+    />
+    <property
+        name="atcImoReferencia"
+        type="java.lang.String"
+        column="atc_imo_referencia"
+        length="50"
+    />
+    <property
+        name="atcImoComplemento"
+        type="java.lang.String"
+        column="atc_imo_complemento"
+        length="30"
+    />
+    <property
+        name="atcPvcId"
+        type="java.lang.Integer"
+        column="atc_pvc_id"
+        length="4"
+    />
+    <property
+        name="atcPvrId"
+        type="java.lang.Integer"
+        column="atc_pvr_id"
+        length="4"
+    />
+    <property
+        name="atcFabId"
+        type="java.lang.Integer"
+        column="atc_fab_id"
+        length="4"
+    />
+    <property
+        name="atcSlaId"
+        type="java.lang.Integer"
+        column="atc_sla_id"
+        length="4"
+    />
+    <property
+        name="atcSleId"
+        type="java.lang.Integer"
+        column="atc_sle_id"
+        length="4"
+    />
+    <property
+        name="atcIpfId"
+        type="java.lang.Integer"
+        column="atc_ipf_id"
+        length="4"
+    />
+    <property
+        name="atcImoAnalizarTarifaSocial"
+        type="java.lang.Boolean"
+        column="atc_imo_analizar_tarifa_social"
+        length="1"
+    />
+    <property
+        name="atcImoContratoEnergia"
+        type="java.lang.String"
+        column="atc_imo_contrato_energia"
+        length="30"
+    />
+    <property
+        name="atcImoNumeroMedidorEnergia"
+        type="java.lang.String"
+        column="atc_imo_numero_medidor_energia"
+        length="30"
+    />
+    <property
+        name="atcAcfId"
+        type="java.lang.Integer"
+        column="atc_acf_id"
+        length="4"
+    />
+    <property
+        name="atcImoTemPoco"
+        type="java.lang.Boolean"
+        column="atc_imo_tem_poco"
+        length="1"
+    />
+    <property
+        name="localidade"
+        type="java.lang.String"
+        column="localidade"
+        length="50"
+    />
+    <property
+        name="setor"
+        type="java.lang.String"
+        column="setor"
+        length="10"
+    />
+    <property
+        name="quadra"
+        type="java.lang.String"
+        column="quadra"
+        length="10"
+    />
+    <property
+        name="logradouro"
+        type="java.lang.String"
+        column="logradouro"
+        length="50"
+    />
+    <property
+        name="atcLocId"
+        type="java.lang.Integer"
+        column="atc_loc_id"
+        length="4"
+    />
+    
+     <property
+        name="idParametroTabelaAtualizacaoCadastral"
+        type="java.lang.Integer"
+        column="ptac_id"
+        length="9"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

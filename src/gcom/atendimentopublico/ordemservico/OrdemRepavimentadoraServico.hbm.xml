@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.atendimentopublico.ordemservico.OrdemRepavimentadoraServico" table="atendimentopublico.ordem_repav_servico">
+		<id name="id" type="java.lang.Integer" column="orsv_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_ordem_repav_servico</param>
+			</generator>
+		</id>
+		
+		<property name="quantidadeServico" type="java.math.BigDecimal" column="orsv_qtservico" not-null="true" length="12"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="orsv_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to UnidadeOrganizacional -->
+		<many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico" not-null="true">
+			<column name="orse_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to MaterialUnidade -->
+		<many-to-one name="servicoRepavimentadora" class="gcom.atendimentopublico.ordemservico.ServicoRepavimentadora" not-null="true">
+			<column name="svrp_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

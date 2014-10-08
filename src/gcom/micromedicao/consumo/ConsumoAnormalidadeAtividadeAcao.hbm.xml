@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.micromedicao.consumo.ConsumoAnormalidadeAtividadeAcao" table="micromedicao.cons_anorm_ativ_acao">
+		<id name="id" type="java.lang.Integer" column="caaa_id">
+			<generator class="sequence">
+				<param name="sequence">micromedicao.SEQ_CONS_ANORM_ATIV_ACAO</param>
+			</generator>
+		</id>
+		
+		<property name="indicadorUso" type="java.lang.Short" column="caaa_icuso" length="2" not-null="true"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="caaa_tmultimaalteracao" length="8" not-null="true"/>
+		<property name="indicadorValidarRetificacao" type="java.lang.Short" column="CAAA_ICVALIDARRETIFICACAO" length="2" not-null="true"/>
+				
+		
+		<!-- associations -->
+		<many-to-one name="consumoAnormalidade" class="gcom.micromedicao.consumo.ConsumoAnormalidade" not-null="true">
+			<column name="csan_id"/>
+		</many-to-one>
+		<many-to-one name="categoria" class="gcom.cadastro.imovel.Categoria" not-null="false" >
+			<column name="catg_id"/>
+		</many-to-one>
+		<many-to-one name="imovelPerfil" class="gcom.cadastro.imovel.ImovelPerfil" not-null="false">
+			<column name="iper_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

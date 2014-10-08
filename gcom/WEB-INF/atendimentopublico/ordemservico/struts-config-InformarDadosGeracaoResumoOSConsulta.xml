@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+
+	<form-beans>
+		<form-bean name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.InformarDadosGeracaoResumoOrdemServicoConsultaActionForm" />
+		
+		<form-bean name="ResumoAcaoOSActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ResumoAcaoOSActionForm" />
+	</form-beans>
+	
+	<!--******************* PAGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+		
+		<action name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirInformarDadosGeracaoResumoOSConsultaAction"
+			validate="true" 
+			path="/exibirInformarDadosGeracaoResumoOSConsultaAction">
+			
+			<forward name="exibirInformarDadosGeracaoResumoOSConsulta" 
+				path="/jsp/atendimentopublico/ordemservico/dados_geracao_resumo_os_consulta_informar.jsp"/>				
+		</action>
+		
+		<action name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.InformarDadosGeracaoResumoOSConsultaAction"
+			validate="true" 
+			path="/informarDadosGeracaoResumoOrdemServicoConsultaAction">
+			
+			<forward name="consultarResumoAcaoOSParametros"
+				path="/consultarResumoAcaoOSWizardAction.do?action=exibirDadosGeracaoConsultaOSAction" />			
+		</action>	
+		
+		<action name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirConsultarResumoOrdemServicoSituacaoAcaoDetalhesPopupAction"
+			validate="false" scope="session" path="/exibirConsultarResumoOrdemServicoSituacaoAcaoDetalhesPopupAction">
+			<forward name="consultarResumoOrdemServicoSituacaoAcaoDetalhesPopup"
+				path="/jsp/atendimentopublico/ordemservico/ordem_servico_resumo_consultar_situacao_acao_detalhes_popup.jsp" />
+		</action>		
+		
+		<action name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirConsultarResumoOrdemServicoPopupAction"
+			validate="false" scope="session" path="/exibirConsultarResumoOrdemServicoPopupAction">
+			<forward name="consultarResumoOrdemServicoPopupAction"
+				path="/jsp/atendimentopublico/ordemservico/ordem_servico_acoes_resumo_consultar_popup.jsp" />
+		</action>					
+		
+		<action name="InformarDadosGeracaoResumoOrdemServicoConsultaActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.ConsultarResumoAcaoOSWizardAction"
+			validate="true" parameter="action" scope="session"
+			path="/consultarResumoAcaoOSWizardAction">
+			<forward name="exibirDadosGeracaoConsultaOS"
+				path="/jsp/atendimentopublico/ordemservico/ordem_servico_acoes_resumo_parametros_consultar.jsp" />
+			<forward name="exibirConsultarResumoAcaoOS"
+				path="/jsp/atendimentopublico/ordemservico/ordem_servico_acoes_resumo_consultar.jsp" />		
+		</action>
+		
+		<action 
+			type="gcom.gui.relatorio.atendimentopublico.ordemservico.GerarRelatorioResumoAcoesOrdensServicoAction"
+			validate="false"
+			path="/gerarRelatorioResumoAcoesOrdensServicoAction" >
+		</action>		
+		 
+	</action-mappings>
+
+</struts-config>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+		Created by the Middlegen Hibernate plugin
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://hibernate.sourceforge.net/
+	-->
+	<class name="gcom.atendimentopublico.ordemservico.OrdemServicoNaoEmissaoCartaEsgoto" table="atendimentopublico.os_nao_emissao_carta_esg">
+		<composite-id name="comp_id" class="gcom.atendimentopublico.ordemservico.OrdemServicoNaoEmissaoCartaEsgotoPK">
+			<key-property name="motivoNaoEmissaoCartaEsgotoId" column="mnec_id" type="java.lang.Integer" length="4"/>
+			<key-property name="ordemServicoId" column="orse_id" type="java.lang.Integer" length="4"/>
+		</composite-id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" not-null="true" column="onec_tmultimaalteracao" length="8"/>
+		
+		<many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico" not-null="true"
+			 insert="false" update="false">
+			<column name="orse_id"/>
+		</many-to-one>
+		
+		<many-to-one name="motivoNaoEmissaoCartaEsgoto" class="gcom.atendimentopublico.ordemservico.MotivoNaoEmissaoCartaEsgoto" not-null="true"
+			 insert="false" update="false">
+			<column name="mnec_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

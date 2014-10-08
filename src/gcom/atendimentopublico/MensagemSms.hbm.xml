@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.atendimentopublico.MensagemSms" table="atendimentopublico.mensagem_sms">
+		<id name="id" type="java.lang.Integer" column="msms_id" >
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_mensagem_sms</param>
+			</generator>
+		</id>
+		<property name="numeroCelular" type="java.lang.Long" column="msms_nncelular" length="10"/>
+		<property name="indicadorEnvio" type="java.lang.Short" column="msms_icenviada" length="2"/>
+		<property name="dataHoraEnvio" type="java.sql.Timestamp" column="msms_dtenvio" length="8"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="msms_tmultimaalteracao" length="8"/>
+		
+		<many-to-one name="smsTipo" class="gcom.atendimentopublico.SmsTipo" >
+			<column name="smtp_id"/>
+		</many-to-one>
+		
+		<many-to-one name="registroAtendimento" class="gcom.atendimentopublico.registroatendimento.RegistroAtendimento">
+			<column name="rgat_id"/>
+		</many-to-one>
+			
+	</class>
+</hibernate-mapping>

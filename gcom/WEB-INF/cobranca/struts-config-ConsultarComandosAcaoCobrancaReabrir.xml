@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="FiltrarComandosAcaoCobrancaCronogramaReabrirActionForm"
+			type="gcom.gui.cobranca.FiltrarComandosAcaoCobrancaCronogramaReabrirActionForm" />
+		<form-bean name="FiltrarComandosAcaoCobrancaEventualReabrirActionForm"
+			type="gcom.gui.cobranca.FiltrarComandosAcaoCobrancaEventualReabrirActionForm" />
+		<form-bean name="ReabrirComandoAtividadeAcaoCobrancaActionForm"
+			type="gcom.gui.cobranca.ReabrirComandoAtividadeAcaoCobrancaActionForm" />
+
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS ******************* -->
+	<global-forwards />
+
+	<action-mappings>
+		<!--******************* PÁGINA PRINCIPAL ******************* -->
+		<action name="FiltrarComandosAcaoCobrancaCronogramaReabrirActionForm"
+			type="gcom.gui.cobranca.ExibirFiltrarComandosAcaoCobrancaCronogramaReabrirAction"
+			validate="false" scope="session"
+			path="/exibirFiltrarComandosAcaoCobrancaCronogramaReabrirAction">
+			<forward name="exibirFiltrarComandosAcaoCobrancaReabrirCronograma"
+				path="/jsp/cobranca/comando_acao_cobranca_filtrar_comando_reabrir_cronograma.jsp" />
+		</action>
+
+		<action name="FiltrarComandosAcaoCobrancaCronogramaReabrirActionForm"
+			type="gcom.gui.cobranca.FiltrarComandosAcaoCobrancaCronogramaReabrirAction"
+			validate="false" scope="session"
+			path="/filtrarComandosAcaoCobrancaCronogramaReabrirAction">
+			<forward name="retornarComandosAcaoCobrancaCronogramaReabrir"
+				path="/exibirReabrirComandoAtividadeAcaoCobrancaAction.do" />
+		</action>
+
+		<action name="FiltrarComandosAcaoCobrancaEventualReabrirActionForm"
+			type="gcom.gui.cobranca.ExibirFiltrarComandosAcaoCobrancaEventualReabrirAction"
+			validate="false" scope="session"
+			path="/exibirFiltrarComandosAcaoCobrancaEventualReabrirAction">
+			<forward name="exibirFiltrarComandosAcaoCobrancaEventualReabrir"
+				path="/jsp/cobranca/comando_acao_cobranca_filtrar_comando_reabrir_eventual.jsp" />
+		</action>
+
+		<action name="FiltrarComandosAcaoCobrancaEventualReabrirActionForm"
+			type="gcom.gui.cobranca.FiltrarComandosAcaoCobrancaEventualReabrirAction"
+			validate="false" scope="session"
+			path="/filtrarComandosAcaoCobrancaEventualReabrirAction">
+			<forward name="retornarComandosAcaoCobrancaEventualReabrir"
+				path="/exibirReabrirComandoAtividadeAcaoCobrancaAction.do" />
+		</action>
+		<!-- <action name="ReabrirComandoAtividadeAcaoCobrancaActionForm"
+			type="gcom.gui.cobranca.ExibirReabrirComandoAtividadeAcaoCobrancaAction"
+			validate="false" scope="session"
+			path="/exibirReabrirComandoAtividadeAcaoCobrancaAction">
+		</action> -->
+
+
+	</action-mappings>
+
+</struts-config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.atendimentopublico.SmsTipo" table="atendimentopublico.sms_tipo">
+		<id name="id" type="java.lang.Integer" column="smtp_id"/>
+		<property name="descricaoTipo" type="java.lang.String" column="smtp_dssmstipo" length="4000"/>
+		<property name="indicadorUso" type="java.lang.Short" column="smtp_icuso" length="2"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="smtp_tmultimaalteracao" length="8"/>
+	</class>
+</hibernate-mapping>

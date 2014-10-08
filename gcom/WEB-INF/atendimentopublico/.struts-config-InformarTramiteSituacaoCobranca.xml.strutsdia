@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#informarTramiteSituacaoCobrancaAction"
+  NAME="action0" PATH="/informarTramiteSituacaoCobrancaAction"
+  SHAPE="448,17,0,0" TITLE="InformarTramiteSituacaoCobrancaActionForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#informarAssociacaoSituacaoCobrancaAction"
+  NAME="action1" PATH="/informarAssociacaoSituacaoCobrancaAction"
+  SHAPE="32,129,0,0"
+  TITLE="InformarTramiteAssociacaoSituacaoCobrancaActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="exibirInformarAssociacaoSituacaoCobranca"
+   NAME="forward0"
+   PATH="/jsp/atendimentopublico/tramite_situacao_cobranca_informar_associacao.jsp"
+   TARGET="page0" TITLE="exibirInformarAssociacaoSituacaoCobranca"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#exibirInformarTramiteSituacaoCobrancaAction"
+  NAME="action2" PATH="/exibirInformarTramiteSituacaoCobrancaAction"
+  SHAPE="32,17,0,0" TITLE="InformarTramiteSituacaoCobrancaActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="informarTramiteSituacaoCobranca"
+   NAME="forward0"
+   PATH="/jsp/atendimentopublico/tramite_situacao_cobranca_informar.jsp"
+   TARGET="page1" TITLE="informarTramiteSituacaoCobranca" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#exibirInformarAssociacaoSituacaoCobrancaAction"
+  NAME="action3" PATH="/exibirInformarAssociacaoSituacaoCobrancaAction"
+  SHAPE="32,241,0,0"
+  TITLE="InformarTramiteAssociacaoSituacaoCobrancaActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="exibirInformarAssociacaoSituacaoCobranca"
+   NAME="forward0"
+   PATH="/jsp/atendimentopublico/tramite_situacao_cobranca_informar_associacao.jsp"
+   TARGET="page0" TITLE="exibirInformarAssociacaoSituacaoCobranca"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0"
+  PATH="/jsp/atendimentopublico/tramite_situacao_cobranca_informar_associacao.jsp"
+  SHAPE="256,146,0,0" SUBTYPE="jsp"
+  TITLE="tramite_situacao_cobranca_informar_associacao.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/informarAssociacaoSituacaoCobrancaAction.do"
+   SUBTYPE="confirmed" TARGET="action1"
+   TITLE="/informarAssociacaoSituacaoCobrancaAction.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1"
+  PATH="/jsp/atendimentopublico/tramite_situacao_cobranca_informar.jsp"
+  SHAPE="240,34,0,0" SUBTYPE="jsp"
+  TITLE="tramite_situacao_cobranca_informar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/informarTramiteSituacaoCobrancaAction.do" SUBTYPE="confirmed"
+   TARGET="action0" TITLE="/informarTramiteSituacaoCobrancaAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+	
+		<form-bean name="InformarServicoRepavimentadoraPopupActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.InformarServicoRepavimentadoraPopupActionForm" />
+	
+	</form-beans>
+
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+			<action name="InformarServicoRepavimentadoraPopupActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirInformarServicosRepavimentadoraPopupAction"
+			validate="false" scope="session" path="/exibirInformarServicosRepavimentadoraAction">
+			<forward name="informarServicoRepavimentadoraPopup"
+				path="/jsp/atendimentopublico/ordemservico/servico_repavimentadora_informar_popup.jsp" />
+		</action>
+		
+		<action name="InformarServicoRepavimentadoraPopupActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.InformarServicosRepavimentadoraPopupAction"
+			validate="true" scope="session" path="/informarServicosRepavimentadoraAction">
+			
+			<forward name="exibirAtualizarOrdemProcessoRepavimentacaoPopUp" 
+				path="/exibirAtualizarOrdemProcessoRepavimentacaoPopupAction.do" />
+		</action>
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+		
+</struts-config>

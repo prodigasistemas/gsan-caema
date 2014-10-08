@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean 
+			name="FiltrarOrdemServicoConexaoEsgotoActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.FiltrarOrdemServicoConexaoEsgotoActionForm" /> 
+	</form-beans>
+	
+	<global-forwards />
+	
+	<action-mappings>
+		
+		<action 
+			name="FiltrarOrdemServicoConexaoEsgotoActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirFiltrarOrdemServicoConexaoEsgotoAction" 
+			validate="true" scope="session" parameter="action"
+			path="/exibirFiltrarOrdemServicoConexaoEsgotoAction">
+			<forward name="exibirFiltrarOrdemServicoConexaoEsgoto"
+					 path="/jsp/atendimentopublico/ordemservico/filtrar_os_conexao_esgoto.jsp" />
+		</action>
+		
+		<action name="FiltrarOrdemServicoConexaoEsgotoActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.FiltrarOrdemServicoConexaoEsgotoAction"
+			validate="true" scope="session"
+			path="/filtrarOrdemServicoConexaoEsgotoAction" />
+		
+		
+	</action-mappings>
+	<message-resources null="false" parameter="gcom.properties.application" />		
+</struts-config>

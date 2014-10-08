@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+	-->
+ <class name="gcom.integracao.CarroPipaRetornoTipo" table="integracao.carro_pipa_retorno_tipo">
+  <id column="cprt_id" name="id" type="java.lang.Integer">
+   <generator class="sequence">
+    <param name="sequence">integracao.seq_carro_pipa_retorno_tipo</param>
+   </generator>
+  </id>
+  
+  <property column="cprt_dsretorno" length="7" name="descricaoRetorno" not-null="true" type="java.lang.String"/>
+  <property column="cprt_tmultimaalteracao" name="ultimaAlteracao" not-null="true" type="java.sql.Timestamp"/>
+ 
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="FiltrarMotivoNaoGeracaoCobrancaResultadoActionForm"
+   				   type="gcom.gui.cobranca.cobrancaporresultado.FiltrarMotivoNaoGeracaoCobrancaResultadoActionForm" />
+   		<form-bean name="AtualizarMotivoNaoGeracaoCobrancaResultadoActionForm"
+   						type="gcom.gui.cobranca.cobrancaporresultado.AtualizarMotivoNaoGeracaoCobrancaResultadoActionForm" />
+   	</form-beans>
+	
+	<global-forwards/>
+	
+	<action-mappings>	
+		<!-- ATUALIZAR -->
+		<action name="AtualizarMotivoNaoGeracaoCobrancaResultadoActionForm" 
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirAtualizarMotivoNaoGeracaoCobrancaResultadoAction"
+			validate="false" scope="session" path="/exibirAtualizarMotivoNaoGeracaoCobrancaResultadoAction">
+			<forward name="atualizarMotivoNaoGeracaoCobrancaResultado"
+				path="/jsp/cobranca/cobrancaporresultado/motivo_nao_geracao_cob_resultado_atualizar.jsp" />
+		</action>
+		
+		<action name="AtualizarMotivoNaoGeracaoCobrancaResultadoActionForm" 
+			type="gcom.gui.cobranca.cobrancaporresultado.AtualizarMotivoNaoGeracaoCobrancaResultadoAction"
+			validate="false" scope="session"
+			path="/atualizarMotivoNaoGeracaoCobrancaResultadoAction">
+		</action>
+
+		<!-- FILTRAR -->
+		<action name="FiltrarMotivoNaoGeracaoCobrancaResultadoActionForm" 
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirManterMotivoNaoGeracaoCobrancaResultadoAction" 
+			scope="session" validate="false"
+			path="/exibirManterMotivoNaoGeracaoCobrancaResultadoAction">
+				<forward name="manterMotivoNaoGeracaoCobrancaResultado" 
+						 path="/jsp/cobranca/cobrancaporresultado/motivo_nao_geracao_cob_resultado_manter.jsp" />
+		</action>
+		
+		<!-- REMOVER -->
+		<action name="FiltrarMotivoNaoGeracaoCobrancaResultadoActionForm" 
+			type="gcom.gui.cobranca.cobrancaporresultado.RemoverMotivoNaoGeracaoCobrancaResultadoAction"
+			validate="false" scope="session"
+			path="/removerMotivoNaoGeracaoCobrancaResultadoAction">
+		</action>
+
+	</action-mappings>
+	<!--******************* ARQUIVO DE PROPRIEDADES *******************-->
+	<message-resources null="false" parameter="gcom.properties.application" />
+	
+</struts-config>

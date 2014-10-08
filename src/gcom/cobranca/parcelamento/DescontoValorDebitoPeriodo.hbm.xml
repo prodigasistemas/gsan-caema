@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cobranca.parcelamento.DescontoValorDebitoPeriodo" table="cobranca.desc_vlr_debito_periodo">
+		<id name="id" type="java.lang.Integer" column="dvdp_id">
+			<generator class="sequence">
+				<param name="sequence">cobranca.seq_desc_vlr_debito_periodo</param>
+			</generator>
+		</id>
+		<property name="valorMaximoDebito" type="java.math.BigDecimal" column="dvdp_vlmaximodebito" length="13"/>
+		<property name="percentualDesconto" type="java.math.BigDecimal" column="dvdp_pcdesconto" length="5"/>
+		<property name="qtdeMeses" type="java.lang.Integer" column="dvdp_qtmeses" length="5"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="dvdp_tmultimaalteracao" length="8"/>
+		<!-- Associations -->
+		<!-- bi-directional many-to-one association to ParcelamentoQtdeReparcel -->
+		<many-to-one name="parcelamentoPerfil" class="gcom.cobranca.parcelamento.ParcelamentoPerfil" not-null="true">
+			<column name="pcpf_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

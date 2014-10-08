@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+<form-beans>
+
+<form-bean name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ManterParcelamentoJudicialActionForm" />					
+</form-beans>
+
+
+<action-mappings>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ExibirManterParcelamentoJudicialAction"
+			path="/exibirManterParcelamentoJudicialAction">
+			<forward name="exibirManterParcelamentoJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/manter_parcelamento_judicial.jsp" />
+		</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ManterParcelamentoJudicialObterListaParcelamentoJudicialAction"
+			path="/manterParcelamentoJudicialObterListaParcelamentoJudicialAction">
+			
+			<forward name="manterParcelamentoJudicialObterListaParcelamentoJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/manter_parcelamento_judicial_2.jsp" />
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ManterParcelamentoJudicialConsultarParcelamentoJudicialAction"
+			path="/manterParcelamentoJudicialConsultarParcelamentoJudicialAction">
+			
+			<forward name="manterParcelamentoJudicialConsultarParcelamentoJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/manter_parcelamento_judicial_3.jsp" />
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.EmitirGuiasParcelamentoJudicialAction"
+			path="/emitirGuiasParcelamentoJudicialAction">
+			
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ExibirEmitirParcelasParcelamentoJudicialAction"
+			path="/exibirEmitirParcelasParcelamentoJudicialAction">
+			
+			<forward name="exibirEmitirParcelasParcelamentoJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/manter_parcelamento_judicial_4.jsp" />
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.EmitirParcelasParcelamentoJudicialAction"
+			path="/emitirParcelasParcelamentoJudicialAction">
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.gui.relatorio.cobranca.GerarRelatorioResumoParcelamentoJudicialAction"
+			path="/gerarRelatorioResumoParcelamentoJudicialAction">	
+	</action>
+	
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.ExibirCancelarGuiaAtrasoParcelamentoJudicialAction"
+			path="/exibirCancelarGuiaAtrasoParcelamentoJudicialAction">
+			<forward name="exibirCancelarGuiaAtrasoParcelamentoJudicial"
+				path="/jsp/cobranca/parcelamentojudicial/manter_parcelamento_judicial_5.jsp" />
+	</action>
+		
+	<action name="ManterParcelamentoJudicialActionForm"
+			type="gcom.cobranca.parcelamentojudicial.CancelarGuiaAtrasoParcelamentoJudicialAction"
+			path="/cancelarGuiaAtrasoParcelamentoJudicialAction">
+		<forward name="concluirPoupCancelar"
+				path="/jsp/util/popup_concluir.jsp" />
+	</action>	
+				
+</action-mappings>
+</struts-config>

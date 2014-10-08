@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.cadastro.atualizacaocadastral.HidrometroInstalacaoHistoricoAtualizacaoCadastral" table="micromedicao.hidrom_inst_hist_atl_cad">
+		<id name="id" type="java.lang.Integer" column="hiac_id">
+			<generator class="sequence">
+				<param name="sequence">micromedicao.seq_hidrom_inst_hist_atl_cad</param>
+			</generator>
+		</id>
+		<property name="numeroHidrometro" type="java.lang.String" column="hiac_nnhidrometro" length="10"/>
+		<property name="dataInstalacaoHidrometro" type="java.sql.Date" column="hiac_dtinstalacaohidrometro" not-null="false" length="4"/>
+		<property name="numeroInstalacaoHidrometro" type="java.lang.Integer" column="hiac_nninstalacaohidmt" length="4"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="hiac_tmultimaalteracao" length="8"/>
+		<property name="indicadorCavalete" type="java.lang.Short" column="hiac_iccavalete"/>
+		
+		<!-- associations -->
+		<!-- bi-directional many-to-one association to MedicaoTipo -->
+		<many-to-one name="medicaoTipo" class="gcom.micromedicao.medicao.MedicaoTipo" not-null="false">
+			<column name="medt_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to HidrometroLocalInstalacao -->
+		<many-to-one name="hidrometroLocalInstalacao" class="gcom.micromedicao.hidrometro.HidrometroLocalInstalacao" not-null="true">
+			<column name="hili_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to HidrometroProtecao -->
+		<many-to-one name="hidrometroProtecao" class="gcom.micromedicao.hidrometro.HidrometroProtecao" not-null="true">
+			<column name="hipr_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to LigacaoAgua -->
+		<many-to-one name="imovelAtualizacaoCadastral" class="gcom.cadastro.imovel.ImovelAtualizacaoCadastral" not-null="false" insert="true" update="true">
+			<column name="imac_id"/>
+		</many-to-one>
+		
+
+	</class>
+</hibernate-mapping>

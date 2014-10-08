@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="LimparMensagemCriticaAtualizacaoInscricoesActionForm"
+			type="gcom.gui.cadastro.atualizacaocadastral.LimparMensagemCriticaAtualizacaoInscricoesActionForm" />
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	
+	<action-mappings>
+		<action name="LimparMensagemCriticaAtualizacaoInscricoesActionForm"
+			type="gcom.gui.cadastro.atualizacaocadastral.ExibirLimparMensagemCriticaAtualizacaoInscricoesAction"
+			validate="false" scope="session" path="/exibirLimparMensagemCriticaAtualizacaoInscricoesAction">
+
+			<forward name="limparMensagemCriticaAtualizacaoInscricoes"
+				path="/jsp/cadastro/atualizacaocadastral/mensagem_critica_atualizacao_inscricoes_limpar.jsp" />
+		</action>
+		
+		<action name="LimparMensagemCriticaAtualizacaoInscricoesActionForm"
+			type="gcom.gui.cadastro.atualizacaocadastral.LimparMensagemCriticaAtualizacaoInscricoesAction"
+			validate="false" scope="session" path="/limparMensagemCriticaAtualizacaoInscricoesAction">
+			
+		</action>
+		
+		<action name="LimparMensagemCriticaAtualizacaoInscricoesActionForm" 
+			type="gcom.gui.relatorio.cadastro.GerarRelatorioMensagemCriticaAtualizacaoInscricoesAction"
+			validate="false" scope="session" path="/gerarRelatorioMensagemCriticaAtualizacaoInscricoesAction" >
+			
+		</action>
+	</action-mappings>
+	
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>

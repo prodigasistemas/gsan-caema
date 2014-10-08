@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="ConsultarNaoGeracaoImoveisContasComandosForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ConsultarNaoGeracaoImoveisContasComandosForm" />
+	</form-beans>
+	
+	<global-forwards />
+	
+	<action-mappings>
+		<action name="ConsultarNaoGeracaoImoveisContasComandosForm"
+			type="gcom.gui.cobranca.cobrancaporresultado.ExibirConsultarNaoGeracaoImoveisContasComandosAction"
+			validate="true" scope="session"
+			path="/exibirConsultarNaoGeracaoImoveisContasComandosAction">
+			
+			<forward name="exibirConsultarNaoGeracaoImoveisContasComandos"
+				path="/jsp/cobranca/cobrancaporresultado/exibir_consultar_nao_geracao_imoveis_contas_comandos.jsp" />
+		</action>
+		
+		<action name="ConsultarNaoGeracaoImoveisContasComandosAction"
+			type="gcom.gui.cobranca.cobrancaporresultado.ConsultarNaoGeracaoImoveisContasComandosAction"
+			validate="true" scope="session"
+			path="/consultarNaoGeracaoImoveisContasComandosAction">
+			
+			<forward name="consultarNaoGeracaoImoveisContasComandos"
+				path="/jsp/cobranca/cobrancaporresultado/consultar_nao_geracao_imoveis_contas_comandos.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

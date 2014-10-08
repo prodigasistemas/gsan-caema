@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.cobranca.CobrancaAcaoAtividadeComandoSetorComercial" table="cobranca.cob_acao_atv_cmd_stcm">
+		<id name="id" type="java.lang.Integer" column="cacs_id">
+			<generator class="sequence">
+				<param name="sequence">
+				cobranca.seq_cob_acao_atv_cmd_stcm</param>
+			</generator>
+		</id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="cacs_tmultimaalteracao" length="8"/>
+		
+		<!-- Associations -->
+		 <!-- bi-directional many-to-one association to Cobranca Acao Atividade Comando -->
+		<many-to-one name="cobrancaAcaoAtividadeComando" class="gcom.cobranca.CobrancaAcaoAtividadeComando" not-null="true">
+			<column name="cacm_id"/>
+		</many-to-one>
+		
+		<!-- bi-directional many-to-one association to Localidade -->
+		<many-to-one name="setorComercial" class="gcom.cadastro.localidade.SetorComercial" not-null="false">
+			<column name="stcm_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

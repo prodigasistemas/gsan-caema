@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM NAME="page0"
+  PATH="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_emitir.jsp"
+  SHAPE="304,514,0,0" SUBTYPE="jsp"
+  TITLE="movimentar_ordem_servico_emitir.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/movimentarOrdemServicoWizardAction.do" SUBTYPE="confirmed"
+   TARGET="action1" TITLE="/movimentarOrdemServicoWizardAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1"
+  PATH="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_gerar.jsp"
+  SHAPE="304,626,0,0" SUBTYPE="jsp"
+  TITLE="movimentar_ordem_servico_gerar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/movimentarOrdemServicoWizardAction.do" SUBTYPE="confirmed"
+   TARGET="action1" TITLE="/movimentarOrdemServicoWizardAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2"
+  PATH="/jsp/cobranca/cobrancaporresultado/movimentar_ordem_servico_encerrar.jsp"
+  SHAPE="848,34,0,0" SUBTYPE="jsp"
+  TITLE="movimentar_ordem_servico_encerrar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/movimentarOrdemServicoWizardAction.do" SUBTYPE="confirmed"
+   TARGET="action1" TITLE="/movimentarOrdemServicoWizardAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page3"
+  PATH="/jsp/cobranca/cobrancaporresultado/comandos_contas_em_cobranca_consultar.jsp"
+  SHAPE="240,850,0,0" SUBTYPE="jsp"
+  TITLE="comandos_contas_em_cobranca_consultar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/consultarComandosContasCobrancaEmpresaAction.do"
+   SUBTYPE="confirmed" TARGET="action4"
+   TITLE="/consultarComandosContasCobrancaEmpresaAction.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page4"
+  PATH="/jsp/cobranca/cobrancaporresultado/comandos_contas_em_cobranca_consultar_popup.jsp"
+  SHAPE="240,962,0,0" SUBTYPE="jsp"
+  TITLE="comandos_contas_em_cobranca_consultar_popup.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/exibirConsultarComandosContasCobrancaEmpresaPopupAction.do"
+   SUBTYPE="confirmed" TARGET="action2"
+   TITLE="/exibirConsultarComandosContasCobrancaEmpresaPopupAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page5"
+  PATH="/jsp/atendimentopublico/ligacaoagua/religacao_agua_efetuar.jsp"
+  SHAPE="32,1138,0,0" SUBTYPE="jsp" TITLE="religacao_agua_efetuar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/exibirEfetuarReligacaoAguaAction.do" SUBTYPE="confirmed"
+   TARGET="action0" TITLE="/exibirEfetuarReligacaoAguaAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#movimentarOrdemServicoWizardAction" NAME="action1"
+  PATH="/movimentarOrdemServicoWizardAction" SHAPE="240,401,0,0"
+  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM
+  ID="#exibirConsultarComandosContasCobrancaEmpresaPopupAction"
+  NAME="action2"
+  PATH="/exibirConsultarComandosContasCobrancaEmpresaPopupAction"
+  SHAPE="448,1074,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#consultarComandosContasCobrancaEmpresaAction"
+  NAME="action4" PATH="/consultarComandosContasCobrancaEmpresaAction"
+  SHAPE="448,962,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM
+  ID="#exibirConsultarMotivoNaoPagamentoCobracaResultadoAction"
+  NAME="action3"
+  PATH="/exibirConsultarMotivoNaoPagamentoCobracaResultadoAction"
+  SHAPE="32,1249,0,0"
+  TITLE="ConsultarMotivoNaoPagamentoCobracaResultadoActionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="exibirMotivoNaoPagamentoCobrancaResultado"
+   NAME="forward0"
+   PATH="/jsp/cobranca/cobrancaporresultado/motivo_nao_pagamento_cobracao_resultado_consultar.jsp"
+   TARGET="page7" TITLE="exibirMotivoNaoPagamentoCobrancaResultado"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#exibirEfetuarReligacaoAguaAction" NAME="action0"
+  PATH="/exibirEfetuarReligacaoAguaAction" SHAPE="240,1138,0,0"
+  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#consultarMotivoNaoPagamentoCobracaResultadoAction"
+  NAME="action5"
+  PATH="/consultarMotivoNaoPagamentoCobracaResultadoAction"
+  SHAPE="32,1361,0,0"
+  TITLE="ConsultarMotivoNaoPagamentoCobracaResultadoActionForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page7"
+  PATH="/jsp/cobranca/cobrancaporresultado/motivo_nao_pagamento_cobracao_resultado_consultar.jsp"
+  SHAPE="240,1361,0,0" SUBTYPE="jsp"
+  TITLE="motivo_nao_pagamento_cobracao_resultado_consultar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/exibirConsultarMotivoNaoPagamentoCobracaResultadoAction.do"
+   SUBTYPE="confirmed" TARGET="action3"
+   TITLE="/exibirConsultarMotivoNaoPagamentoCobracaResultadoAction.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

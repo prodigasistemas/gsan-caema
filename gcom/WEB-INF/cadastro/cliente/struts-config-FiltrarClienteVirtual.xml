@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="FiltrarClienteVirtualActionForm"
+			type="gcom.gui.cadastro.cliente.FiltrarClienteVirtualActionForm" />
+
+
+	</form-beans>
+
+	<!--******************* P�GINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+
+		<action name="FiltrarClienteVirtualActionForm"  
+			type="gcom.gui.cadastro.cliente.ExibirFiltrarClienteVirtualAction" 
+			validate="false"
+			scope="session"
+			path="/exibirFiltrarClienteVirtualAction">
+
+			<forward name="exibirFiltrarClienteVirtualAction"
+			path="/jsp/cadastro/cliente/cliente_virtual_filtrar.jsp" />
+
+		</action>
+		
+		<action name="FiltrarClienteVirtualActionForm" 
+			type="gcom.gui.relatorio.cadastro.ExibirGerarRelatorioClienteVirtualAction"
+			validate="false"
+			scope="session"
+			path="/exibirGerarRelatorioClienteVirtualAction">
+		
+			<forward name="exibirGerarRelatorioClienteVirtualAction" 
+			path="/jsp/relatorio/cadastro/relatorio_cliente_virtual_gerar.jsp" />	
+			
+		</action>
+		
+		<action name="FiltrarClienteVirtualActionForm" 
+			type="gcom.gui.relatorio.cadastro.GerarRelatorioClienteVirtualAction"
+			validate="false"
+			scope="session"
+			path="/gerarRelatorioClienteVirtualAction" >
+		
+		</action>
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+</struts-config>
+

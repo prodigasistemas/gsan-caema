@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.mobile.ArquivoTextoOSCobrancaCliente" table="mobile.arq_txt_os_cobranca_clie">
+		<composite-id name="comp_id" class="gcom.mobile.ExecucaoOSPK">
+			<!-- bi-directional many-to-one association to ArquivoTextoOSCobranca -->
+			<key-many-to-one name="arquivoTextoOSCobranca" class="gcom.mobile.ArquivoTextoOSCobranca">
+				<column name="aosc_id"/>
+			</key-many-to-one>
+			<!-- bi-directional many-to-one association to OrdemServico -->
+			<key-many-to-one name="ordemServico" class="gcom.atendimentopublico.ordemservico.OrdemServico">
+				<column name="orse_id"/>
+			</key-many-to-one>
+		</composite-id>
+		<property name="nomeCliente" type="java.lang.String" column="atcc_nmcliente" length="50"/>
+		<property name="cpf" type="java.lang.String" column="atcc_dscpf" length="11"/>
+		<property name="cnpj" type="java.lang.String" column="atcc_dscnpj" length="14"/>
+		<property name="rg" type="java.lang.String" column="atcc_dsrg" length="13"/>
+		
+		<property name="dddTelefone" type="java.lang.String" column="ATCC_DSDDD" length="2"/>
+		<property name="telefone" type="java.lang.String" column="ATCC_DSTELEFONE" length="9"/>
+		<property name="ramalTelefone" type="java.lang.String" column="ATCC_DSRAMAL" length="4"/>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="ATCC_TMULTIMAALTERACAO" length="8"/>
+		
+		<!-- Associations -->
+
+		<!-- bi-directional many-to-one association to OrgaoExpedidorRg -->
+		<many-to-one name="orgaoExpedidorRg" class="gcom.cadastro.cliente.OrgaoExpedidorRg" not-null="true">
+			<column name="oerg_idrg"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to CorteTipo -->
+		<many-to-one name="unidadeFederacao" class="gcom.cadastro.geografico.UnidadeFederacao" not-null="true">
+			<column name="unfe_idrg"/>
+		</many-to-one>
+		
+		<many-to-one name="clienteOriginal" class="gcom.cadastro.cliente.Cliente" not-null="true">
+			<column name="clie_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.LogradouroGsanAdmin" 
+    table="cadastro.logradouro_gsan_admin"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.LogradouroGsanAdminPK">
+        <key-property 
+            name="idLogradouro" 
+            column="logr_id" 
+            type="java.lang.Integer"
+            length="22"/>
+        <key-property 
+            name="idLogradouroAdmin" 
+            column="load_id" 
+            type="java.lang.Integer"
+            length="22"/>
+    </composite-id>    
+
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="loga_tmultimaalteracao"
+        not-null="true"
+        length="11"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to Logradouro -->
+    <many-to-one
+        name="logradouro"
+	    class="gcom.cadastro.endereco.Logradouro"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="logr_id" />
+	</many-to-one>
+	
+    <!-- bi-directional many-to-one association to LogradouroAdmin -->
+    <many-to-one
+        name="logradouroAdmin"
+	    class="gcom.cadastro.atualizacaocadastral.LogradouroAdmin"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="load_id" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.cadastro.atualizacaocadastral.BairroGsanAdmin" 
+    table="cadastro.bairro_gsan_admin"
+>
+
+    <composite-id name="comp_id" class="gcom.cadastro.atualizacaocadastral.BairroGsanAdminPK">
+        <key-property 
+            name="idBairro" 
+            column="bair_id" 
+            type="java.lang.Integer"
+            length="22"
+        />
+        <key-property 
+            name="idBairroAdmin" 
+            column="baad_id" 
+            type="java.lang.Integer"
+            length="22"
+        />
+    </composite-id>    
+
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="baga_tmultimaalteracao"
+        not-null="true"
+        length="11"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to Bairro -->
+    <many-to-one
+        name="bairro"
+	    class="gcom.cadastro.geografico.Bairro"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="bair_id" />
+	</many-to-one>
+	
+    <!-- bi-directional many-to-one association to BairroAdmin -->
+    <many-to-one
+        name="bairroAdmin"
+	    class="gcom.cadastro.atualizacaocadastral.BairroAdmin"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="baad_id" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

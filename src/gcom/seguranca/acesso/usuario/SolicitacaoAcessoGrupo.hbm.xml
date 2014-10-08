@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="gcom.seguranca.acesso.usuario.SolicitacaoAcessoGrupo" 
+    table="seguranca.solicitacao_acesso_grupo"
+>
+    
+    <composite-id class="gcom.seguranca.acesso.usuario.SolicitacaoAcessoGrupoPK"
+    	mapped="false" name="comp_id" unsaved-value="undefined">
+       <key-property column="grup_id" length="4" name="grupoId" type="java.lang.Integer"/>
+       <key-property column="soac_id" length="4" name="solicitacaoAcessoId" type="java.lang.Integer"/>	
+    </composite-id> 
+    
+   <many-to-one class="gcom.seguranca.acesso.usuario.SolicitacaoAcesso"
+   insert="false" name="solicitacaoAcesso" update="false">
+   <column name="soac_id"/>
+  </many-to-one>
+  <!-- bi-directional many-to-one association to Grupo -->
+  <many-to-one class="gcom.seguranca.acesso.Grupo" insert="false"
+   name="grupo" update="false">
+   <column name="grup_id"/>
+  </many-to-one>
+    
+    <property
+        name="ultimaAlteracao"
+        type="java.sql.Timestamp"
+        column="sagr_tmultimaalteracao"
+        not-null="true"
+        length="8"
+    />
+	
+</class>
+</hibernate-mapping>

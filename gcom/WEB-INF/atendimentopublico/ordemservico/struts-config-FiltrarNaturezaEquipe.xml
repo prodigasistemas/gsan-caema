@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+	
+		<form-bean name="FiltrarNaturezaEquipeActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.FiltrarNaturezaEquipeActionForm" />
+	
+	</form-beans>
+
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards />
+	<action-mappings>
+			<action name="FiltrarNaturezaEquipeActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirFiltrarNaturezaEquipeAction"
+			validate="false" scope="session" path="/exibirFiltrarNaturezaEquipeAction">
+			
+			<forward name="filtrarNaturezaEquipe"
+				path="/jsp/atendimentopublico/ordemservico/natureza_equipe_filtrar.jsp" />
+		</action>
+		
+		<action name="FiltrarNaturezaEquipeActionForm" 
+			type="gcom.gui.atendimentopublico.ordemservico.FiltrarNaturezaEquipe"
+			validate="true" scope="session" path="/filtrarNaturezaEquipeAction">
+			
+			<forward name="exibirManterNaturezaEquipe" path="/exibirManterNaturezaEquipeAction.do" /> 
+		</action>
+		
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+		
+</struts-config>

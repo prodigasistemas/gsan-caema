@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+	<class name="gcom.seguranca.acesso.usuario.SolicitacaoAcessoPermissao" table="seguranca.SOLICIT_ACESSO_PERMISSAO">
+		<composite-id name="comp_id" class="gcom.seguranca.acesso.usuario.SolicitacaoAcessoPermissaoPK">
+			<key-property name="solicitacaoAcessoId" column="SOAC_ID" type="java.lang.Integer" length="4"/>
+			<key-property name="permissaoEspecialId" column="pmep_id" type="java.lang.Integer" length="4"/>
+		</composite-id>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="SOAC_TMULTIMAALTERACAO" length="8"/>
+		
+		<!-- Associations -->
+		<many-to-one name="solicitacaoAcesso" class="gcom.seguranca.acesso.usuario.SolicitacaoAcesso" update="false" insert="false">
+			<column name="SOAC_ID"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to PermissaoEspecial -->
+		<many-to-one name="permissaoEspecial" class="gcom.seguranca.acesso.PermissaoEspecial" update="false" insert="false">
+			<column name="pmep_id"/>
+		</many-to-one>
+		
+		
+	</class>
+</hibernate-mapping>

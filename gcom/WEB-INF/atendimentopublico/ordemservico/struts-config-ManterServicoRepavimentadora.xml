@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>  
+
+	<form-beans>
+	
+		<form-bean name="AtualizarServicoRepavimentadoraActionForm"
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarServicoRepavimentadoraActionForm" />
+	
+		<form-bean name="ManutencaoRegistroActionForm" 
+			type="gcom.gui.ManutencaoRegistroActionForm" />
+			
+	</form-beans>
+
+	<global-forwards />
+	
+	
+	<action-mappings> 	
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirManterServicoRepavimentadoraAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirManterServicoRepavimentadoraAction">
+			<forward name="manterServicoRepavimentadora"
+				path="/jsp/atendimentopublico/ordemservico/servico_repavimentadora_manter.jsp" />
+			
+			<forward name="exibirServicoRepavimentadora"
+				path="/exibirAtualizarServicoRepavimentadoraAction.do" /> 
+		</action>
+		
+		<action name="AtualizarServicoRepavimentadoraActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.ExibirAtualizarServicoRepavimentadoraAction"
+			validate="false" 
+			scope="session" 
+			path="/exibirAtualizarServicoRepavimentadoraAction">
+			<forward name="atualizarServicoRepavimentadora"
+				path="/jsp/atendimentopublico/ordemservico/servico_repavimentadora_atualizar.jsp" />
+		</action>
+		
+		<action name="AtualizarServicoRepavimentadoraActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.AtualizarServicoRepavimentadoraAction"
+			validate="false" 
+			scope="session" 
+			path="/atualizarServicoRepavimentadoraAction">
+		</action>		
+		
+		<action  name="ManutencaoRegistroActionForm"  
+			type="gcom.gui.atendimentopublico.ordemservico.RemoverServicoRepavimentadoraAction"
+			validate="false" 
+			scope="session" 
+			path="/removerServicoRepavimentadoraAction">
+		</action>	
+			
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+		
+</struts-config>

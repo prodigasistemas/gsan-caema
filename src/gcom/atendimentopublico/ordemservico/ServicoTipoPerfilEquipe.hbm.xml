@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.atendimentopublico.ordemservico.ServicoTipoPerfilEquipe" table="atendimentopublico.servico_tp_perfil_equipe">
+		<id name="id" type="java.lang.Integer" column="stpe_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_servico_tp_perfil_equipe</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="servicoTipo" class="gcom.atendimentopublico.ordemservico.ServicoTipo" not-null="true">
+			<column name="svtp_id"/>
+		</many-to-one>
+		
+		<many-to-one name="servicoPerfilTipo" class="gcom.atendimentopublico.ordemservico.ServicoPerfilTipo" not-null="true">
+			<column name="sptp_id"/>
+		</many-to-one>
+		
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="stpe_tmultimaalteracao" length="8"/>
+	</class>
+</hibernate-mapping>

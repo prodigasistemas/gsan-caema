@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.atendimentopublico.UnResKitCasServico" table="atendimentopublico.un_res_kit_cas_servico">
+		<id name="id" type="java.lang.Integer" column="rkca_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_un_res_kit_cas_servico</param>
+			</generator>
+		</id>
+		<property name="referencia" type="int" column="rkca_amreferencia" not-null="true" length="4"/>
+		<property name="codigoSetorComercial" type="int" column="rkca_cdsetorcomercial" not-null="true" length="4"/>
+		<property name="numeroQuadra" type="int" column="rkca_nnquadra" not-null="true" length="4"/>
+		<property name="quantidadeSupressoesExecutadas" type="int" column="rkca_qtsupressoesexecutadas" not-null="true" length="4"/>
+		<property name="quantidadeRestabelecimentos" type="int" column="rkca_qtrestabelecimentos" not-null="true" length="4"/>
+		<property name="quantidadeFiscalizacoesOriundasCortados" type="int" column="rkca_qtfiscoriundascortados" not-null="true" length="4"/>
+		<property name="quantidadeFiscalizacoesOriundasSuprimidos" type="int" column="rkca_qtfiscoriundassuprimidos" not-null="true" length="4"/>
+		<property name="quantidadeAvisosCorteEmitidos" type="int" column="rkca_qtavisoscorteemitidos" not-null="true" length="4"/>
+		<property name="quantidadeRAPendentesComerciaisNoPrazo" type="int" column="rkca_qtrapendcomercnoprazo" not-null="true" length="4"/>
+		<property name="quantidadeRAPendentesComerciaisForaPrazo" type="int" column="rkca_qtrapendcomercforaprazo" not-null="true" length="4"/>
+		<property name="quantidadeRAPendentesOperacionaisNoPrazo" type="int" column="rkca_qtrapendoperacnoprazo" not-null="true" length="4"/>
+		<property name="quantidadeRAPendentesOperacionaisForaPrazo" type="int" column="rkca_qtrapendoperacforaprazo" not-null="true" length="4"/>
+		<property name="quantidadeFaturasRevisao" type="int" column="rkca_qtfaturasrevisao" not-null="true" length="4"/>
+		<property name="quantidadeCartasNegativasEmitidas" type="int" column="rkca_qtcartasnegativemitidas" not-null="true" length="4"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="refa_tmultimaalteracao" not-null="true" length="8"/>
+		
+		<!-- bi-directional many-to-one association to GGerenciaRegional -->
+		<many-to-one name="gerGerenciaRegional" class="gcom.gerencial.cadastro.localidade.GGerenciaRegional" not-null="true">
+			<column name="greg_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GUnidadeNegocio -->
+		<many-to-one name="gerUnidadeNegocio" class="gcom.gerencial.cadastro.localidade.GUnidadeNegocio" not-null="true">
+			<column name="uneg_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GLocalidade -->
+		<many-to-one name="gerLocalidade" class="gcom.gerencial.cadastro.localidade.GLocalidade" not-null="true">
+			<column name="loca_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GLocalidade -->
+		<many-to-one name="gerLocalidadeElo" class="gcom.gerencial.cadastro.localidade.GLocalidade" not-null="true">
+			<column name="loca_cdelo"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GSetorComercial -->
+		<many-to-one name="gerSetorComercial" class="gcom.gerencial.cadastro.localidade.GSetorComercial" not-null="true">
+			<column name="stcm_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GRota -->
+		<many-to-one name="gerRota" class="gcom.gerencial.micromedicao.GRota" not-null="true">
+			<column name="rota_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GQuadra -->
+		<many-to-one name="gerQuadra" class="gcom.gerencial.cadastro.localidade.GQuadra" not-null="true">
+			<column name="qdra_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GImovelPerfil -->
+		<many-to-one name="gerImovelPerfil" class="gcom.gerencial.cadastro.imovel.GImovelPerfil" not-null="true">
+			<column name="iper_id"/>
+		</many-to-one>	
+		<!-- bi-directional many-to-one association to GLigacaoAguaSituacao -->
+		<many-to-one name="gerLigacaoAguaSituacao" class="gcom.gerencial.atendimentopublico.ligacaoagua.GLigacaoAguaSituacao" not-null="true">
+			<column name="last_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GLigacaoEsgotoSituacao -->
+		<many-to-one name="gerLigacaoEsgotoSituacao" class="gcom.gerencial.atendimentopublico.ligacaoesgoto.GLigacaoEsgotoSituacao" not-null="true">
+			<column name="lest_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GCategoria -->
+		<many-to-one name="gerCategoria" class="gcom.gerencial.cadastro.imovel.GCategoria" not-null="true">
+			<column name="catg_id"/>
+		</many-to-one>	
+		<!-- bi-directional many-to-one association to GSubcategoria -->
+		<many-to-one name="gerSubcategoria" class="gcom.gerencial.cadastro.imovel.GSubcategoria" not-null="true">
+			<column name="scat_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GEsferaPoder -->
+		<many-to-one name="gerEsferaPoder" class="gcom.gerencial.cadastro.cliente.GEsferaPoder" not-null="true">
+			<column name="epod_id"/>
+		</many-to-one>
+		<!-- bi-directional many-to-one association to GClienteTipo -->
+		<many-to-one name="gerClienteTipo" class="gcom.gerencial.cadastro.cliente.GClienteTipo" not-null="true">
+			<column name="cltp_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

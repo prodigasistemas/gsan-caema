@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="InserirMotivoRejeicaoClienteVirtualActionForm"
+			type="gcom.gui.cadastro.InserirMotivoRejeicaoClienteVirtualActionForm" />
+
+	</form-beans>
+
+	<global-forwards />
+
+	<action-mappings>
+
+
+		<action name="InserirMotivoRejeicaoClienteVirtualActionForm"  
+			type="gcom.gui.cadastro.ExibirInserirMotivoRejeicaoClienteVirtualAction" 
+			validate="false"
+			scope="session"
+			path="/exibirInserirMotivoRejeicaoClienteVirtualAction">
+
+			<forward name="inserirMotivoRejeicaoClienteVirtual"
+			path="/jsp/cadastro/cliente/inserir_motivo_rejeicao_cliente_virtual.jsp" />
+		</action>
+
+		<action name="InserirMotivoRejeicaoClienteVirtualActionForm"
+			type="gcom.gui.cadastro.InserirMotivoRejeicaoClienteVirtualAction"
+			validate="false" 
+			scope="session"
+			path="/inserirMotivoRejeicaoClienteVirtualAction">
+			
+		</action>
+
+	</action-mappings>
+
+	<message-resources null="false"
+		parameter="gcom.properties.application" />
+
+</struts-config>

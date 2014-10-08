@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+	<class name="gcom.atendimentopublico.ordemservico.OsAcompanhamentoMotivoNaoAceite" table="atendimentopublico.os_acomp_mot_nao_aceite">
+		<id name="id" type="java.lang.Integer" column="osna_id">
+			<generator class="sequence">
+				<param name="sequence">atendimentopublico.seq_os_acomp_mot_nao_aceite</param>
+			</generator>
+		</id>
+		
+	    <property name="descricao"  type="java.lang.String" column="osna_descricao" not-null="true" length="50"/>
+	    <property name="descricaoAbreviada"  type="java.lang.String" column="osna_dsabreviada" not-null="false" length="5"/>
+	    <property name="indicadorObservacaoObrigatoriedade"  type="short" column="osna_icobservacaoobrig" not-null="true" length="2" />
+	    <property name="indicadorUso"  type="short" column="osna_icuso" not-null="true"  length="2"/>
+	    <property name="ultimaAlteracao"  type="java.sql.Timestamp" column="osna_tmultimaalteracao" not-null="true" length="8"  />   
+	
+	  
+	</class>
+</hibernate-mapping>

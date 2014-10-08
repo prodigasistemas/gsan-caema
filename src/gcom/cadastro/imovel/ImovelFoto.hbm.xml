@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="gcom.cadastro.imovel.ImovelFoto" table="cadastro.imovel_foto">
+		<id name="id" type="java.lang.Integer" column="imft_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_imovel_foto</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="true">
+			<column name="imov_id"/>
+		</many-to-one>
+		
+		<many-to-one name="fotoSituacao" class="gcom.atendimentopublico.ordemservico.FotoSituacaoOrdemServico">
+			<column name="fsos_id"/>
+		</many-to-one>
+		
+		<property name="fotoImovel" type="binary" column="imft_imfoto" length="-1" not-null="true"/>
+		<property name="ultimaAlteracao" type="java.sql.Timestamp" column="imft_tmultimaalteracao" not-null="true" length="6"/>
+		<property name="observacaoFoto" type="java.lang.String" column="imft_dsobservacao" length="200"/>
+	</class>
+</hibernate-mapping>

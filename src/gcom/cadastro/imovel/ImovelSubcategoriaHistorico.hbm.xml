@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+    Created by the Middlegen Hibernate plugin
+
+    http://boss.bekk.no/boss/middlegen/
+    http://hibernate.sourceforge.net/
+-->
+	<class name="gcom.cadastro.imovel.ImovelSubcategoriaHistorico" table="cadastro.imov_subcategoria_hist">
+		<id name="id" type="java.lang.Integer" column="imsh_id">
+			<generator class="sequence">
+				<param name="sequence">cadastro.seq_imov_subcategoria_hist</param>
+			</generator>
+		</id>
+		<property column="imsh_qteconomia" generated="never" lazy="false"
+			length="2" name="quantidadeEconomias" not-null="true" type="short" />
+		<property column="imsh_qtunidadeprivativa" generated="never"
+			lazy="false" length="2" name="quantidadeUnidadesPrivativas" type="java.lang.Short" />
+		<property column="imsh_qtunidadecoletiva" generated="never"
+			lazy="false" length="2" name="quantidadeUnidadesColetivas" type="java.lang.Short" />
+		<property column="imsh_dtinclusao" generated="never" lazy="false"
+			length="4" name="dataInclusao" not-null="true" type="java.sql.Date" />
+		<property column="imsh_dtexclusao" generated="never" lazy="false"
+			length="4" name="dataExclusao" type="java.sql.Date" />
+		<property column="imsh_tmultimaalteracao" generated="never"
+			lazy="false" length="8" name="dataUltimaAlteracao" type="java.sql.Timestamp" />		
+		
+		<!-- bi-directional many-to-one association to Subcategoria -->
+		<many-to-one name="subcategoriaHistorico" class="gcom.cadastro.imovel.Subcategoria" not-null="true">
+			<column name="scat_id"/>
+		</many-to-one>
+		<many-to-one name="imovel" class="gcom.cadastro.imovel.Imovel" not-null="true">
+			<column name="imov_id"/>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>
